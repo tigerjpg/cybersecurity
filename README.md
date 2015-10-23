@@ -23,7 +23,6 @@ Add an extra "/"
 
 
 ```
-#!c++
 /// This method does something
 void DoSomething();
 ```
@@ -34,7 +33,6 @@ Add an extra "*"
 
 
 ```
-#!c++
 
 /** This is a method that does so
   * much that I must write an epic 
@@ -51,7 +49,6 @@ Add an extra "/<"
 
 
 ```
-#!c++
 
 void DoSomething(); ///< This method does something
 ```
@@ -78,7 +75,6 @@ Below is a full example.
 
 
 ```
-#!c++
 
 /**
  * \class ExampleClass

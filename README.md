@@ -49,7 +49,6 @@ Add an extra "*"
 
 
 ```
-
 /** This is a method that does so
   * much that I must write an epic 
   * novel just to describe how much
@@ -65,7 +64,6 @@ Add an extra "/<"
 
 
 ```
-
 void DoSomething(); ///< This method does something
 ```
 
@@ -75,8 +73,6 @@ Add an extra "*<"
 
 
 ```
-#!c++
-
 void DoNothing(); /**< This is a method that does so
   * much that I must write an epic 
   * novel just to describe how much
@@ -91,7 +87,6 @@ Below is a full example.
 
 
 ```
-
 /**
  * \class ExampleClass
  *
@@ -161,5 +156,4 @@ private:
 };                              // end of class ExampleClass
 
 #endif  // EXAMPLECLASS_H
-
 ```

@@ -21,7 +21,6 @@ To change the status of a story on Pivotal directly from your commit message, in
 
 For this project, we will be using the [Google style guide for C++](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html).
 
-
 ###A Brief Doxygen Style Guide
 
 **In QT, typing </*!> + enter above a declaration will produce a doxygen comment block.**

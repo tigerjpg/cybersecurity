@@ -1,10 +1,25 @@
 # cybersecurity [![Build Status](https://travis-ci.org/tigerjpg/cybersecurity.svg?branch=master)](https://travis-ci.org/tigerjpg/cybersecurity)
-for secure cybering
+
+##Pivotal Tracker Integration
+
+In order to use Pivotal Tracker integration, all branches must have this naming convention:
+```
+    [Story ID]-description
+```
+and all commits must be appended or prepended with:
+```
+    "Here's my sample commit! [#<Story ID>]
+```
+To change the status of a story on Pivotal directly from your commit message, include:
+```
+    "I finished this feature! [Finishes #<Story ID>]
+    "I fixed this feature! [Fixes #<Story ID>]
+    "I'm delivering this feature! [Delivers #<Story ID>]
+```
 
 ##Style Guide
 
 For this project, we will be using the [Google style guide for C++](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html).
-
 
 ###A Brief Doxygen Style Guide
 
@@ -33,7 +48,6 @@ Add an extra "*"
 
 
 ```
-
 /** This is a method that does so
   * much that I must write an epic 
   * novel just to describe how much
@@ -49,7 +63,6 @@ Add an extra "/<"
 
 
 ```
-
 void DoSomething(); ///< This method does something
 ```
 
@@ -59,8 +72,6 @@ Add an extra "*<"
 
 
 ```
-#!c++
-
 void DoNothing(); /**< This is a method that does so
   * much that I must write an epic 
   * novel just to describe how much
@@ -75,7 +86,6 @@ Below is a full example.
 
 
 ```
-
 /**
  * \class ExampleClass
  *
@@ -145,5 +155,4 @@ private:
 };                              // end of class ExampleClass
 
 #endif  // EXAMPLECLASS_H
-
 ```

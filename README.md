@@ -1,5 +1,5 @@
 # cybersecurity
-it's a thing
+for secure cybering
 
 ##Style Guide
 

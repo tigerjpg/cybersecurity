@@ -1,7 +1,8 @@
 # cybersecurity [![Build Status](https://travis-ci.org/tigerjpg/cybersecurity.svg?branch=master)](https://travis-ci.org/tigerjpg/cybersecurity) [![Stories in Ready](https://badge.waffle.io/tigerjpg/cybersecurity.svg?label=ready&title=Ready)](http://waffle.io/tigerjpg/cybersecurity)
 
-##Waffle.io Integration
+[![Throughput Graph](https://graphs.waffle.io/tigerjpg/cybersecurity/throughput.svg)](https://waffle.io/tigerjpg/cybersecurity/metrics) 
 
+##Waffle.io Integration
 TBA
 
 ##Style Guide

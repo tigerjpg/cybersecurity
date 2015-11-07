@@ -4,17 +4,19 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = cybersecurity
 TEMPLATE = app
 
+DEPENDPATH += src
+INCLUDEPATH += include
 
-SOURCES += main.cpp\
-        MainWindow.cpp
+SOURCES += src/main.cpp \
+           src/mainwindow.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += include/mainwindow.h
 
-FORMS    += MainWindow.ui
+FORMS    += forms/MainWindow.ui

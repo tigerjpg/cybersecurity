@@ -1,21 +1,9 @@
-# cybersecurity [![Build Status](https://travis-ci.org/tigerjpg/cybersecurity.svg?branch=master)](https://travis-ci.org/tigerjpg/cybersecurity)
+# cybersecurity [![Build Status](https://travis-ci.org/tigerjpg/cybersecurity.svg?branch=master)](https://travis-ci.org/tigerjpg/cybersecurity) [![Stories in Ready](https://badge.waffle.io/tigerjpg/cybersecurity.svg?label=ready&title=Ready)](http://waffle.io/tigerjpg/cybersecurity)
 
-##Pivotal Tracker Integration
+[![Throughput Graph](https://graphs.waffle.io/tigerjpg/cybersecurity/throughput.svg)](https://waffle.io/tigerjpg/cybersecurity/metrics) 
 
-In order to use Pivotal Tracker integration, all branches must have this naming convention:
-```
-    [Story ID]-description
-```
-and all commits must be appended or prepended with:
-```
-    "Here's my sample commit! [#<Story ID>]
-```
-To change the status of a story on Pivotal directly from your commit message, include:
-```
-    "I finished this feature! [Finishes #<Story ID>]
-    "I fixed this feature! [Fixes #<Story ID>]
-    "I'm delivering this feature! [Delivers #<Story ID>]
-```
+##Waffle.io Integration
+TBA
 
 ##Style Guide
 

@@ -1,3 +1,17 @@
+# QT
+*.pro.user
+*.pro.user.*
+*.moc
+*.qbs.user.*
+*.qbs.user
+moc_*.cpp
+qrc_*.cpp
+*-build-*
+Makefile*
+ui_*.h
+*.autosave
+/.qmake.cache
+/.qmake.stash
 # Compiled Object files
 *.slo
 *.lo

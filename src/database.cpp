@@ -28,7 +28,7 @@ Database::~Database()
     query.clear();
   }
   close();
-};
+}
 
 /*!
  * \brief Database::AddCustomer Add a customer to the database
@@ -81,15 +81,6 @@ bool Database::Exec()
 }
 
 /*!
- * \brief Database::IsOpen check if db is open
- * \return true if db is open
- */
-bool Database::IsOpen()
-{
-  return isOpen();
-}
-
-/*!
  * \brief Database::IsKey Check if a customer is a key customer or not
  * \param name
  * \return true if customer is a key customer
@@ -97,14 +88,13 @@ bool Database::IsOpen()
 bool Database::IsKey(QString name)
 {
   //execute query
-  if(query.exec("select * from customers where name = \""
+  if(this->query.exec("select * from customers where name = \""
                 + name + "\";"))
     //if there is data in the query
     if(query.next())
     {
       //get info from "key" field in this record
-      field = new QSqlField(query.record().field("key"));
-      return (field->value().toBool());
+      return (query.record().field("key").value().toBool());
     }
     else
     {

@@ -31,8 +31,6 @@ public:
   bool SetQuery(QString newQuery);
   ///Execute query
   bool Exec();
-  ///Check if DB is open
-  bool IsOpen();
   ///Check if a customer is a key customer
   bool IsKey(QString name);
   ///Check if a table is empty
@@ -43,8 +41,6 @@ public:
 
 private:
   QSqlDatabase *db;
-  QSqlRecord *record;
-  QSqlField *field;
   QSqlQuery query;
 };
 

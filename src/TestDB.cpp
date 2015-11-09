@@ -10,7 +10,7 @@ bool TestDatabaseClass()
   try
   {
     //Check if database is open
-    Q_ASSERT(db->IsOpen());
+    Q_ASSERT(db->isOpen());
     //remove customer added on last test run
     Q_ASSERT(db->RemoveCustomer("Persistence Proof"));
     //Add a test customer to customers

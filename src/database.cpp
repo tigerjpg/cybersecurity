@@ -1,4 +1,4 @@
-#include "../include/database.h"
+#include "database.h"
 /*!
  * \brief Database::Database constructor
  */

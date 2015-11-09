@@ -2,56 +2,26 @@
 #include <QApplication>
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QDebug>
+#include <QtDebug>
 #include <QException>
+#include "../include/database.h"
+#include <iostream>
+
+bool TestDatabaseClass();
 
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
   MainWindow w;
-  QSqlDatabase *db = new QSqlDatabase();
-  *db = QSqlDatabase::addDatabase("QSQLITE");
-  db->setHostName("localhost");
-  db->setDatabaseName("../data/data.db");
 
-  //Open database
-  Q_ASSERT(db->open());
-  QSqlQuery query;
-  //Get all info from table customers
-  Q_ASSERT(query.exec("select * from customers;"));
-  while(query.next())
+  if(TestDatabaseClass())
   {
-    int customerId = query.value("id").toInt();
-    QString name = query.value("name").toString();
-    QString address = query.value("address").toString();
-    int interest = query.value("interest").toInt();
-    bool isKey = query.value("key").toBool();
-    qDebug() << customerId << name << ' ' << address << ' ' << interest << ' ' << isKey;
+    qDebug() << "Database test successful!";
   }
-
-  Q_ASSERT(query.exec("select * from admins"));
-  while(query.next())
+  else
   {
-    QString name = query.value(0).toString();
-    QString pass = query.value(1).toString();
-    qDebug() << name << ' ' << pass;
+    qDebug() << "Database test failed!";
   }
-
-  //add to database
-  Q_ASSERT(query.exec("insert into customers values (NULL, \"jesse\", \"7 hazelbranch\", 2, 1);"));
-
-  //print database
-  Q_ASSERT(query.exec("select * from customers;"));
-  while(query.next())
-  {
-    int customerId = query.value("id").toInt();
-    QString name = query.value("name").toString();
-    QString address = query.value("address").toString();
-    int interest = query.value("interest").toInt();
-    bool isKey = query.value("key").toBool();
-    qDebug() << customerId << name << ' ' << address << ' ' << interest << ' ' << isKey;
-  }
-
 
   w.show();
 

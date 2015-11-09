@@ -51,7 +51,7 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
   if(query.exec("insert into customers values(NULL, \"" + name + "\", \"" + address + "\", " + interest + ", " + key +");"))
-  return true;
+    return true;
   else
   {
     qDebug() << query.lastError().text();

@@ -109,9 +109,22 @@ bool Database::IsKey(QString name)
       return (field->value().toBool());
     }
     else
-      return false;
+      throw EmptyQuery();
   else
-    return false;
+    throw InvalidQuery();
+}
+
+/*!
+ * \brief Database::IsEmpty Check if a table is empty
+ * \param tableName
+ * \return true if table is empty
+ */
+bool Database::IsEmpty(QString tableName)
+{
+  if(query.exec("select * from " + tableName + ";"))
+    return !query.next();
+  else
+    throw InvalidTableName();
 }
 
 /*!
@@ -125,6 +138,6 @@ QSqlRecord Database::Record()
   if(query.next())
     return query.record();
   else
-    return QSqlRecord();
+    throw EmptyQuery();
 }
 

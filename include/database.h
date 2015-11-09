@@ -1,6 +1,7 @@
 #ifndef DATABASE_H
 #define DATABASE_H
 #include <QtSql>
+#include <QException>
 
 /*!
  * \brief The Database class is a wrapper for QSqlDatabase
@@ -15,6 +16,13 @@ public:
   ///Destructor
   ~Database();
 
+  ///Exception class
+  class InvalidTableName : public QException{};
+  ///Exception class
+  class InvalidQuery     : public QException{};
+  ///Exception class
+  class EmptyQuery       : public QException{};
+
   ///Add a customer to the database
   bool AddCustomer(QString name, QString address, QString interest, QString key);
   ///Remove a customer from the database
@@ -27,6 +35,8 @@ public:
   bool IsOpen();
   ///Check if a customer is a key customer
   bool IsKey(QString name);
+  ///Check if a table is empty
+  bool IsEmpty(QString tableName);
   ///Return a QSqlRecord of the current query
   QSqlRecord Record();
 

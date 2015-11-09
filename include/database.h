@@ -2,7 +2,7 @@
 #define DATABASE_H
 #include <QSqlDatabase>
 #include <QSqlQuery>
-#include <QList>
+
 /*!
  * \brief The Database class is a wrapper for QSqlDatabase
  */

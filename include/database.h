@@ -6,7 +6,7 @@
 /*!
  * \brief The Database class is a wrapper for QSqlDatabase
  */
-class Database
+class Database : public QSqlDatabase
 {
 public:
   ///Create database with defaults
@@ -39,6 +39,7 @@ public:
   bool IsEmpty(QString tableName);
   ///Return a QSqlRecord of the current query
   QSqlRecord Record();
+
 
 private:
   QSqlDatabase *db;

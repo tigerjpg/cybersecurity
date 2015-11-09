@@ -2,24 +2,18 @@
 /*!
  * \brief Database::Database constructor
  */
-Database::Database()
-{
-  db = new QSqlDatabase();
-  Q_ASSERT(db->open());
-}
+Database::Database(){}
 
 /*!
  * \brief Database::Database
  * \param path path to sql database file
  */
-Database::Database(QString path, QString driver)
+Database::Database(QString path, QString driver) : QSqlDatabase(addDatabase(driver))
 {
-  db = new QSqlDatabase();
-  *db = QSqlDatabase::addDatabase(driver);
-  db->setHostName("localhost");
-  db->setDatabaseName(path);
-  Q_ASSERT(db->open());
-  query = QSqlQuery(*db);
+  setHostName("localhost");
+  setDatabaseName(path);
+  Q_ASSERT(open());
+  query = QSqlQuery(*this);
 }
 
 /*!
@@ -33,9 +27,7 @@ Database::~Database()
     query.finish();
     query.clear();
   }
-  db->close();
-  delete db;
-
+  close();
 };
 
 /*!
@@ -94,7 +86,7 @@ bool Database::Exec()
  */
 bool Database::IsOpen()
 {
-  return db->isOpen();
+  return isOpen();
 }
 
 /*!
@@ -158,4 +150,3 @@ QSqlRecord Database::Record()
     throw EmptyQuery();
   }
 }
-

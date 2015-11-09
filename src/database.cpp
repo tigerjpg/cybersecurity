@@ -1,5 +1,4 @@
 #include "../include/database.h"
-#include <QSqlRecord>
 /*!
  * \brief Database::Database constructor
  */
@@ -93,6 +92,29 @@ bool Database::IsOpen()
 }
 
 /*!
+ * \brief Database::IsKey Check if a customer is a key customer or not
+ * \param name
+ * \return true if customer is a key customer
+ */
+bool Database::IsKey(QString name)
+{
+  //execute query
+  if(query.exec("select * from customers where name = \""
+                + name + "\";"))
+    //if there is data in the query
+    if(query.next())
+    {
+      //get info from "key" field in this record
+      field = new QSqlField(query.record().field("key"));
+      return (field->value().toBool());
+    }
+    else
+      return false;
+  else
+    return false;
+}
+
+/*!
  * \brief Database::Record
  * Return a QSqlRecord of the current query.
  * This if for use with the QSqlTableModel class.
@@ -100,6 +122,9 @@ bool Database::IsOpen()
  */
 QSqlRecord Database::Record()
 {
-  return query.record();
+  if(query.next())
+    return query.record();
+  else
+    return QSqlRecord();
 }
 

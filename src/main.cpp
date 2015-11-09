@@ -1,11 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include <QSqlDatabase>
-#include <QSqlQuery>
 #include <QtDebug>
-#include <QException>
 #include "../include/database.h"
-#include <iostream>
 
 bool TestDatabaseClass();
 

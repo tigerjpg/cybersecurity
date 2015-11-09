@@ -1,7 +1,6 @@
 #ifndef DATABASE_H
 #define DATABASE_H
-#include <QSqlDatabase>
-#include <QSqlQuery>
+#include <QtSql>
 
 /*!
  * \brief The Database class is a wrapper for QSqlDatabase
@@ -26,11 +25,15 @@ public:
   bool Exec();
   ///Check if DB is open
   bool IsOpen();
+  ///Check if a customer is a key customer
+  bool IsKey(QString name);
   ///Return a QSqlRecord of the current query
   QSqlRecord Record();
 
 private:
   QSqlDatabase *db;
+  QSqlRecord *record;
+  QSqlField *field;
   QSqlQuery query;
 };
 

@@ -17,7 +17,10 @@ bool TestDatabaseClass()
   Q_ASSERT(db->RemoveCustomer("TestName"));
   //Add a customer that will be removed upon next run
   Q_ASSERT(db->AddCustomer("Persistence Proof", "address", "0", "0"));
-
+  //Test that "CIA" is a key customer.. it should be
+  Q_ASSERT(db->IsKey("CIA"));
+  //Test that "Saddleback College" is not a key customer... shouldn't be
+  Q_ASSERT(!db->IsKey("Saddleback College"));
   delete db;
 
   return true;

@@ -6,7 +6,7 @@
  */
 bool TestDatabaseClass()
 {
-  Database *db = new Database("../data/data.db", "QSQLITE");
+  Database *db = new Database("../cybersecurity/data/data.db", "QSQLITE");
   try
   {
     //Check if database is open
@@ -40,7 +40,6 @@ bool TestDatabaseClass()
   {
     qDebug() << "Empty Query\n";
   }
-
   delete db;
 
   return true;

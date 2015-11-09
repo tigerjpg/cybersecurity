@@ -20,3 +20,5 @@ SOURCES += src/main.cpp \
 HEADERS  += include/mainwindow.h
 
 FORMS    += forms/MainWindow.ui
+
+RESOURCES +=

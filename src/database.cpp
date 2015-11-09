@@ -50,7 +50,13 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 {
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
-  return query.exec("insert into customers values(NULL, \"" + name + "\", \"" + address + "\", " + interest + ", " + key +");");
+  if(query.exec("insert into customers values(NULL, \"" + name + "\", \"" + address + "\", " + interest + ", " + key +");"))
+  return true;
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
 }
 
 /*!
@@ -109,9 +115,15 @@ bool Database::IsKey(QString name)
       return (field->value().toBool());
     }
     else
+    {
+      qDebug() << query.lastError().text();
       throw EmptyQuery();
+    }
   else
+  {
+    qDebug() << query.lastError().text();
     throw InvalidQuery();
+  }
 }
 
 /*!
@@ -124,7 +136,10 @@ bool Database::IsEmpty(QString tableName)
   if(query.exec("select * from " + tableName + ";"))
     return !query.next();
   else
+  {
+    qDebug() << query.lastError().text();
     throw InvalidTableName();
+  }
 }
 
 /*!
@@ -138,6 +153,9 @@ QSqlRecord Database::Record()
   if(query.next())
     return query.record();
   else
+  {
+    qDebug() << query.lastError().text();
     throw EmptyQuery();
+  }
 }
 

@@ -14,7 +14,7 @@ bool TestDatabaseClass()
     //remove customer added on last test run
     Q_ASSERT(db->RemoveCustomer("Persistence Proof"));
     //Add a test customer to customers
-    Q_ASSERT(db->AddCustomer("TestName", "TestAddress", "1", "1"));
+    Q_ASSERT(db->AddCustomer("TestName", "TestAddress", "1", "true"));
     //Remove the test customer from customers
     Q_ASSERT(db->RemoveCustomer("TestName"));
     //Add a customer that will be removed upon next run

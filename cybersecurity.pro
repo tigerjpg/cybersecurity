@@ -16,12 +16,12 @@ INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
-		   src/imagebutton.cpp
+		   src/imagebutton.cpp \
 		   src/database.cpp \
-		   src/TestDB.cpp
+		   src/TestDB.cpp 
 
 HEADERS  += include/mainwindow.h \
-			include/imagebutton.h
+			include/imagebutton.h \
 			include/database.h
 
 FORMS    += forms/MainWindow.ui

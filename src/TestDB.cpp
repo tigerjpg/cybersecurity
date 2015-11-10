@@ -19,14 +19,14 @@ void TestDatabaseClass()
     Q_ASSERT(db->AddCustomer("TestName", "TestAddress", "1", "true"));
     //Remove the test customer from customers
     Q_ASSERT(db->RemoveCustomer("TestName"));
-    //Add a customer that will be removed upon next run
-    Q_ASSERT(db->AddCustomer("Persistence Proof", "address", "0", "0"));
     //Test that "CIA" is a key customer.. it should be
     Q_ASSERT(db->IsKey("CIA"));
     //Test that "Saddleback College" is not a key customer... shouldn't be
     Q_ASSERT(!db->IsKey("Saddleback College"));
     //Test if admins table is empty, should be
     Q_ASSERT(db->IsEmpty("admins"));
+    //Test if testimonials table is not empty
+    Q_ASSERT(!db->IsEmpty("testimonials"));
     //Test if customers table is empty, should not be
     Q_ASSERT(!db->IsEmpty("customers"));
     //Test if CIA is in customers table

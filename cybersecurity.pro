@@ -15,8 +15,16 @@ DEPENDPATH += src
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
-           src/mainwindow.cpp
+           src/mainwindow.cpp \
+		   src/imagebutton.cpp \
+		   src/database.cpp \
+		   src/TestDB.cpp 
 
-HEADERS  += include/mainwindow.h
+HEADERS  += include/mainwindow.h \
+			include/imagebutton.h \
+			include/database.h
 
 FORMS    += forms/MainWindow.ui
+
+RESOURCES += \
+    cyberresources.qrc

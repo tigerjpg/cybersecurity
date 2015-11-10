@@ -13,6 +13,11 @@ public:
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
+public slots:
+    void TigerButton();
+    void LaserOn();
+    void LaserOff();
+
 private:
   Ui::MainWindow *ui;
 };

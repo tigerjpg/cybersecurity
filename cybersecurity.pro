@@ -4,13 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = cybersecurity
 TEMPLATE = app
-CONFIG += qtestlib
 DEPENDPATH += src
 INCLUDEPATH += include
 
@@ -19,7 +18,7 @@ SOURCES += src/main.cpp \
 		   src/imagebutton.cpp \
 		   src/database.cpp \
 		   src/TestDB.cpp \  
-    src/testdatabase.cpp
+       testsrc/testdatabase.cpp
 
 HEADERS  += include/mainwindow.h \
 			include/imagebutton.h \

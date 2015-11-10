@@ -2,10 +2,94 @@
 
 [![Throughput Graph](https://graphs.waffle.io/tigerjpg/cybersecurity/throughput.svg)](https://waffle.io/tigerjpg/cybersecurity/metrics) 
 
-##Waffle.io Integration
-TBA
+#Rules
+1. Never work on ``master``
+2. Pulling ``master`` should never create a merge commit
+3. Work on _Issue Specific Feature Branches_
+4. Regularly ``git rebase origin/master`` _Feature Branches_ to updated ``master``
+5. Always rebase before you push
+5. _Peer Review Pull Request_
+6. _Delete Feature Branch_ after _Pull Request Approval_
 
-##Style Guide
+#Workflow
+[Checkout this interactive guide](https://guides.github.com/introduction/flow/) to get an idea of the workflow, nevermind the details.
+
+##Identify the Feature
+Identify the feature that you want to begin working on here:  [![Stories in Ready](https://badge.waffle.io/FourMen/bulk-club.png?label=ready&title=Ready)](https://waffle.io/FourMen/bulk-club)
+
+Ideally, you should take the highest priority feature assigned to you. But feel free to assign yourself an unassigned feature. Alternatively, you can refer to _GitHub Issues_.
+
+##Pull master updates
+Pull the latest updates on your local repo, make sure you keep ``master`` current.
+```
+git checkout master
+git pull origin master
+```
+
+##Create a Feature Branch
+Make sure you are on master, we want to branch from a stable state.
+```
+git checkout master
+```
+Create a _Feature Branch_ with a well formated branch name:
+* The issue number
+* A hyphonated lower case human readable short feature name
+```
+git checkout -b 17-short-feature-name
+```
+Push it to the remote, so we know you're working on it
+```
+git push origin 17-short-feature-name
+```
+
+##Work on the Feature Branch
+Write your code and commit often (anytime you change something or write something significant)
+```
+git add -A
+git commit -m 'Useful commit message'
+```
+
+##Keep Feature Branch up-to-date with master
+As you work periodically, after you know of changes to master or when your feature is complete -
+Fetch the remote master and rebase your _Feature Branch_ to those changes: 
+```
+git fetch origin master
+git rebase origin/master
+```
+
+##Push Your Feature Branch
+``` git push origin 17-short-feature-name```
+
+##Create a Pull Request
+On GitHub, navigate to your feature branch and create a Pull Request to the ``testing`` branch.
+
+[See this guide for more detailed instructions](http://yangsu.github.io/pull-request-tutorial)
+
+##Peer Review Pull Request
+Review code and suggest fixes, each member must approve the code before approving.
+* Fixes would be made locally on the feature branch and then the updates pushed with
+``` 
+git push origin 17-short-feature-name
+```
+* This will automatically update the pull request
+
+##Approve Pull Request
+After each team member has approved your feature the scrum lord will pull your code to the ```testing``` branch for integration testing. As better tests are developed, this process will be streamlined, but for now we will have one person incharge of integrating changes.
+
+##Close The Issue
+When making your final commit, include the _closes_ keyword in the end of the message.
+```
+git commit -m "... closes #17
+```
+The issue should be automatically linked by the commit comment, close the issue
+
+##Delete Feature Branch (Optional)
+You can do this immediately to keep the repo tidy, but you may also choose to wait until later
+* Locally - Using ``git branch -d 17-short-feature-name``
+* On GitHub - Using the option on the _Pull Request_
+
+
+#Style Guide
 
 For this project, we will be using the [Google style guide for C++](https://google-styleguide.googlecode.com/svn/trunk/cppguide.html).
 

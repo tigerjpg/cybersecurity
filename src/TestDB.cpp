@@ -1,18 +1,20 @@
 #include "database.h"
 
 /*!
- * \brief TestDB
- * \param db
+ * \brief TestDB Test functionality and persistence of database
  */
 void TestDatabaseClass()
 {
+  //Test that Database instantiates and opens
   Database *db = new Database("../cybersecurity/data/data.db", "QSQLITE");
   try
   {
     //Check if database is open
     Q_ASSERT(db->isOpen());
-    //remove customer added on last test run
-    Q_ASSERT(db->RemoveCustomer("Persistence Proof"));
+    //Remove a default customer.. this will fail if db is not persistent
+    Q_ASSERT(db->RemoveCustomer("CIA"));
+    //Add the default customer back to prove persistence on next run
+    Q_ASSERT(db->AddCustomer("CIA", "987 Jefferson Blvd Baltimore, MD 00754", "2", "true"));
     //Add a test customer to customers
     Q_ASSERT(db->AddCustomer("TestName", "TestAddress", "1", "true"));
     //Remove the test customer from customers
@@ -24,7 +26,7 @@ void TestDatabaseClass()
     //Test that "Saddleback College" is not a key customer... shouldn't be
     Q_ASSERT(!db->IsKey("Saddleback College"));
     //Test if admins table is empty, should be
-    db->IsEmpty("admins");
+    Q_ASSERT(db->IsEmpty("admins"));
     //Test if customers table is empty, should not be
     Q_ASSERT(!db->IsEmpty("customers"));
     //Test if CIA is in customers table

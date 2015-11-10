@@ -4,7 +4,7 @@
  * \brief TestDB
  * \param db
  */
-bool TestDatabaseClass()
+void TestDatabaseClass()
 {
   Database *db = new Database("../cybersecurity/data/data.db", "QSQLITE");
   try
@@ -45,6 +45,5 @@ bool TestDatabaseClass()
     qDebug() << "Empty Query\n";
   }
   delete db;
-
-  return true;
+  qDebug() << "Database test successful!";
 }

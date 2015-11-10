@@ -35,9 +35,8 @@ public:
   bool IsKey(QString name);
   ///Check if a table is empty
   bool IsEmpty(QString tableName);
-  ///Return a QSqlRecord of the current query
-  QSqlRecord Record();
-
+  ///Check if a table contains a certain value in a certain field
+  bool Contains(QString tableName, QString fieldName, QString value);
 
 private:
   QSqlDatabase *db;

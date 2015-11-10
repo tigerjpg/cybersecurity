@@ -27,6 +27,10 @@ bool TestDatabaseClass()
     db->IsEmpty("admins");
     //Test if customers table is empty, should not be
     Q_ASSERT(!db->IsEmpty("customers"));
+    //Test if CIA is in customers table
+    Q_ASSERT(db->Contains("customers", "name", "CIA"));
+    //Test if bart simpson not in customers table (shouldn't be)
+    Q_ASSERT(!db->Contains("customers", "name", "bart simpson"));
   }
   catch(Database::InvalidTableName)
   {

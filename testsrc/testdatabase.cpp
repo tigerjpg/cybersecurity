@@ -9,6 +9,8 @@ public:
 private slots:
   void TestOpen();
   void TestTables();
+  void TestAddCustomers();
+  void TestRemoveCustomers();
 private:
   QSqlQuery *query;
   Database *db;
@@ -39,6 +41,24 @@ void TestDatabase::TestTables()
   QVERIFY(db->Exec());
   QVERIFY(db->SetQuery("select * from pamphlets"));
   QVERIFY(db->Exec());
+}
+
+void TestDatabase::TestAddCustomers()
+{
+  try
+  {
+  QVERIFY(db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
+  QVERIFY(!db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
+  }
+  catch (Database::InvalidQuery)
+  {
+    qDebug() << "Invalid Query";
+  }
+}
+
+void TestDatabase::TestRemoveCustomers()
+{
+  QVERIFY(db->RemoveCustomer("TEST"));
 }
 
 QTEST_MAIN(TestDatabase)

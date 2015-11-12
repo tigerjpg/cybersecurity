@@ -11,6 +11,7 @@ private slots:
   void TestTables();
   void TestAddCustomers();
   void TestRemoveCustomers();
+  void TestIsKey();
 private:
   QSqlQuery *query;
   Database *db;
@@ -47,18 +48,47 @@ void TestDatabase::TestAddCustomers()
 {
   try
   {
-  QVERIFY(db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
-  QVERIFY(!db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
+    QVERIFY(db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
+    QVERIFY(!db->AddCustomer("TEST", "TESTADDRESS", "2", "1"));
+    QVERIFY(!db->AddCustomer("invalid interest value", "123 fake street",
+                             "5", "0"));
   }
   catch (Database::InvalidQuery)
   {
     qDebug() << "Invalid Query";
+  }
+  catch (Database::InvalidTableName)
+  {
+    qDebug() << "Invalid Table Name";
+  }
+  catch (Database::EmptyQuery)
+  {
+    qDebug() << "Empty Query";
   }
 }
 
 void TestDatabase::TestRemoveCustomers()
 {
   QVERIFY(db->RemoveCustomer("TEST"));
+}
+
+void TestDatabase::TestIsKey()
+{
+  try
+  {
+    QCOMPARE(db->IsKey("CIA"), 1);
+    QCOMPARE(db->IsKey("bart simpson"), 0);
+    QCOMPARE(db->IsKey("bart simpson"), 1);
+    QCOMPARE(db->IsKey("Saddleback College"), 0);
+  }
+  catch(Database::EmptyQuery)
+  {
+    qDebug() << "Empty Query";
+  }
+  catch(Database::InvalidQuery)
+  {
+    qDebug() << "Invalid Query";
+  }
 }
 
 QTEST_MAIN(TestDatabase)

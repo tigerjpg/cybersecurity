@@ -18,7 +18,7 @@ script:
   - cd testsrc
   - qmake -project "QT += testlib"
   - make
-  - ./cybersecurity -platform offscreen
+  - ./testsrc -platform offscreen
   - ls
   - make clean
   - cd ../

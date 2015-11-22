@@ -63,6 +63,12 @@ void MainWindow::changeBackground(int index)
 
 void MainWindow::on_page1_clicked()
 {
+  ui->stackedWidget->setCurrentIndex(0);
+  changeBackground(0);
+}
+
+void MainWindow::on_page1_clicked()
+{
   ui->stackedWidget->setCurrentIndex(1);
   changeBackground(1);
 }
@@ -83,10 +89,4 @@ void MainWindow::on_page4_clicked()
 {
   ui->stackedWidget->setCurrentIndex(4);
   changeBackground(4);
-}
-
-void MainWindow::on_page5_clicked()
-{
-  ui->stackedWidget->setCurrentIndex(5);
-  changeBackground(5);
 }

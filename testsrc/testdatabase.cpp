@@ -25,7 +25,7 @@ private:
 TestDatabase::TestDatabase()
 {
   //Initialize Database object
-  db = new Database("data.db", "QSQLITE");
+  db = new Database("/data/data.db", "QSQLITE");
 }
 
 TestDatabase::~TestDatabase()

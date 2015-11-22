@@ -1,5 +1,5 @@
 #include <QtTest/QtTest>
-#include "include/database.h"
+#include "database.h"
 /*!
  * \brief The TestDatabase class is a unit test for the Database class
  */
@@ -25,7 +25,7 @@ private:
 TestDatabase::TestDatabase()
 {
   //Initialize Database object
-  db = new Database("../cybersecurity/data/data.db", "QSQLITE");
+  db = new Database("/data/data.db", "QSQLITE");
 }
 
 TestDatabase::~TestDatabase()

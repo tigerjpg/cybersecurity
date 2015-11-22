@@ -61,7 +61,7 @@ void MainWindow::changeBackground(int index)
   this->setPalette(backgroundBrush);
 }
 
-void MainWindow::on_page1_clicked()
+void MainWindow::on_page0_clicked()
 {
   ui->stackedWidget->setCurrentIndex(0);
   changeBackground(0);

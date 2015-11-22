@@ -494,7 +494,7 @@
      </rect>
     </property>
     <widget class="QWidget" name="page_2">
-     <widget class="QPushButton" name="page2">
+     <widget class="QPushButton" name="page1">
       <property name="geometry">
        <rect>
         <x>352</x>
@@ -507,7 +507,7 @@
        <string>PAGE 2</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="page1">
+     <widget class="QPushButton" name="page0">
       <property name="geometry">
        <rect>
         <x>232</x>
@@ -520,7 +520,7 @@
        <string>PAGE 1</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="page3">
+     <widget class="QPushButton" name="page2">
       <property name="geometry">
        <rect>
         <x>472</x>
@@ -533,7 +533,7 @@
        <string>PAGE 3</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="page4">
+     <widget class="QPushButton" name="page3">
       <property name="geometry">
        <rect>
         <x>592</x>
@@ -546,7 +546,7 @@
        <string>PAGE 4</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="page5">
+     <widget class="QPushButton" name="page4">
       <property name="geometry">
        <rect>
         <x>712</x>
@@ -573,11 +573,11 @@
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>page0</tabstop>
   <tabstop>page1</tabstop>
   <tabstop>page2</tabstop>
   <tabstop>page3</tabstop>
   <tabstop>page4</tabstop>
-  <tabstop>page5</tabstop>
  </tabstops>
  <resources/>
  <connections>

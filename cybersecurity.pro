@@ -17,7 +17,6 @@ SOURCES += src/main.cpp \
            src/mainwindow.cpp \
 		   src/imagebutton.cpp \
 		   src/database.cpp \
-		   src/TestDB.cpp \  
        testsrc/testdatabase.cpp
 
 HEADERS  += include/mainwindow.h \

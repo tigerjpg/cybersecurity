@@ -1,5 +1,5 @@
 #include <QtTest/QtTest>
-#include "database.h"
+#include "include/database.h"
 /*!
  * \brief The TestDatabase class is a unit test for the Database class
  */

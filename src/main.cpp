@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include <QtDebug>
-#include "database.h"
+#include "include/database.h"
 
 // Test class for initializing and testing the database
 //void TestDatabaseClass();

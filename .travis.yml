@@ -16,7 +16,7 @@ before_install:
 script:
   - source /opt/qt55/bin/qt55-env.sh
   - cd testsrc
-  - qmake -project "QT += testlib sql"
+  - qmake -project "QT += testlib sql" "DEPENDPATH += ../src" "INCLUDEPATH += ../include"
   - qmake
   - make
   - ./testsrc -platform offscreen

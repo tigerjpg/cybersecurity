@@ -14,11 +14,7 @@ before_install:
   - sudo apt-get install qt55-meta-minimal libgtest-dev
 
 script:
-  - source /opt/qt55/bin/qt55-env.sh
   - cd testsrc/
   - qmake -project "QT += testlib"
-  - qmake
-  - make
-  - ./cybersecurity
   - qmake
   - make

@@ -15,6 +15,5 @@ before_install:
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
-  - qmake -project -r "QT += testlib"
-  - qmake
+  - qmake "QT += testlib"
   - make

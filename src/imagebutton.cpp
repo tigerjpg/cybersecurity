@@ -1,4 +1,4 @@
-#include "imagebutton.h"
+#include "../include/imagebutton.h"
 
 /********************************/
 /* CONSTRUCTORS AND DESTRUCTORS */

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql
+QT       += core gui sql testlib
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,13 +15,13 @@ INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
-		   src/imagebutton.cpp \
+       src/imagebutton.cpp \
        src/database.cpp \
        testsrc/testdatabase.cpp
 
 HEADERS  += include/mainwindow.h \
-			include/imagebutton.h \
-			include/database.h
+      include/imagebutton.h \
+      include/database.h
 
 FORMS    += forms/MainWindow.ui
 

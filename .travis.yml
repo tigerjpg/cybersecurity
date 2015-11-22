@@ -15,10 +15,12 @@ before_install:
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
+  - cd testsrc
   - qmake "QT += testlib"
   - make
   - ./cybersecurity -platform offscreen
   - ls
   - make clean
+  - cd ../
   - qmake
   - make

@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include <QMainWindow>
+#include <QVector>
+#include <QPixmap>
 
 namespace Ui {
 class MainWindow;
@@ -14,12 +16,21 @@ public:
   ~MainWindow();
 
 public slots:
-    void TigerButton();
-    void LaserOn();
-    void LaserOff();
+  void TigerButton();
+  void LaserOn();
+  void LaserOff();
+
+private slots:
+  void on_page1_clicked();
+  void on_page2_clicked();
+  void on_page3_clicked();
+  void on_page4_clicked();
+  void on_page5_clicked();
 
 private:
+  void changeBackground(int index);
   Ui::MainWindow *ui;
+  QVector<QPixmap> mainBackground;
 };
 
 #endif // MAINWINDOW_H

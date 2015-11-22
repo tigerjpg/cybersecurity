@@ -17,6 +17,8 @@ script:
   - source /opt/qt55/bin/qt55-env.sh
   - qmake "QT += testlib"
   - make
+  - ls
   - ./cybersecurity -platform offscreen
+  - ls
   - qmake
   - make

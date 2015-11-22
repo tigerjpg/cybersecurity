@@ -15,6 +15,6 @@ before_install:
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
-  - qmake -project "QT += testlib"
+  - qmake -project -r "QT += testlib"
   - qmake cybersecurity.pro
   - make

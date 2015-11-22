@@ -11,7 +11,7 @@ branches:
 before_install:
   - sudo apt-add-repository ppa:beineri/opt-qt55 -y
   - sudo apt-get update -q
-  - sudo apt-get install qt55-meta-full libgtest-dev sqlite sqlite3
+  - sudo apt-get install qt55-meta-minimal libgtest-dev sqlite3
 
 script:
   - source /opt/qt55/bin/qt55-env.sh

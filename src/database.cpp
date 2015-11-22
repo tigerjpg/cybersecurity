@@ -12,7 +12,10 @@ Database::Database(QString path, QString driver) : QSqlDatabase(addDatabase(driv
 {
   setHostName("localhost");
   setDatabaseName(path);
-  Q_ASSERT(open());
+  if(!open())
+  {
+    qDebug() << lastError();
+  }
   query = QSqlQuery(*this);
 }
 

@@ -18,6 +18,5 @@ HEADERS  += ../include/database.h
 
 FORMS    += 
 
-RESOURCES += \
-    ../cyberresources.qrc
+RESOURCES += ../cyberresources.qrc
 

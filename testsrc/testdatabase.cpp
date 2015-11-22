@@ -26,6 +26,7 @@ TestDatabase::TestDatabase()
 {
   //Initialize Database object
   db = new Database("../data/data.db", "QSQLITE");
+  qDebug() << db->lastError();
 }
 
 TestDatabase::~TestDatabase()
@@ -41,6 +42,7 @@ TestDatabase::~TestDatabase()
 void TestDatabase::TestOpen()
 {
   QVERIFY(db->isOpen());
+  qDebug() << db->lastError();
 }
 
 /*!

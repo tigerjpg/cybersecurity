@@ -18,6 +18,3 @@ script:
   - qmake -project -r "QT += testlib"
   - qmake
   - make
-  - ls
-  - ls ../
-  - ls ../../

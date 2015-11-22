@@ -10,13 +10,14 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = cybersecurity
 TEMPLATE = app
-DEPENDPATH += src
+DEPENDPATH += src \ testsrc
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
 		   src/imagebutton.cpp \
-       src/database.cpp
+       src/database.cpp \
+       testsrc/testdatabase.cpp
 
 HEADERS  += include/mainwindow.h \
 			include/imagebutton.h \

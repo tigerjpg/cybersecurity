@@ -18,7 +18,7 @@ script:
   - cd testsrc
   - qmake
   - make
-  - ./test
+  - ./test -platform offscreen
   - ls
   - cd ../
   - qmake

@@ -17,18 +17,25 @@ imagebutton::imagebutton(QWidget *parent)
   qDebug() << "constructor called";
 }
 
-// TODO Fix overloaded constructor
-//imagebutton::imagebutton(QPixmap button, QPixmap hover, QPixmap click, QWidget *parent)
-//  :imagebutton(parent)
-//{
-//  buttonimg = button;
-//  hoverimg  = hover;
-//  clickimg  = click;
-//}
-
 /*****************/
 /* SET FUNCTIONS */
 /*****************/
+bool imagebutton::SetButtonImage(QPixmap button, QPixmap hover, QPixmap click)
+{
+  SetButtonImage(button);
+  SetHoverImage(hover);
+  SetClickImage(click);
+  return !buttonimg.isNull() && !hoverimg.isNull() && !clickimg.isNull();
+}
+
+bool imagebutton::SetButtonImage(QString button, QString hover, QString click)
+{
+  SetButtonImage(button);
+  SetHoverImage(hover);
+  SetClickImage(click);
+  return !buttonimg.isNull() && !hoverimg.isNull() && !clickimg.isNull();
+}
+
 bool imagebutton::SetButtonImage(QPixmap button)
 {
   // Sets the standard button image and clear out any text

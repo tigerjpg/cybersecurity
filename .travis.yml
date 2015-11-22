@@ -19,5 +19,6 @@ script:
   - make
   - ./cybersecurity -platform offscreen
   - ls
+  - make clean
   - qmake
   - make

@@ -11,13 +11,12 @@ branches:
 before_install:
   - sudo apt-add-repository ppa:beineri/opt-qt55 -y
   - sudo apt-get update -q
-  - sudo apt-get install qt55-meta-minimal libgtest-dev
+  - sudo apt-get install qt55-meta-minimal libgtest-dev sqlite3
 
 script:
   - source /opt/qt55/bin/qt55-env.sh
   - qmake "QT += testlib"
   - make
-  - ls
   - ./cybersecurity -platform offscreen
   - ls
   - qmake

@@ -18,9 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
   on_page1_clicked();
 
   // load the images into buttons
-  qDebug() << "Setting Button image: " << ui->pushButton->SetButtonImage(":/images/tiger.png") << endl;
-  qDebug() << "Setting Hover image: " << ui->pushButton->SetHoverImage(":/images/tiger-hover.png") << endl;
-  qDebug() << "Setting Click image: " << ui->pushButton->SetClickImage(":/images/tiger-click.png") << endl;
+  qDebug() << "Setting button images: " << ui->pushButton->SetButtonImage(":/images/tiger.png", ":/images/tiger-hover.png", ":/images/tiger-click.png");
 }
 
 MainWindow::~MainWindow()

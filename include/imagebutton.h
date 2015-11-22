@@ -36,6 +36,11 @@ public:
 //  imagebutton(QPixmap button, QPixmap hover, QPixmap click, QWidget *parent = 0);
 
   /* SET FUNCTIONS */
+  /// Sets all the Button Images using a QImage
+  bool SetButtonImage(QPixmap button, QPixmap hover, QPixmap click);
+  /// Sets all the Button Images using a path to the picture
+  bool SetButtonImage(QString button, QString hover, QString click);
+
   /// Sets the Standard Button Image using a QImage
   bool SetButtonImage(QPixmap button);
   /// Sets the Standard Button Image using a path to the picture

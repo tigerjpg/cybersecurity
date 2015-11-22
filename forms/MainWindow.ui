@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>810</width>
-    <height>553</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -20,10 +20,10 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>0</y>
-      <width>781</width>
-      <height>491</height>
+      <x>0</x>
+      <y>100</y>
+      <width>1024</width>
+      <height>668</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -478,19 +478,90 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="toolTipDuration">
+       <number>6</number>
+      </property>
      </widget>
     </widget>
    </widget>
-  </widget>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>810</width>
-     <height>19</height>
-    </rect>
-   </property>
+   <widget class="QStackedWidget" name="toolbar">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <widget class="QWidget" name="page_2">
+     <widget class="QPushButton" name="page1">
+      <property name="geometry">
+       <rect>
+        <x>352</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PAGE 2</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page0">
+      <property name="geometry">
+       <rect>
+        <x>232</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PAGE 1</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page2">
+      <property name="geometry">
+       <rect>
+        <x>472</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PAGE 3</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page3">
+      <property name="geometry">
+       <rect>
+        <x>592</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PAGE 4</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="page4">
+      <property name="geometry">
+       <rect>
+        <x>712</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PAGE 5</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="page_3"/>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -501,6 +572,13 @@
    <header location="global">imagebutton.h</header>
   </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>page0</tabstop>
+  <tabstop>page1</tabstop>
+  <tabstop>page2</tabstop>
+  <tabstop>page3</tabstop>
+  <tabstop>page4</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>
@@ -510,8 +588,8 @@
    <slot>TigerButton()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>418</x>
-     <y>339</y>
+     <x>160</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
@@ -526,8 +604,8 @@
    <slot>LaserOn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>375</y>
+     <x>160</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
      <x>566</x>
@@ -542,8 +620,8 @@
    <slot>LaserOff()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>447</x>
-     <y>415</y>
+     <x>160</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
      <x>550</x>
@@ -556,5 +634,6 @@
   <slot>TigerButton()</slot>
   <slot>LaserOn()</slot>
   <slot>LaserOff()</slot>
+  <slot>PrevPage()</slot>
  </slots>
 </ui>

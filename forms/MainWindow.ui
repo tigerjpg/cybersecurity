@@ -651,6 +651,12 @@ border-color: rgb(0, 0, 0);
          <height>631</height>
         </rect>
        </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color rgb(196, 196, 196)</string>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
@@ -713,7 +719,7 @@ border-color: rgb(0, 0, 0);
           <bool>false</bool>
          </property>
          <attribute name="horizontalHeaderVisible">
-          <bool>false</bool>
+          <bool>true</bool>
          </attribute>
          <attribute name="horizontalHeaderCascadingSectionResizes">
           <bool>false</bool>
@@ -737,6 +743,12 @@ border-color: rgb(0, 0, 0);
          <layout class="QGridLayout" name="gridLayout">
           <item row="0" column="0">
            <widget class="QCheckBox" name="checkBox">
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>key</string>
             </property>

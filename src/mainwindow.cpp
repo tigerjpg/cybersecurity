@@ -14,16 +14,47 @@ MainWindow::MainWindow(QWidget *parent) :
   mainBackground.append(QPixmap(":/images/tiger4.jpg"));
   mainBackground.append(QPixmap(":/images/tiger5.jpg"));
 
-  // set the default view
-  on_page1_clicked();
-
   // load the images into buttons
-  qDebug() << "Setting button images: " << ui->pushButton->SetButtonImage(":/images/tiger.png", ":/images/tiger-hover.png", ":/images/tiger-click.png");
+  qDebug() << "Setting button images: " << ui->pushButton->SetButtonImage(":/images/tiger.png",
+                                                                          ":/images/tiger-hover.png",
+                                                                          ":/images/tiger-click.png");
+
+  //Welcome Screen
+  WelcomeAnimation();
 }
 
 MainWindow::~MainWindow()
 {
   delete ui;
+}
+
+void MainWindow::WelcomeAnimation()
+{
+  ui->MainView->setCurrentIndex(0);
+
+  // Create and start the animated wallpaper
+  QMovie *matrix  = new QMovie(":/images/slowmatrix.gif");
+  QLabel *backGnd = new QLabel(ui->MainView->currentWidget());
+  matrix->setSpeed(50);
+  backGnd->setMovie(matrix);
+  matrix->start();
+
+  // Create and set up the welcome button
+  imagebutton *startButton = new imagebutton(ui->MainView->currentWidget());
+  connect(startButton, SIGNAL(clicked(bool)), this, SLOT(on_welcome_clicked()));
+  startButton->setGeometry(0,0,1024,768);
+  //startButton->setEnabled(false);
+  qDebug() << "welcome button: " << startButton->SetButtonImage(":/images/welcome.png",
+                                                                ":/images/welcome-hover.png",
+                                                                ":/images/welcome-click.png");
+
+  // Animate the button
+  QPropertyAnimation *animation = new QPropertyAnimation(startButton, "geometry");
+  connect(animation, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
+  animation->setDuration(1500);
+  animation->setStartValue(QRect(0, 0, 1024, 768));
+  animation->setEndValue(QRect((1024/2)-170, (768/2)-200, 400, 400));
+  animation->start();
 }
 
 void MainWindow::TigerButton()
@@ -57,6 +88,17 @@ void MainWindow::changeBackground(int index)
   QPalette backgroundBrush;
   backgroundBrush.setBrush(QPalette::Background, mainBackground[index]);
   this->setPalette(backgroundBrush);
+}
+
+void MainWindow::on_welcome_clicked()
+{
+  ui->MainView->setCurrentIndex(1);
+  on_page0_clicked();
+}
+
+void MainWindow::on_finished_intro()
+{
+
 }
 
 void MainWindow::on_page0_clicked()

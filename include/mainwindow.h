@@ -3,6 +3,10 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPixmap>
+#include <QPropertyAnimation>
+#include <QMovie>
+#include <QLabel>
+
 
 namespace Ui {
 class MainWindow;
@@ -21,6 +25,8 @@ public slots:
   void LaserOff();
 
 private slots:
+  void on_welcome_clicked();
+  void on_finished_intro();
   void on_page0_clicked();
   void on_page1_clicked();
   void on_page2_clicked();
@@ -29,6 +35,7 @@ private slots:
 
 private:
   void changeBackground(int index);
+  void WelcomeAnimation();
   Ui::MainWindow *ui;
   QVector<QPixmap> mainBackground;
 };

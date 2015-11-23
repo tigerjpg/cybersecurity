@@ -657,12 +657,27 @@ border-color: rgb(0, 0, 0);
        <property name="styleSheet">
         <string notr="true">color rgb(196, 196, 196)</string>
        </property>
+       <property name="tabPosition">
+        <enum>QTabWidget::North</enum>
+       </property>
+       <property name="tabShape">
+        <enum>QTabWidget::Rounded</enum>
+       </property>
        <property name="currentIndex">
         <number>0</number>
        </property>
+       <property name="tabsClosable">
+        <bool>false</bool>
+       </property>
+       <property name="movable">
+        <bool>false</bool>
+       </property>
+       <property name="tabBarAutoHide">
+        <bool>false</bool>
+       </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
-         <string>Tab 1</string>
+         <string>Customers</string>
         </attribute>
         <widget class="QTableView" name="customer_view">
          <property name="geometry">
@@ -736,12 +751,12 @@ border-color: rgb(0, 0, 0);
           <rect>
            <x>10</x>
            <y>80</y>
-           <width>160</width>
+           <width>192</width>
            <height>67</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
+          <item row="0" column="1">
            <widget class="QCheckBox" name="checkBox">
             <property name="autoFillBackground">
              <bool>false</bool>
@@ -754,7 +769,7 @@ border-color: rgb(0, 0, 0);
             </property>
            </widget>
           </item>
-          <item row="1" column="0">
+          <item row="1" column="1">
            <widget class="QComboBox" name="interest_level_box">
             <item>
              <property name="text">
@@ -778,6 +793,13 @@ border-color: rgb(0, 0, 0);
             </item>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_2">
+            <property name="text">
+             <string>Interest Level:</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QLabel" name="label">
@@ -799,7 +821,7 @@ border-color: rgb(0, 0, 0);
        </widget>
        <widget class="QWidget" name="tab_2">
         <attribute name="title">
-         <string>Tab 2</string>
+         <string>Testimonials</string>
         </attribute>
        </widget>
       </widget>

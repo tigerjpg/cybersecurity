@@ -36,11 +36,20 @@ private slots:
 
   void on_usernameBox_returnPressed();
 
+  void on_checkBox_stateChanged(int arg1);
+
+  void on_interest_level_box_activated(int index);
+
 private:
+  void initializeCustomerView();
+  bool defaultCustomerView();
+  bool keyCustomerView();
+  bool interestCustomerView(int i);
+  bool interestAndKeyCustomerView(int i);
   void changeBackground(int index);
   Ui::MainWindow *ui;
   Database *db;
-  QSqlTableModel *model;
+  QSqlTableModel *sql_table_model;
   QVector<QPixmap> mainBackground;
 };
 

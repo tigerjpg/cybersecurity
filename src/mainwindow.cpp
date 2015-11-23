@@ -180,7 +180,7 @@ void MainWindow::initializeCustomerView()
   ui->customer_view->horizontalHeader()->setStretchLastSection(true);
 }
 
-void MainWindow::on_comboBox_activated(int index)
+void MainWindow::on_interest_level_box_activated(int index)
 {
   switch(index)
   {
@@ -192,6 +192,4 @@ void MainWindow::on_comboBox_activated(int index)
   case 3:
     interestCustomerView(index - 1);
   }
-
 }
-

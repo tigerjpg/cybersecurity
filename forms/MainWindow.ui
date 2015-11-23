@@ -743,7 +743,7 @@ border-color: rgb(0, 0, 0);
            </widget>
           </item>
           <item row="1" column="0">
-           <widget class="QComboBox" name="interest_level">
+           <widget class="QComboBox" name="interest_level_box">
             <item>
              <property name="text">
               <string>all</string>

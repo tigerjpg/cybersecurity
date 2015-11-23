@@ -31,6 +31,25 @@ Database::~Database()
 }
 
 /*!
+ * \brief Database::Authenticate
+ * Verifies admin credentials. Uses blowfish encryption algorithm.
+ * \param username
+ * \param password
+ * \return true if admin exists with these credentials
+ */
+bool Database::Authenticate(QString username, QString password)
+{
+  QBlowfish bf(QByteArray::fromHex(KEY_HEX));
+  bf.setPaddingEnabled(true);
+  QByteArray encryptedAr = bf.encrypted(password.toUtf8());
+  QString encryptedStr = encryptedAr.toHex();
+  query.exec("select * from admins where username = \""
+                    + username + "\" and password = \""
+                    + encryptedStr + "\";");
+  return query.next();
+}
+
+/*!
  * \brief Database::AddCustomer Add a customer to the database
  * \param name Customer's name
  * \param address Customer's address

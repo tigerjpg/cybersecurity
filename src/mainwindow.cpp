@@ -153,16 +153,41 @@ bool MainWindow::interestCustomerView(int i)
   return sql_table_model->select();
 }
 
+bool MainWindow::interestAndKeyCustomerView(int i)
+{
+  QString interest = QString::number(i);
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("key = \"1\" and interest = \"" + interest + "\";");
+  return sql_table_model->select();
+}
+
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
-  qDebug() << arg1;
   switch(arg1)
   {
   case 0:
-    defaultCustomerView();
+    switch(ui->interest_level_box->currentIndex())
+    {
+    case 0:
+      defaultCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestCustomerView(ui->interest_level_box->currentIndex() - 1);
+    }
     break;
   case 2:
-    keyCustomerView();
+    switch(ui->interest_level_box->currentIndex())
+    {
+    case 0:
+      keyCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestAndKeyCustomerView(ui->interest_level_box->currentIndex() - 1);
+    }
     break;
   }
 }
@@ -182,14 +207,30 @@ void MainWindow::initializeCustomerView()
 
 void MainWindow::on_interest_level_box_activated(int index)
 {
-  switch(index)
+  if(ui->checkBox->isChecked())
   {
-  case 0:
-    defaultCustomerView();
-    break;
-  case 1:
-  case 2:
-  case 3:
-    interestCustomerView(index - 1);
+    switch(index)
+    {
+    case 0:
+      keyCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestAndKeyCustomerView(index - 1);
+    }
+  }
+  else
+  {
+    switch(index)
+    {
+    case 0:
+      defaultCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestCustomerView(index - 1);
+    }
   }
 }

@@ -30,10 +30,13 @@ private slots:
 
   void on_ok_button_clicked();
 
+  void on_clear_button_clicked();
+
 private:
   void changeBackground(int index);
   Ui::MainWindow *ui;
   Database *db;
+  QSqlTableModel *model;
   QVector<QPixmap> mainBackground;
 };
 

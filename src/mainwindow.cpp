@@ -81,13 +81,13 @@ void MainWindow::on_page2_clicked()
 
 void MainWindow::on_page3_clicked()
 {
-  ui->stackedWidget->setCurrentIndex(3);
+  ui->stackedWidget->setCurrentIndex(4);
   changeBackground(3);
 }
 
 void MainWindow::on_page4_clicked()
 {
-  ui->stackedWidget->setCurrentIndex(4);
+  ui->stackedWidget->setCurrentIndex(5);
   changeBackground(4);
 }
 
@@ -102,7 +102,7 @@ void MainWindow::on_ok_button_clicked()
   {
     if(db->Authenticate(ui->usernameBox->text(), ui->passwordBox->text()))
     {
-      //open admin page
+      ui->stackedWidget->setCurrentIndex(3);
     }
     else
     {
@@ -113,4 +113,10 @@ void MainWindow::on_ok_button_clicked()
   {
     ui->login_error_message->setText("Please enter your credentials.");
   }
+}
+
+void MainWindow::on_clear_button_clicked()
+{
+    ui->usernameBox->clear();
+    ui->passwordBox->clear();
 }

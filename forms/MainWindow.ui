@@ -543,10 +543,17 @@ border-color: rgb(0, 0, 0);
           <item>
            <layout class="QVBoxLayout" name="verticalLayout">
             <item>
-             <widget class="QLineEdit" name="usernameBox"/>
+             <widget class="QLineEdit" name="usernameBox">
+              <property name="maxLength">
+               <number>32</number>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QLineEdit" name="passwordBox">
+              <property name="maxLength">
+               <number>32</number>
+              </property>
               <property name="echoMode">
                <enum>QLineEdit::Password</enum>
               </property>

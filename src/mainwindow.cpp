@@ -104,7 +104,7 @@ void MainWindow::on_ok_button_clicked()
     {
       ui->usernameBox->clear();
       ui->passwordBox->clear();
-      ui->stackedWidget->setCurrentIndex(3);
+      initializeCustomerView();
     }
     else
     {
@@ -132,4 +132,44 @@ void MainWindow::on_passwordBox_returnPressed()
 
 void MainWindow::on_usernameBox_returnPressed()
 {
+}
+
+bool MainWindow::defaultCustomerView()
+{
+  sql_table_model->setTable("customers");
+  return sql_table_model->select();
+}
+
+bool MainWindow::keyCustomerView()
+{
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("key = \"1\"");
+  return sql_table_model->select();
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+  qDebug() << arg1;
+    switch(arg1)
+    {
+    case 0:
+      defaultCustomerView();
+      break;
+    case 2:
+      keyCustomerView();
+      break;
+    }
+}
+
+void MainWindow::initializeCustomerView()
+{
+  ui->stackedWidget->setCurrentIndex(3);
+  sql_table_model = new QSqlTableModel(this, *db);
+  defaultCustomerView();
+  ui->customer_view->setModel(sql_table_model);
+  ui->customer_view->hideColumn(0);
+  ui->customer_view->hideColumn(3);
+  ui->customer_view->hideColumn(4);
+  ui->customer_view->resizeColumnsToContents();
+  ui->customer_view->horizontalHeader()->setStretchLastSection(true);
 }

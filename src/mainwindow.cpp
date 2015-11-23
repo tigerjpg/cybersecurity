@@ -1,11 +1,13 @@
 #include "mainwindow.h"
 #include "ui_MainWindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+  db = new Database("./data/data.db", "QSQLITE");
 
   // load all the backgrounds into the background vectors
   mainBackground.append(QPixmap(":/images/tiger.jpg"));
@@ -87,4 +89,28 @@ void MainWindow::on_page4_clicked()
 {
   ui->stackedWidget->setCurrentIndex(4);
   changeBackground(4);
+}
+
+void MainWindow::on_ok_button_clicked()
+{
+  ui->login_error_message->setStyleSheet("QLabel { "
+                                         "font: bold; "
+                                         "font-size: 18px; "
+                                         "text-align: center; "
+                                         "color : palette(highlight);  }");
+  if(!ui->usernameBox->text().isEmpty() && !ui->passwordBox->text().isEmpty())
+  {
+    if(db->Authenticate(ui->usernameBox->text(), ui->passwordBox->text()))
+    {
+      //open admin page
+    }
+    else
+    {
+      ui->login_error_message->setText("Invalid login credentials.");
+    }
+  }
+  else
+  {
+    ui->login_error_message->setText("Please enter your credentials.");
+  }
 }

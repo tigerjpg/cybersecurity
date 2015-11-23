@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPixmap>
+#include "database.h"
 
 namespace Ui {
 class MainWindow;
@@ -27,9 +28,12 @@ private slots:
   void on_page3_clicked();
   void on_page4_clicked();
 
+  void on_ok_button_clicked();
+
 private:
   void changeBackground(int index);
   Ui::MainWindow *ui;
+  Database *db;
   QVector<QPixmap> mainBackground;
 };
 

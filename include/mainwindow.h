@@ -38,10 +38,13 @@ private slots:
 
   void on_checkBox_stateChanged(int arg1);
 
+  void on_comboBox_activated(int index);
+
 private:
   void initializeCustomerView();
   bool defaultCustomerView();
   bool keyCustomerView();
+  bool interestCustomerView(int i);
   void changeBackground(int index);
   Ui::MainWindow *ui;
   Database *db;

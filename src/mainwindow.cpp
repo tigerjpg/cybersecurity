@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_MainWindow.h"
-
-
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
@@ -147,18 +145,26 @@ bool MainWindow::keyCustomerView()
   return sql_table_model->select();
 }
 
+bool MainWindow::interestCustomerView(int i)
+{
+  QString interest = QString::number(i);
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("interest = \"" + interest + "\";");
+  return sql_table_model->select();
+}
+
 void MainWindow::on_checkBox_stateChanged(int arg1)
 {
   qDebug() << arg1;
-    switch(arg1)
-    {
-    case 0:
-      defaultCustomerView();
-      break;
-    case 2:
-      keyCustomerView();
-      break;
-    }
+  switch(arg1)
+  {
+  case 0:
+    defaultCustomerView();
+    break;
+  case 2:
+    keyCustomerView();
+    break;
+  }
 }
 
 void MainWindow::initializeCustomerView()
@@ -173,3 +179,19 @@ void MainWindow::initializeCustomerView()
   ui->customer_view->resizeColumnsToContents();
   ui->customer_view->horizontalHeader()->setStretchLastSection(true);
 }
+
+void MainWindow::on_comboBox_activated(int index)
+{
+  switch(index)
+  {
+  case 0:
+    defaultCustomerView();
+    break;
+  case 1:
+  case 2:
+  case 3:
+    interestCustomerView(index - 1);
+  }
+
+}
+

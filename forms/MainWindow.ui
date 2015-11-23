@@ -17,7 +17,7 @@
    <bool>true</bool>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QStackedWidget" name="MainView">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -27,9 +27,9 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="page"/>
+    <widget class="QWidget" name="welcome"/>
     <widget class="QWidget" name="page_tiger">
      <widget class="imagebutton" name="pushButton">
       <property name="geometry">

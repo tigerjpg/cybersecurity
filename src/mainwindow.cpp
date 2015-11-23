@@ -121,6 +121,15 @@ void MainWindow::on_ok_button_clicked()
 
 void MainWindow::on_clear_button_clicked()
 {
-    ui->usernameBox->clear();
-    ui->passwordBox->clear();
+  ui->usernameBox->clear();
+  ui->passwordBox->clear();
+}
+
+void MainWindow::on_passwordBox_returnPressed()
+{
+  ui->ok_button->click();
+}
+
+void MainWindow::on_usernameBox_returnPressed()
+{
 }

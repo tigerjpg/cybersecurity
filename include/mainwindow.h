@@ -32,6 +32,10 @@ private slots:
 
   void on_clear_button_clicked();
 
+  void on_passwordBox_returnPressed();
+
+  void on_usernameBox_returnPressed();
+
 private:
   void changeBackground(int index);
   Ui::MainWindow *ui;

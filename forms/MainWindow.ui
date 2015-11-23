@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_tiger">
@@ -618,8 +618,6 @@ border-color: rgb(0, 0, 0);
        </property>
       </widget>
      </widget>
-     <zorder>frame</zorder>
-     <zorder>horizontalLayoutWidget</zorder>
     </widget>
     <widget class="QWidget" name="page_admin_functions">
      <widget class="QFrame" name="frame_2">

@@ -28,6 +28,8 @@ private slots:
   void on_page3_clicked();
   void on_page4_clicked();
 
+  void on_testimonial_slider_valueChanged(int value);
+
 private:
   void changeBackground(int index);
   Ui::MainWindow *ui;

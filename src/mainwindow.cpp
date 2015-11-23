@@ -76,16 +76,8 @@ void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
   changeBackground(2);
-  //qDebug() << db->lastError();
-  qDebug() << db->getTestimonialAtIndex(5);
-  ui->testimonial_text->setText(db->getTestimonialAtIndex(5));
-  QString image_loc = ":/images/";
-
-  image_loc += db->getImageAtIndex(5);
-  qDebug() << image_loc;
-  QImage image(image_loc);
-  ui->testimonial_image->setAutoFillBackground(true);
-  ui->testimonial_image->setPixmap(QPixmap::fromImage(image.scaled(ui->testimonial_image->size())));
+  ui->testimonial_slider->setRange(1,10);
+  ui->testimonial_slider->setValue(1);
 }
 
 void MainWindow::on_page3_clicked()
@@ -98,4 +90,10 @@ void MainWindow::on_page4_clicked()
 {
   ui->stackedWidget->setCurrentIndex(4);
   changeBackground(4);
+}
+
+void MainWindow::on_testimonial_slider_valueChanged(int value)
+{
+  ui->testimonial_text->setText(db->getTestimonialAtIndex(value));
+  ui->testimonial_image->setPixmap(QPixmap::fromImage(QImage(":/images/" + db->getImageAtIndex(value)).scaled(ui->testimonial_image->size())));
 }

@@ -76,7 +76,16 @@ void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
   changeBackground(2);
-  ui->testimonial_text->setText();
+  //qDebug() << db->lastError();
+  qDebug() << db->getTestimonialAtIndex(5);
+  ui->testimonial_text->setText(db->getTestimonialAtIndex(5));
+  QString image_loc = ":/images/";
+
+  image_loc += db->getImageAtIndex(5);
+  qDebug() << image_loc;
+  QImage image(image_loc);
+  ui->testimonial_image->setAutoFillBackground(true);
+  ui->testimonial_image->setPixmap(QPixmap::fromImage(image.scaled(ui->testimonial_image->size())));
 }
 
 void MainWindow::on_page3_clicked()

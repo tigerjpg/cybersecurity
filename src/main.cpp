@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
   MainWindow w;
 
   // Initializes and runs unit tests on the program database
-  TestDatabaseClass();
+ // TestDatabaseClass();
 
   w.show();
 

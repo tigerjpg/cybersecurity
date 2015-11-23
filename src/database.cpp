@@ -146,3 +146,29 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
     throw InvalidQuery();
   }
 }
+
+QString Database::getTestimonialAtIndex(int i)
+{
+  QString id = QString::number(i);
+  if(this->query.exec("select testimonial from testimonials where id = \"" + id + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("testimonial").value().toString();
+    }
+  }
+  return "Woops!";
+}
+
+QString Database::getImageAtIndex(int i)
+{
+  QString id = QString::number(i);
+  if(this->query.exec("select image from testimonials where id = \"" + id + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("image").value().toString();
+    }
+  }
+  return "Woops!";
+}

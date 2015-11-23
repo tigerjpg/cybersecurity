@@ -550,8 +550,8 @@
       <widget class="QTextBrowser" name="testimonial_text">
        <property name="geometry">
         <rect>
-         <x>70</x>
-         <y>80</y>
+         <x>40</x>
+         <y>100</y>
          <width>256</width>
          <height>192</height>
         </rect>

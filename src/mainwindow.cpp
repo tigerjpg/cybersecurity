@@ -102,10 +102,14 @@ void MainWindow::on_ok_button_clicked()
   {
     if(db->Authenticate(ui->usernameBox->text(), ui->passwordBox->text()))
     {
+      ui->usernameBox->clear();
+      ui->passwordBox->clear();
       ui->stackedWidget->setCurrentIndex(3);
     }
     else
     {
+      ui->usernameBox->clear();
+      ui->passwordBox->clear();
       ui->login_error_message->setText("Invalid login credentials.");
     }
   }

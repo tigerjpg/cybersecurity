@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_tiger">
@@ -653,7 +653,7 @@ border-color: rgb(0, 0, 0);
         <attribute name="title">
          <string>Tab 1</string>
         </attribute>
-        <widget class="QTableView" name="customer_list">
+        <widget class="QTableView" name="customer_view">
          <property name="geometry">
           <rect>
            <x>290</x>

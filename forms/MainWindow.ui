@@ -26,7 +26,21 @@
       <height>768</height>
      </rect>
     </property>
-    <widget class="QWidget" name="welcome"/>
+    <widget class="QWidget" name="welcome">
+     <widget class="imagebutton" name="welcomeBtn">
+      <property name="geometry">
+       <rect>
+        <x>312</x>
+        <y>184</y>
+        <width>400</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="customer">
      <widget class="QStackedWidget" name="stackedWidget">
       <property name="geometry">
@@ -577,6 +591,19 @@
       <widget class="QWidget" name="page_3"/>
      </widget>
     </widget>
+   </widget>
+   <widget class="QLabel" name="backGnd">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>1024</width>
+      <height>768</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

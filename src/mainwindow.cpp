@@ -76,6 +76,7 @@ void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
   changeBackground(2);
+  ui->testimonial_text->setText();
 }
 
 void MainWindow::on_page3_clicked()

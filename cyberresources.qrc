@@ -12,5 +12,6 @@
         <file>images/welcome.png</file>
         <file>images/welcome-click.png</file>
         <file>images/welcome-hover.png</file>
+        <file>images/TIGERtitle.png</file>
     </qresource>
 </RCC>

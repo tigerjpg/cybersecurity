@@ -26,6 +26,9 @@
       <height>768</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
     <widget class="QWidget" name="welcome">
      <widget class="imagebutton" name="welcomeBtn">
       <property name="geometry">
@@ -40,6 +43,29 @@
        <string>PushButton</string>
       </property>
      </widget>
+     <widget class="QLabel" name="welcomeTitle">
+      <property name="geometry">
+       <rect>
+        <x>262</x>
+        <y>57</y>
+        <width>500</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="../cyberresources.qrc">:/images/TIGERtitle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>welcomeBtn</zorder>
+     <zorder>backGnd</zorder>
+     <zorder>backGnd</zorder>
+     <zorder>welcomeTitle</zorder>
     </widget>
     <widget class="QWidget" name="customer">
      <widget class="QStackedWidget" name="stackedWidget">
@@ -597,12 +623,15 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1024</width>
-      <height>768</height>
+      <width>101</width>
+      <height>91</height>
      </rect>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="../cyberresources.qrc">:/images/slowmatrix.gif</pixmap>
     </property>
    </widget>
   </widget>
@@ -622,7 +651,9 @@
   <tabstop>page3</tabstop>
   <tabstop>page4</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../cyberresources.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton</sender>

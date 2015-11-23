@@ -3,6 +3,7 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPixmap>
+#include "database.h"
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +32,7 @@ private:
   void changeBackground(int index);
   Ui::MainWindow *ui;
   QVector<QPixmap> mainBackground;
+  Database *db;
 };
 
 #endif // MAINWINDOW_H

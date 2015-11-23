@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
+  db = new Database("./data/data.db", "QSQLITE");
   ui->setupUi(this);
 
   // load all the backgrounds into the background vectors

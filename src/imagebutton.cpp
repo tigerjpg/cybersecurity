@@ -166,7 +166,7 @@ void imagebutton::keyReleaseEvent(QKeyEvent *e)
 /******************/
 void imagebutton::resizePicture(int w, int h)
 {
-  qDebug() << "resizing!";
+  qDebug() << "resizing to width: " << w << " height: " << h;
   QPixmap  tempImg = buttonimg.scaled(w, h, Qt::KeepAspectRatio);
 
   QPalette pic;

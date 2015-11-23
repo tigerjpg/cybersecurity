@@ -43,9 +43,9 @@ private slots:
 private:
   void initializeCustomerView();
   bool defaultCustomerView();
-  bool keyCustomerView();
-  bool interestCustomerView(int i);
-  bool interestAndKeyCustomerView(int i);
+  void keyCustomerView();
+  void interestCustomerView(int i);
+  void interestAndKeyCustomerView(int i);
   void changeBackground(int index);
   Ui::MainWindow *ui;
   Database *db;

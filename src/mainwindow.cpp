@@ -134,31 +134,29 @@ void MainWindow::on_usernameBox_returnPressed()
 
 bool MainWindow::defaultCustomerView()
 {
+  sql_table_model->clear();
   sql_table_model->setTable("customers");
   return sql_table_model->select();
 }
 
-bool MainWindow::keyCustomerView()
+void MainWindow::keyCustomerView()
 {
-  sql_table_model->setTable("customers");
   sql_table_model->setFilter("key = \"1\"");
-  return sql_table_model->select();
+  //return sql_table_model->select();
 }
 
-bool MainWindow::interestCustomerView(int i)
+void MainWindow::interestCustomerView(int i)
 {
   QString interest = QString::number(i);
-  sql_table_model->setTable("customers");
   sql_table_model->setFilter("interest = \"" + interest + "\";");
-  return sql_table_model->select();
+  //return sql_table_model->select();
 }
 
-bool MainWindow::interestAndKeyCustomerView(int i)
+void MainWindow::interestAndKeyCustomerView(int i)
 {
   QString interest = QString::number(i);
-  sql_table_model->setTable("customers");
   sql_table_model->setFilter("key = \"1\" and interest = \"" + interest + "\";");
-  return sql_table_model->select();
+  //return sql_table_model->select();
 }
 
 void MainWindow::on_checkBox_stateChanged(int arg1)

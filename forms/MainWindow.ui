@@ -27,7 +27,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="page"/>
     <widget class="QWidget" name="page_tiger">
@@ -717,14 +717,14 @@ border-color: rgb(0, 0, 0);
      <widget class="QPushButton" name="page2">
       <property name="geometry">
        <rect>
-        <x>460</x>
-        <y>30</y>
-        <width>101</width>
-        <height>51</height>
+        <x>472</x>
+        <y>10</y>
+        <width>80</width>
+        <height>80</height>
        </rect>
       </property>
       <property name="text">
-       <string>Admin Login</string>
+       <string>PAGE 3</string>
       </property>
      </widget>
      <widget class="QPushButton" name="page3">

@@ -21,9 +21,9 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>100</y>
+      <y>0</y>
       <width>1024</width>
-      <height>668</height>
+      <height>768</height>
      </rect>
     </property>
     <property name="currentIndex">

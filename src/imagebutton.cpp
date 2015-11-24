@@ -88,6 +88,16 @@ bool imagebutton::SetClickImage(QString imgPath)
   return !clickimg.isNull();
 }
 
+
+/*******************/
+/* EVENT REDEFINES */
+/*******************/
+void imagebutton::resizeEvent(QResizeEvent *e)
+{
+  resizePicture(this->width(), this->height());
+  QWidget::resizeEvent(e);
+}
+
 /************************/
 /* MOUSE EVENT HANDLERS */
 /************************/
@@ -151,9 +161,22 @@ void imagebutton::keyReleaseEvent(QKeyEvent *e)
   emit released();
 }
 
-/**************************/
-/* PRIVATE HELPER METHODS */
-/**************************/
+/******************/
+/* HELPER METHODS */
+/******************/
+void imagebutton::resizePicture(int w, int h)
+{
+  qDebug() << "resizing to width: " << w << " height: " << h;
+  QPixmap  tempImg = buttonimg.scaled(w, h, Qt::KeepAspectRatio);
+
+  QPalette pic;
+  pic.setBrush(backgroundRole(), QBrush(tempImg) );
+  this->setPalette(pic);
+
+  // Creates the click mask from the image
+  this->setMask(tempImg.mask());
+}
+
 void imagebutton::ChangePicture(QPixmap picture)
 {
   // This makes the button as an image by using the pallate brush

@@ -16,13 +16,13 @@ INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
            src/mainwindow.cpp \
-		   src/imagebutton.cpp \
-		   src/database.cpp \
+       src/imagebutton.cpp \
+       src/database.cpp \
     src/qblowfish.cpp
 
 HEADERS  += include/mainwindow.h \
-			include/imagebutton.h \
-			include/database.h \
+      include/imagebutton.h \
+      include/database.h \
     include/qblowfish_p.h \
     include/qblowfish.h
 

@@ -24,7 +24,6 @@
 #include <QPixmap>
 #include <QBitmap>
 #include <QDebug>
-
 class imagebutton : public QPushButton
 {
 public:

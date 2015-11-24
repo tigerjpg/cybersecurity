@@ -1,7 +1,5 @@
 #include "mainwindow.h"
 #include "ui_MainWindow.h"
-
-
 MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
@@ -143,6 +141,7 @@ void MainWindow::on_ok_button_clicked()
                                            "color : palette(highlight);  }");
     if(!ui->usernameBox->text().isEmpty() && !ui->passwordBox->text().isEmpty())
     {
+      initializeCustomerView();
       if(db->Authenticate(ui->usernameBox->text(), ui->passwordBox->text()))
       {
         ui->usernameBox->clear();
@@ -177,4 +176,107 @@ void MainWindow::on_passwordBox_returnPressed()
 void MainWindow::on_usernameBox_returnPressed()
 {
 
+}
+
+bool MainWindow::defaultCustomerView()
+{
+  sql_table_model->setTable("customers");
+  return sql_table_model->select();
+}
+
+bool MainWindow::keyCustomerView()
+{
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("key = \"1\"");
+  return sql_table_model->select();
+}
+
+bool MainWindow::interestCustomerView(int i)
+{
+  QString interest = QString::number(i);
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("interest = \"" + interest + "\";");
+  return sql_table_model->select();
+}
+
+bool MainWindow::interestAndKeyCustomerView(int i)
+{
+  QString interest = QString::number(i);
+  sql_table_model->setTable("customers");
+  sql_table_model->setFilter("key = \"1\" and interest = \"" + interest + "\";");
+  return sql_table_model->select();
+}
+
+void MainWindow::on_checkBox_stateChanged(int arg1)
+{
+  switch(arg1)
+  {
+  case 0:
+    switch(ui->interest_level_box->currentIndex())
+    {
+    case 0:
+      defaultCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestCustomerView(ui->interest_level_box->currentIndex() - 1);
+    }
+    break;
+  case 2:
+    switch(ui->interest_level_box->currentIndex())
+    {
+    case 0:
+      keyCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestAndKeyCustomerView(ui->interest_level_box->currentIndex() - 1);
+    }
+    break;
+  }
+}
+
+void MainWindow::initializeCustomerView()
+{
+  ui->stackedWidget->setCurrentIndex(3);
+  sql_table_model = new QSqlTableModel(this, *db);
+  defaultCustomerView();
+  ui->customer_view->setModel(sql_table_model);
+  ui->customer_view->hideColumn(0);
+  ui->customer_view->hideColumn(3);
+  ui->customer_view->hideColumn(4);
+  ui->customer_view->resizeColumnsToContents();
+  ui->customer_view->horizontalHeader()->setStretchLastSection(true);
+}
+
+void MainWindow::on_interest_level_box_activated(int index)
+{
+  if(ui->checkBox->isChecked())
+  {
+    switch(index)
+    {
+    case 0:
+      keyCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestAndKeyCustomerView(index - 1);
+    }
+  }
+  else
+  {
+    switch(index)
+    {
+    case 0:
+      defaultCustomerView();
+      break;
+    case 1:
+    case 2:
+    case 3:
+      interestCustomerView(index - 1);
+    }
+  }
 }

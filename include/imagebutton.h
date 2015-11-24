@@ -31,9 +31,6 @@ public:
   /// creates the button, and will act as a normal pushbutton till configured
   imagebutton(QWidget *parent = 0);
 
-//  /// creates a pre-configured pushbutton
-//  imagebutton(QPixmap button, QPixmap hover, QPixmap click, QWidget *parent = 0);
-
   /* SET FUNCTIONS */
   /// Sets all the Button Images using a QImage
   bool SetButtonImage(QPixmap button, QPixmap hover, QPixmap click);
@@ -55,30 +52,33 @@ public:
   /// Sets the Clicked Button Image using a path to the picture
   bool SetClickImage(QString imgPath);
 
-public slots:
+protected:
+  void resizeEvent(QResizeEvent *e) Q_DECL_OVERRIDE;
+
   /* MOUSE EVENT HANDLERS */
   /// Changes the image on the button when the mouse enters the region
-  void enterEvent(QEvent *e);
+  void enterEvent(QEvent *e) Q_DECL_OVERRIDE;
   /// Changes the image on the button when the mouse leaves the region
-  void leaveEvent(QEvent *e);
+  void leaveEvent(QEvent *e) Q_DECL_OVERRIDE;
   /// Changes the picture upon mouse click
-  void mousePressEvent(QMouseEvent *e);
+  void mousePressEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
   /// Changes the picture upon mouse release
-  void mouseReleaseEvent(QMouseEvent *e);
+  void mouseReleaseEvent(QMouseEvent *e) Q_DECL_OVERRIDE;
 
   /* KEYBOARD EVENT HANDLERS */
   /// changes the picture for keyboard focus gained
-  void focusInEvent(QFocusEvent *e);
+  void focusInEvent(QFocusEvent *e) Q_DECL_OVERRIDE;
   /// changes the picture when keyboard focus lost
-  void focusOutEvent(QFocusEvent *e);
+  void focusOutEvent(QFocusEvent *e) Q_DECL_OVERRIDE;
   /// changes the picture for keyboard activation
-  void keyPressEvent(QKeyEvent *e);
+  void keyPressEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
   /// changes the picture for key release event
-  void keyReleaseEvent(QKeyEvent *e);
+  void keyReleaseEvent(QKeyEvent *e) Q_DECL_OVERRIDE;
 
 
 private:
   /* Private Methods */
+  void resizePicture(int w, int h);
   void ChangePicture(QPixmap);
 
   /* Private Data Members */

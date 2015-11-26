@@ -484,7 +484,7 @@
      </widget>
     </widget>
     <widget class="QWidget" name="page_testimonials">
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="frame_input_testimonial">
       <property name="geometry">
        <rect>
         <x>49</x>
@@ -503,7 +503,7 @@
        <enum>QFrame::Raised</enum>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_2">
+     <widget class="QFrame" name="frame_output_testimonial">
       <property name="geometry">
        <rect>
         <x>360</x>

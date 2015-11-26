@@ -42,6 +42,9 @@ public:
   ///Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
 
+  QString getTestimonialAtIndex(int i);
+  QString getImageAtIndex(int i);
+
 private:
   QSqlDatabase *db;
   QSqlQuery query;

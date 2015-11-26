@@ -8,7 +8,6 @@
 #include <QLabel>
 #include "database.h"
 
-
 namespace Ui {
 class MainWindow;
 }
@@ -45,6 +44,8 @@ private slots:
   void on_checkBox_stateChanged(int arg1);
 
   void on_interest_level_box_activated(int index);
+
+  void on_testimonial_slider_valueChanged(int value);
 
 private:
   void initializeCustomerView();

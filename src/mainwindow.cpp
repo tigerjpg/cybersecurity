@@ -111,6 +111,10 @@ void MainWindow::on_page1_clicked()
 void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
+  // TODO set max to testimonial table size
+  //  needs that function from db
+  ui->testimonial_slider->setRange(1,5);
+  ui->testimonial_slider->setValue(1);
   setBackground(mainBackground[2]);
 }
 
@@ -279,4 +283,10 @@ void MainWindow::on_interest_level_box_activated(int index)
       interestCustomerView(index - 1);
     }
   }
+}
+
+void MainWindow::on_testimonial_slider_valueChanged(int value)
+{
+  ui->testimonial_text->setText(db->getTestimonialAtIndex(value));
+  ui->testimonial_image->setPixmap(QPixmap::fromImage(QImage(":/images/" + db->getImageAtIndex(value)).scaled(ui->testimonial_image->size())));
 }

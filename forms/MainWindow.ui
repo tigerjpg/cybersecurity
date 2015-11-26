@@ -438,6 +438,82 @@
                </widget>
        </widget>
       </widget>
+      <widget class="QWidget" name="page_testimonials">
+           <widget class="QFrame" name="frame_input_testimonial">
+            <property name="geometry">
+             <rect>
+              <x>49</x>
+              <y>89</y>
+              <width>271</width>
+              <height>431</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(196, 196, 196);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+           <widget class="QFrame" name="frame_output_testimonial">
+            <property name="geometry">
+             <rect>
+              <x>360</x>
+              <y>90</y>
+              <width>611</width>
+              <height>431</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(196, 196, 196);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="testimonial_image">
+             <property name="geometry">
+              <rect>
+               <x>380</x>
+               <y>80</y>
+               <width>181</width>
+               <height>201</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>image</string>
+             </property>
+            </widget>
+            <widget class="QSlider" name="testimonial_slider">
+             <property name="geometry">
+              <rect>
+               <x>250</x>
+               <y>380</y>
+               <width>160</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+            <widget class="QTextBrowser" name="testimonial_text">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>100</y>
+               <width>256</width>
+               <height>192</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+          </widget>
       <widget class="QWidget" name="lasertiger">
        <widget class="imagebutton" name="pushButton">
         <property name="geometry">

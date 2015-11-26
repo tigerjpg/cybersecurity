@@ -2,6 +2,8 @@
 #define DATABASE_H
 #include <QtSql>
 #include <QException>
+#include "qblowfish.h"
+#define KEY_HEX "0d3dd5d20734921c01bd78179fabf9ac"
 
 /*!
  * \brief The Database class is a wrapper for QSqlDatabase
@@ -23,6 +25,8 @@ public:
   ///Exception class
   class EmptyQuery       : public QException{};
 
+  /// Verify an admin login
+  bool Authenticate(QString username, QString password);
   ///Add a customer to the database
   bool AddCustomer(QString name, QString address, QString interest, QString key);
   ///Remove a customer from the database

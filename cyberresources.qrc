@@ -13,5 +13,10 @@
         <file>images/h3h3.png</file>
         <file>images/usdod.png</file>
         <file>images/cnooc.png</file>
+        <file>images/slowmatrix.gif</file>
+        <file>images/welcome.png</file>
+        <file>images/welcome-click.png</file>
+        <file>images/welcome-hover.png</file>
+        <file>images/TIGERtitle.png</file>
     </qresource>
 </RCC>

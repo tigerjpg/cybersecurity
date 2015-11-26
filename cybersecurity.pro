@@ -18,15 +18,17 @@ SOURCES += src/main.cpp \
            src/mainwindow.cpp \
 		   src/imagebutton.cpp \
 		   src/database.cpp \
-    src/qblowfish.cpp
+    src/qblowfish.cpp \
+    src/customertablemodel.cpp
 
 HEADERS  += include/mainwindow.h \
 			include/imagebutton.h \
 			include/database.h \
     include/qblowfish_p.h \
-    include/qblowfish.h
+    include/qblowfish.h \
+    include/customertablemodel.h
 
-FORMS    += forms/MainWindow.ui
+FORMS    +=
 
 RESOURCES += \
     cyberresources.qrc

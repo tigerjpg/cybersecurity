@@ -18,5 +18,7 @@
         <file>images/welcome-click.png</file>
         <file>images/welcome-hover.png</file>
         <file>images/TIGERtitle.png</file>
+        <file>sounds/tiger.wav</file>
+        <file>sounds/laser.wav</file>
     </qresource>
 </RCC>

@@ -6,6 +6,7 @@
 #include <QPropertyAnimation>
 #include <QMovie>
 #include <QLabel>
+#include <QSound>
 #include "database.h"
 
 namespace Ui {

@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
   setBackground(new QMovie(":/images/slowmatrix.gif"), 50);
   ui->welcomeTitle->hide();
   WelcomeAnimation();
+  QSound::play(":/sounds/tiger.wav");
 }
 
 MainWindow::~MainWindow()
@@ -69,6 +70,10 @@ void MainWindow::TigerButton()
 
 void MainWindow::LaserOn()
 {
+  // memory leak here, needs memory management
+  QSound *laser;
+  laser = new QSound(":/sounds/laser.wav");
+  laser->play();
   setBackground(mainBackground[(qrand()%4)+1]);
 }
 

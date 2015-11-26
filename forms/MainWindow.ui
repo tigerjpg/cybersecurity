@@ -235,41 +235,285 @@
         <property name="frameShadow">
          <enum>QFrame::Raised</enum>
         </property>
-        <widget class="QTabWidget" name="admin_functions_tabs">
-         <property name="geometry">
-          <rect>
-           <x>8</x>
-           <y>9</y>
-           <width>961</width>
-           <height>631</height>
-          </rect>
-         </property>
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <widget class="QWidget" name="tab">
-          <attribute name="title">
-           <string>Tab 1</string>
-          </attribute>
-          <widget class="QTableView" name="customer_view">
-           <property name="geometry">
-            <rect>
-             <x>290</x>
-             <y>10</y>
-             <width>651</width>
-             <height>571</height>
-            </rect>
-           </property>
-          </widget>
-         </widget>
-         <widget class="QWidget" name="tab_2">
-          <attribute name="title">
-           <string>Tab 2</string>
-          </attribute>
-         </widget>
-        </widget>
+        <widget class="QWidget" name="page_admin_functions">
+             <widget class="QFrame" name="frame_2">
+              <property name="geometry">
+               <rect>
+                <x>20</x>
+                <y>0</y>
+                <width>981</width>
+                <height>651</height>
+               </rect>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <widget class="QTabWidget" name="admin_functions_tabs">
+               <property name="geometry">
+                <rect>
+                 <x>8</x>
+                 <y>9</y>
+                 <width>961</width>
+                 <height>631</height>
+                </rect>
+               </property>
+               <property name="autoFillBackground">
+                <bool>true</bool>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">color rgb(196, 196, 196)</string>
+               </property>
+               <property name="tabPosition">
+                <enum>QTabWidget::North</enum>
+               </property>
+               <property name="tabShape">
+                <enum>QTabWidget::Rounded</enum>
+               </property>
+               <property name="currentIndex">
+                <number>0</number>
+               </property>
+               <property name="tabsClosable">
+                <bool>false</bool>
+               </property>
+               <property name="movable">
+                <bool>false</bool>
+               </property>
+               <property name="tabBarAutoHide">
+                <bool>false</bool>
+               </property>
+               <widget class="QWidget" name="tab">
+                <attribute name="title">
+                 <string>Customers</string>
+                </attribute>
+                <widget class="QTableView" name="customer_view">
+                 <property name="geometry">
+                  <rect>
+                   <x>230</x>
+                   <y>40</y>
+                   <width>711</width>
+                   <height>541</height>
+                  </rect>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="autoFillBackground">
+                  <bool>true</bool>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">color rgb(196, 196, 196)</string>
+                 </property>
+                 <property name="horizontalScrollBarPolicy">
+                  <enum>Qt::ScrollBarAsNeeded</enum>
+                 </property>
+                 <property name="sizeAdjustPolicy">
+                  <enum>QAbstractScrollArea::AdjustToContents</enum>
+                 </property>
+                 <property name="editTriggers">
+                  <set>QAbstractItemView::NoEditTriggers</set>
+                 </property>
+                 <property name="dragDropOverwriteMode">
+                  <bool>false</bool>
+                 </property>
+                 <property name="alternatingRowColors">
+                  <bool>true</bool>
+                 </property>
+                 <property name="selectionMode">
+                  <enum>QAbstractItemView::NoSelection</enum>
+                 </property>
+                 <property name="textElideMode">
+                  <enum>Qt::ElideNone</enum>
+                 </property>
+                 <property name="showGrid">
+                  <bool>true</bool>
+                 </property>
+                 <property name="sortingEnabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                 <property name="cornerButtonEnabled">
+                  <bool>false</bool>
+                 </property>
+                 <attribute name="horizontalHeaderVisible">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderCascadingSectionResizes">
+                  <bool>false</bool>
+                 </attribute>
+                 <attribute name="horizontalHeaderStretchLastSection">
+                  <bool>true</bool>
+                 </attribute>
+                 <attribute name="verticalHeaderVisible">
+                  <bool>false</bool>
+                 </attribute>
+                </widget>
+                <widget class="QWidget" name="gridLayoutWidget">
+                 <property name="geometry">
+                  <rect>
+                   <x>10</x>
+                   <y>80</y>
+                   <width>192</width>
+                   <height>67</height>
+                  </rect>
+                 </property>
+                 <layout class="QGridLayout" name="gridLayout">
+                  <item row="0" column="1">
+                   <widget class="QCheckBox" name="checkBox">
+                    <property name="autoFillBackground">
+                     <bool>false</bool>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>key</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item row="1" column="1">
+                   <widget class="QComboBox" name="interest_level_box">
+                    <item>
+                     <property name="text">
+                      <string>all</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>low</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>medium</string>
+                     </property>
+                    </item>
+                    <item>
+                     <property name="text">
+                      <string>high</string>
+                     </property>
+                    </item>
+                   </widget>
+                  </item>
+                  <item row="1" column="0">
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>Interest Level:</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+                <widget class="QLabel" name="label">
+                 <property name="geometry">
+                  <rect>
+                   <x>480</x>
+                   <y>0</y>
+                   <width>191</width>
+                   <height>31</height>
+                  </rect>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Customers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </widget>
+               <widget class="QWidget" name="tab_2">
+                <attribute name="title">
+                 <string>Testimonials</string>
+                </attribute>
+               </widget>
+               </widget>
+               </widget>
+               </widget>
        </widget>
       </widget>
+      <widget class="QWidget" name="page_testimonials">
+           <widget class="QFrame" name="frame_input_testimonial">
+            <property name="geometry">
+             <rect>
+              <x>49</x>
+              <y>89</y>
+              <width>271</width>
+              <height>431</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(196, 196, 196);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+           </widget>
+           <widget class="QFrame" name="frame_output_testimonial">
+            <property name="geometry">
+             <rect>
+              <x>360</x>
+              <y>90</y>
+              <width>611</width>
+              <height>431</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(196, 196, 196);</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="testimonial_image">
+             <property name="geometry">
+              <rect>
+               <x>380</x>
+               <y>80</y>
+               <width>181</width>
+               <height>201</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>image</string>
+             </property>
+            </widget>
+            <widget class="QSlider" name="testimonial_slider">
+             <property name="geometry">
+              <rect>
+               <x>250</x>
+               <y>380</y>
+               <width>160</width>
+               <height>16</height>
+              </rect>
+             </property>
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+            </widget>
+            <widget class="QTextBrowser" name="testimonial_text">
+             <property name="geometry">
+              <rect>
+               <x>40</x>
+               <y>100</y>
+               <width>256</width>
+               <height>192</height>
+              </rect>
+             </property>
+            </widget>
+           </widget>
+          </widget>
       <widget class="QWidget" name="lasertiger">
        <widget class="imagebutton" name="pushButton">
         <property name="geometry">

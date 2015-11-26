@@ -6,6 +6,15 @@
 class CustomerTableModel : public QSqlTableModel
 {
 public:
+  enum Fields
+  {
+    ID,
+    NAME,
+    ADDRESS,
+    INTEREST,
+    KEY
+  };
+
   CustomerTableModel(QObject *parent, QSqlDatabase *db);
 };
 

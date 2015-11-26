@@ -7,7 +7,7 @@
 #include <QMovie>
 #include <QLabel>
 #include "database.h"
-
+#include "customertablemodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +17,13 @@ class MainWindow : public QMainWindow {
   Q_OBJECT
 
 public:
+  enum Page
+  {
+    LOGIN,
+    ADMIN,
+    MAIN
+  };
+
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
@@ -40,25 +47,14 @@ private slots:
 
   void on_passwordBox_returnPressed();
 
-  void on_usernameBox_returnPressed();
-
-  void on_checkBox_stateChanged(int arg1);
-
-  void on_interest_level_box_activated(int index);
-
 private:
-  void initializeCustomerView();
-  bool defaultCustomerView();
-  void keyCustomerView();
-  void interestCustomerView(int i);
-  void interestAndKeyCustomerView(int i);
   void changeBackground(int index);
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
   Ui::MainWindow *ui;
   Database *db;
-  QSqlTableModel *sql_table_model;
+  CustomerTableModel *cTableModel;
   QVector<QPixmap> mainBackground;
 };
 

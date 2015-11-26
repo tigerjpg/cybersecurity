@@ -76,7 +76,7 @@ void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
   changeBackground(2);
-  ui->testimonial_slider->setRange(1,10);
+  ui->testimonial_slider->setRange(1,5);
   ui->testimonial_slider->setValue(1);
 }
 

@@ -76,6 +76,9 @@ void MainWindow::on_page2_clicked()
 {
   ui->stackedWidget->setCurrentIndex(2);
   changeBackground(2);
+
+  // TODO set max to testimonial table size
+  //  needs that function from db
   ui->testimonial_slider->setRange(1,5);
   ui->testimonial_slider->setValue(1);
 }

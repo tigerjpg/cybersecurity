@@ -6,8 +6,12 @@
 #include <QPropertyAnimation>
 #include <QMovie>
 #include <QLabel>
+#include <QSound>
 #include "database.h"
+<<<<<<< HEAD
 #include "customertablemodel.h"
+=======
+>>>>>>> 93cbac2e03dff5cb3206f681c9d4feadbbb4b9d4
 
 namespace Ui {
 class MainWindow;
@@ -48,6 +52,8 @@ private slots:
   void on_passwordBox_returnPressed();
 
   void on_checkBox_toggled(bool checked);
+
+  void on_testimonial_slider_valueChanged(int value);
 
 private:
   void changeBackground(int index);

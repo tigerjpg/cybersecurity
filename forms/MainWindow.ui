@@ -6,1142 +6,635 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1024</width>
-    <height>768</height>
+    <width>800</width>
+    <height>600</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>T.I.G.E.R.</string>
+   <string>MainWindow</string>
   </property>
-  <property name="autoFillBackground">
-   <bool>true</bool>
-  </property>
-  <widget class="QWidget" name="centralWidget">
-   <widget class="QStackedWidget" name="MainView">
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>1024</width>
-      <height>768</height>
+      <width>801</width>
+      <height>561</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>3</number>
     </property>
-    <widget class="QWidget" name="welcome">
-     <widget class="imagebutton" name="welcomeBtn">
+    <widget class="QWidget" name="login_page">
+     <widget class="QFrame" name="login_frame">
       <property name="geometry">
        <rect>
-        <x>312</x>
-        <y>184</y>
-        <width>400</width>
-        <height>400</height>
+        <x>240</x>
+        <y>110</y>
+        <width>281</width>
+        <height>321</height>
        </rect>
       </property>
-      <property name="text">
-       <string>PushButton</string>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
       </property>
-     </widget>
-     <widget class="QLabel" name="welcomeTitle">
-      <property name="geometry">
-       <rect>
-        <x>262</x>
-        <y>57</y>
-        <width>500</width>
-        <height>120</height>
-       </rect>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
       </property>
-      <property name="text">
-       <string/>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
       </property>
-      <property name="pixmap">
-       <pixmap resource="../cyberresources.qrc">:/images/TIGERtitle.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="customer">
-     <widget class="QStackedWidget" name="stackedWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>100</y>
-        <width>1024</width>
-        <height>668</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
-       <number>1</number>
-      </property>
-      <widget class="QWidget" name="page_admin_login">
-       <widget class="QFrame" name="frame">
-        <property name="geometry">
-         <rect>
-          <x>300</x>
-          <y>180</y>
-          <width>421</width>
-          <height>231</height>
-         </rect>
-        </property>
-        <property name="autoFillBackground">
-         <bool>true</bool>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">color rgba(196, 196, 196, 196)
-      border-color: rgb(0, 0, 0);
-      </string>
-        </property>
-        <property name="frameShape">
-         <enum>QFrame::WinPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <property name="lineWidth">
-         <number>2</number>
-        </property>
-        <widget class="QWidget" name="verticalLayoutWidget_3">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>60</y>
-           <width>351</width>
-           <height>116</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="login_layout">
+      <widget class="QLabel" name="register_label">
+       <property name="geometry">
+        <rect>
+         <x>210</x>
+         <y>290</y>
+         <width>57</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="information_label">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>290</y>
+         <width>57</width>
+         <height>14</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>About Us</string>
+       </property>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>140</y>
+         <width>221</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout_2">
-              <item>
-               <widget class="QLabel" name="username_label">
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Username:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLabel" name="password_label">
-                <property name="text">
-                 <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;Password:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QVBoxLayout" name="verticalLayout">
-              <item>
-               <widget class="QLineEdit" name="usernameBox">
-                <property name="maxLength">
-                 <number>32</number>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="passwordBox">
-                <property name="maxLength">
-                 <number>32</number>
-                </property>
-                <property name="echoMode">
-                 <enum>QLineEdit::Password</enum>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+           <widget class="QLabel" name="username_label">
+            <property name="text">
+             <string>Username</string>
+            </property>
+           </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QPushButton" name="clear_button">
-              <property name="text">
-               <string>Clear</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="ok_button">
-              <property name="text">
-               <string>OK</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+           <spacer name="verticalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="password_label">
+            <property name="text">
+             <string>Password</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <widget class="QLineEdit" name="username_line">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="verticalSpacer">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="password_line">
+            <property name="styleSheet">
+             <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QDialogButtonBox" name="login_buttonBox">
+       <property name="geometry">
+        <rect>
+         <x>60</x>
+         <y>230</y>
+         <width>156</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+      <widget class="QLabel" name="login_label">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>13</y>
+         <width>261</width>
+         <height>121</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Login</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="register_page">
+     <widget class="QFrame" name="register_frame">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>50</y>
+        <width>371</width>
+        <height>461</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QDialogButtonBox" name="register_buttonBox">
+       <property name="geometry">
+        <rect>
+         <x>110</x>
+         <y>410</y>
+         <width>156</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="standardButtons">
+        <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+       </property>
+      </widget>
+      <widget class="QWidget" name="formLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>70</y>
+         <width>311</width>
+         <height>311</height>
+        </rect>
+       </property>
+       <layout class="QFormLayout" name="formLayout">
+        <property name="fieldGrowthPolicy">
+         <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+        </property>
+        <item row="0" column="0">
+         <widget class="QLabel" name="username_label_2">
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="QLineEdit" name="username_line_2">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="password_label_2">
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="password_line_2">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLabel" name="company_label">
+          <property name="text">
+           <string>Company</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="1">
+         <widget class="QLineEdit" name="company_line">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QLabel" name="address_label">
+          <property name="text">
+           <string>Address</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="1">
+         <widget class="QLineEdit" name="address_line">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QLabel" name="interest_label">
+          <property name="text">
+           <string>Interest</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="1">
+         <widget class="QComboBox" name="interest_box">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="1">
+         <widget class="QTextBrowser" name="terms_text">
+          <property name="autoFillBackground">
+           <bool>true</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: rgb(255, 255, 255);</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="1">
+         <widget class="QCheckBox" name="terms_box">
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>I agree to the T.I.G.E.R terms</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
+         <widget class="QLabel" name="terms_label">
+          <property name="text">
+           <string>Terms</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QLabel" name="register_label_2">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>10</y>
+         <width>351</width>
+         <height>51</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Register</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="information_page">
+     <widget class="QFrame" name="information_frame">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>50</y>
+        <width>381</width>
+        <height>431</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QTextBrowser" name="information_text">
+       <property name="geometry">
+        <rect>
+         <x>25</x>
+         <y>120</y>
+         <width>331</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+      </widget>
+      <widget class="QScrollBar" name="information_verticalScrollBar">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>120</y>
+         <width>16</width>
+         <height>281</height>
+        </rect>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+      <widget class="QLabel" name="information_label_2">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>10</y>
+         <width>361</width>
+         <height>101</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>About Us</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="administrator_page">
+     <widget class="QFrame" name="administrator_frame">
+      <property name="geometry">
+       <rect>
+        <x>100</x>
+        <y>50</y>
+        <width>551</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QToolBox" name="administrator_toolBox">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>62</y>
+         <width>541</width>
+         <height>351</height>
+        </rect>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="admin_customer_page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>541</width>
+          <height>295</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Manage Customers</string>
+        </attribute>
+        <widget class="QTableView" name="customer_tableView">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>1</y>
+           <width>321</width>
+           <height>291</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget">
+         <property name="geometry">
+          <rect>
+           <x>19</x>
+           <y>29</y>
+           <width>161</width>
+           <height>131</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QPushButton" name="customer_add_pushButton">
+            <property name="text">
+             <string>Add Customer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="customer_purchase_button">
+            <property name="text">
+             <string>View Purchases</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="customer_remove_button">
+            <property name="text">
+             <string>Remove Customer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="key_customers_checkBox">
+            <property name="text">
+             <string>Key Customers</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
-        <widget class="QLabel" name="admin_login_header">
-         <property name="geometry">
-          <rect>
-           <x>130</x>
-           <y>10</y>
-           <width>171</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:22pt; font-weight:600;&quot;&gt;Admin Login&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="login_error_message">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>180</y>
-           <width>341</width>
-           <height>31</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <family>Cantarell</family>
-           <pointsize>12</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;Cantarell&quot; rgb(241, 6, 6)</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
        </widget>
-      </widget>
-      <widget class="QWidget" name="page_admin_functions">
-       <widget class="QFrame" name="frame_2">
+       <widget class="QWidget" name="admin_testimonial_page">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>0</x>
           <y>0</y>
-          <width>981</width>
-          <height>651</height>
+          <width>541</width>
+          <height>295</height>
          </rect>
         </property>
-        <property name="frameShape">
-         <enum>QFrame::StyledPanel</enum>
-        </property>
-        <property name="frameShadow">
-         <enum>QFrame::Raised</enum>
-        </property>
-        <widget class="QWidget" name="page_admin_functions">
-             <widget class="QFrame" name="frame_2">
-              <property name="geometry">
-               <rect>
-                <x>20</x>
-                <y>0</y>
-                <width>981</width>
-                <height>651</height>
-               </rect>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <widget class="QTabWidget" name="admin_functions_tabs">
-               <property name="geometry">
-                <rect>
-                 <x>8</x>
-                 <y>9</y>
-                 <width>961</width>
-                 <height>631</height>
-                </rect>
-               </property>
-               <property name="autoFillBackground">
-                <bool>true</bool>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">color rgb(196, 196, 196)</string>
-               </property>
-               <property name="tabPosition">
-                <enum>QTabWidget::North</enum>
-               </property>
-               <property name="tabShape">
-                <enum>QTabWidget::Rounded</enum>
-               </property>
-               <property name="currentIndex">
-                <number>0</number>
-               </property>
-               <property name="tabsClosable">
-                <bool>false</bool>
-               </property>
-               <property name="movable">
-                <bool>false</bool>
-               </property>
-               <property name="tabBarAutoHide">
-                <bool>false</bool>
-               </property>
-               <widget class="QWidget" name="tab">
-                <attribute name="title">
-                 <string>Customers</string>
-                </attribute>
-                <widget class="QTableView" name="customer_view">
-                 <property name="geometry">
-                  <rect>
-                   <x>230</x>
-                   <y>40</y>
-                   <width>711</width>
-                   <height>541</height>
-                  </rect>
-                 </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="autoFillBackground">
-                  <bool>true</bool>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">color rgb(196, 196, 196)</string>
-                 </property>
-                 <property name="horizontalScrollBarPolicy">
-                  <enum>Qt::ScrollBarAsNeeded</enum>
-                 </property>
-                 <property name="sizeAdjustPolicy">
-                  <enum>QAbstractScrollArea::AdjustToContents</enum>
-                 </property>
-                 <property name="editTriggers">
-                  <set>QAbstractItemView::NoEditTriggers</set>
-                 </property>
-                 <property name="dragDropOverwriteMode">
-                  <bool>false</bool>
-                 </property>
-                 <property name="alternatingRowColors">
-                  <bool>true</bool>
-                 </property>
-                 <property name="selectionMode">
-                  <enum>QAbstractItemView::NoSelection</enum>
-                 </property>
-                 <property name="textElideMode">
-                  <enum>Qt::ElideNone</enum>
-                 </property>
-                 <property name="showGrid">
-                  <bool>true</bool>
-                 </property>
-                 <property name="sortingEnabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="wordWrap">
-                  <bool>true</bool>
-                 </property>
-                 <property name="cornerButtonEnabled">
-                  <bool>false</bool>
-                 </property>
-                 <attribute name="horizontalHeaderVisible">
-                  <bool>true</bool>
-                 </attribute>
-                 <attribute name="horizontalHeaderCascadingSectionResizes">
-                  <bool>false</bool>
-                 </attribute>
-                 <attribute name="horizontalHeaderStretchLastSection">
-                  <bool>true</bool>
-                 </attribute>
-                 <attribute name="verticalHeaderVisible">
-                  <bool>false</bool>
-                 </attribute>
-                </widget>
-                <widget class="QWidget" name="gridLayoutWidget">
-                 <property name="geometry">
-                  <rect>
-                   <x>10</x>
-                   <y>80</y>
-                   <width>192</width>
-                   <height>67</height>
-                  </rect>
-                 </property>
-                 <layout class="QGridLayout" name="gridLayout">
-                  <item row="0" column="1">
-                   <widget class="QCheckBox" name="checkBox">
-                    <property name="autoFillBackground">
-                     <bool>false</bool>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true"/>
-                    </property>
-                    <property name="text">
-                     <string>key</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item row="1" column="1">
-                   <widget class="QComboBox" name="interest_level_box">
-                    <item>
-                     <property name="text">
-                      <string>all</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>low</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>medium</string>
-                     </property>
-                    </item>
-                    <item>
-                     <property name="text">
-                      <string>high</string>
-                     </property>
-                    </item>
-                   </widget>
-                  </item>
-                  <item row="1" column="0">
-                   <widget class="QLabel" name="label_2">
-                    <property name="text">
-                     <string>Interest Level:</string>
-                    </property>
-                   </widget>
-                  </item>
-                 </layout>
-                </widget>
-                <widget class="QLabel" name="label">
-                 <property name="geometry">
-                  <rect>
-                   <x>480</x>
-                   <y>0</y>
-                   <width>191</width>
-                   <height>31</height>
-                  </rect>
-                 </property>
-                 <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:16pt; font-weight:600;&quot;&gt;Customers&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </widget>
-               <widget class="QWidget" name="tab_2">
-                <attribute name="title">
-                 <string>Testimonials</string>
-                </attribute>
-               </widget>
-               </widget>
-               </widget>
-               </widget>
-       </widget>
-      </widget>
-      <widget class="QWidget" name="page_testimonials">
-           <widget class="QFrame" name="frame_input_testimonial">
-            <property name="geometry">
-             <rect>
-              <x>49</x>
-              <y>89</y>
-              <width>271</width>
-              <height>431</height>
-             </rect>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(196, 196, 196);</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
+        <attribute name="label">
+         <string>Manage Testimonials</string>
+        </attribute>
+        <widget class="QTableView" name="tableView">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>0</y>
+           <width>321</width>
+           <height>291</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>30</y>
+           <width>161</width>
+           <height>121</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_4">
+          <item>
+           <widget class="QPushButton" name="testimonial_add_button">
+            <property name="text">
+             <string>Add Testimonial</string>
             </property>
            </widget>
-           <widget class="QFrame" name="frame_output_testimonial">
-            <property name="geometry">
-             <rect>
-              <x>360</x>
-              <y>90</y>
-              <width>611</width>
-              <height>431</height>
-             </rect>
+          </item>
+          <item>
+           <widget class="QPushButton" name="testimonial_remove_button">
+            <property name="text">
+             <string>Remove Testimonial</string>
             </property>
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(196, 196, 196);</string>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <widget class="QLabel" name="testimonial_image">
-             <property name="geometry">
-              <rect>
-               <x>380</x>
-               <y>80</y>
-               <width>181</width>
-               <height>201</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>image</string>
-             </property>
-            </widget>
-            <widget class="QSlider" name="testimonial_slider">
-             <property name="geometry">
-              <rect>
-               <x>250</x>
-               <y>380</y>
-               <width>160</width>
-               <height>16</height>
-              </rect>
-             </property>
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-            </widget>
-            <widget class="QTextBrowser" name="testimonial_text">
-             <property name="geometry">
-              <rect>
-               <x>40</x>
-               <y>100</y>
-               <width>256</width>
-               <height>192</height>
-              </rect>
-             </property>
-            </widget>
            </widget>
-          </widget>
-      <widget class="QWidget" name="lasertiger">
-       <widget class="imagebutton" name="pushButton">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>120</y>
-          <width>111</width>
-          <height>131</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="text">
-         <string>PushButton</string>
-        </property>
-       </widget>
-       <widget class="QLCDNumber" name="lcdNumber">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>30</y>
-          <width>161</width>
-          <height>81</height>
-         </rect>
-        </property>
-        <property name="palette">
-         <palette>
-          <active>
-           <colorrole role="WindowText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Light">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Midlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Dark">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Mid">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>170</red>
-              <green>170</green>
-              <blue>170</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Text">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ButtonText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Window">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Shadow">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="AlternateBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>220</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </active>
-          <inactive>
-           <colorrole role="WindowText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Light">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Midlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Dark">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Mid">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>170</red>
-              <green>170</green>
-              <blue>170</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Text">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ButtonText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Window">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Shadow">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="AlternateBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>220</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </inactive>
-          <disabled>
-           <colorrole role="WindowText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Button">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Light">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Midlight">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Dark">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Mid">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>170</red>
-              <green>170</green>
-              <blue>170</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Text">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="BrightText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ButtonText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>127</red>
-              <green>127</green>
-              <blue>127</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Base">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Window">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="Shadow">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="AlternateBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>255</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipBase">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>255</red>
-              <green>255</green>
-              <blue>220</blue>
-             </color>
-            </brush>
-           </colorrole>
-           <colorrole role="ToolTipText">
-            <brush brushstyle="SolidPattern">
-             <color alpha="255">
-              <red>0</red>
-              <green>0</green>
-              <blue>0</blue>
-             </color>
-            </brush>
-           </colorrole>
-          </disabled>
-         </palette>
-        </property>
-        <property name="font">
-         <font>
-          <pointsize>15</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="toolTipDuration">
-         <number>6</number>
-        </property>
+          </item>
+          <item>
+           <spacer name="verticalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QLabel" name="testimonial_display_label">
+            <property name="text">
+             <string>Display Testimonial</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="testimonial_display_comboBox"/>
+          </item>
+         </layout>
+        </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="page"/>
-     </widget>
-     <widget class="QStackedWidget" name="toolbar">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1024</width>
-        <height>100</height>
-       </rect>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="std_toolbar">
-       <widget class="QPushButton" name="page1">
-        <property name="geometry">
-         <rect>
-          <x>352</x>
-          <y>10</y>
-          <width>80</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PAGE 2</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="page0">
-        <property name="geometry">
-         <rect>
-          <x>232</x>
-          <y>10</y>
-          <width>80</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PAGE 1</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="page2">
-        <property name="geometry">
-         <rect>
-          <x>472</x>
-          <y>10</y>
-          <width>80</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PAGE 3</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="page3">
-        <property name="geometry">
-         <rect>
-          <x>592</x>
-          <y>10</y>
-          <width>80</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PAGE 4</string>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="page4">
-        <property name="geometry">
-         <rect>
-          <x>712</x>
-          <y>10</y>
-          <width>80</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>PAGE 5</string>
-        </property>
-       </widget>
+      <widget class="QLabel" name="administrator_label">
+       <property name="geometry">
+        <rect>
+         <x>6</x>
+         <y>13</y>
+         <width>531</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Adminstrative Tools</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
       </widget>
-      <widget class="QWidget" name="page_3"/>
+      <widget class="QLabel" name="admin_logout_label">
+       <property name="geometry">
+        <rect>
+         <x>470</x>
+         <y>420</y>
+         <width>71</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Logout</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
      </widget>
     </widget>
-   </widget>
-   <widget class="QLabel" name="backGnd">
-    <property name="geometry">
-     <rect>
-      <x>0</x>
-      <y>0</y>
-      <width>101</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="pixmap">
-     <pixmap resource="../cyberresources.qrc">:/images/slowmatrix.gif</pixmap>
-    </property>
+    <widget class="QWidget" name="customer_page"/>
    </widget>
   </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <layoutdefault spacing="6" margin="11"/>
- <customwidgets>
-  <customwidget>
-   <class>imagebutton</class>
-   <extends>QPushButton</extends>
-   <header location="global">imagebutton.h</header>
-  </customwidget>
- </customwidgets>
- <tabstops>
-  <tabstop>page0</tabstop>
-  <tabstop>page1</tabstop>
-  <tabstop>page2</tabstop>
-  <tabstop>page3</tabstop>
-  <tabstop>page4</tabstop>
- </tabstops>
- <resources>
-  <include location="../cyberresources.qrc"/>
- </resources>
- <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>TigerButton()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>350</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>507</x>
-     <y>272</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>pressed()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>LaserOn()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>350</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>566</x>
-     <y>385</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>released()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>LaserOff()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>350</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>550</x>
-     <y>413</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
- <slots>
-  <slot>TigerButton()</slot>
-  <slot>LaserOn()</slot>
-  <slot>LaserOff()</slot>
-  <slot>PrevPage()</slot>
- </slots>
+ <resources/>
+ <connections/>
 </ui>

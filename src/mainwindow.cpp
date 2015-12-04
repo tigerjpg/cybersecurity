@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->backGnd->setGeometry(0,0,this->width(),this->height());
 
   // load all the backgrounds into the background vectors
-    mainBackground.append(QPixmap(":/images/tiger.jpg"));
+  mainBackground.append(QPixmap(":/images/tiger.jpg"));
   mainBackground.append(QPixmap(":/images/tiger2.jpg"));
   mainBackground.append(QPixmap(":/images/tiger3.jpg"));
   mainBackground.append(QPixmap(":/images/tiger4.jpg"));

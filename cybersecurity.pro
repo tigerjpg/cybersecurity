@@ -19,14 +19,16 @@ SOURCES += src/main.cpp \
 		   src/database.cpp \
     src/qblowfish.cpp \
     src/customertablemodel.cpp \
-    src/mainwindow.cpp
+    src/mainwindow.cpp \
+    src/testimonialtablemodel.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
       include/database.h \
     include/qblowfish_p.h \
     include/qblowfish.h \
-    include/customertablemodel.h
+    include/customertablemodel.h \
+    include/testimonialtablemodel.h
 
 FORMS    += \
     forms/MainWindow.ui

@@ -9,6 +9,7 @@
 #include <QSound>
 #include "database.h"
 #include "customertablemodel.h"
+#include "testimonialtablemodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -44,10 +45,15 @@ private slots:
 
   void on_key_customers_checkBox_toggled(bool checked);
 
+  void on_administrator_toolBox_currentChanged(int index);
+
+  void on_testimonial_tableView_entered(const QModelIndex &index);
+
 private:
   Ui::MainWindow *ui;
   Database *db;
   CustomerTableModel *cTableModel;
+  TestimonialTableModel *tTableModel;
   QVector<QPixmap> mainBackground;
 };
 

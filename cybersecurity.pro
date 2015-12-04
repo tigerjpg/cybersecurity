@@ -15,7 +15,6 @@ DEPENDPATH += src
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
-           src/mainwindow.cpp \
 		   src/imagebutton.cpp \
 		   src/database.cpp \
     src/qblowfish.cpp \
@@ -28,7 +27,7 @@ HEADERS  += include/mainwindow.h \
     include/qblowfish.h \
     include/customertablemodel.h
 
-FORMS    += forms/MainWindow.ui
+FORMS    +=
 
 RESOURCES += \
     cyberresources.qrc

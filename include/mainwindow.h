@@ -10,7 +10,7 @@
 #include "database.h"
 #include "customertablemodel.h"
 #include "testimonialtablemodel.h"
-
+#include "addtestimonialpopup.h"
 namespace Ui {
 class MainWindow;
 }
@@ -48,6 +48,8 @@ private slots:
   void on_administrator_toolBox_currentChanged(int index);
 
   void on_testimonial_tableView_entered(const QModelIndex &index);
+
+  void on_testimonial_add_button_clicked();
 
 private:
   Ui::MainWindow *ui;

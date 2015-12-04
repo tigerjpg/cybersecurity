@@ -20,7 +20,8 @@ SOURCES += src/main.cpp \
     src/qblowfish.cpp \
     src/customertablemodel.cpp \
     src/mainwindow.cpp \
-    src/testimonialtablemodel.cpp
+    src/testimonialtablemodel.cpp \
+    src/addtestimonialpopup.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
@@ -28,10 +29,12 @@ HEADERS  += include/mainwindow.h \
     include/qblowfish_p.h \
     include/qblowfish.h \
     include/customertablemodel.h \
-    include/testimonialtablemodel.h
+    include/testimonialtablemodel.h \
+    include/addtestimonialpopup.h
 
 FORMS    += \
-    forms/MainWindow.ui
+    forms/MainWindow.ui \
+    forms/AddTestimonialPopup.ui
 
 RESOURCES += \
     cyberresources.qrc

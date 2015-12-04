@@ -16,6 +16,8 @@ public:
   };
 
   TestimonialTableModel(QObject *parent, QSqlDatabase *db);
+
+  void Initialize();
 };
 
 #endif // TESTIMONIALTABLEMODEL_H

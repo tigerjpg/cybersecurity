@@ -95,3 +95,10 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
 void MainWindow::on_testimonial_tableView_entered(const QModelIndex &index)
 {
 }
+
+void MainWindow::on_testimonial_add_button_clicked()
+{
+  AddTestimonialPopup *p;
+  p = new AddTestimonialPopup();
+  p->show();
+}

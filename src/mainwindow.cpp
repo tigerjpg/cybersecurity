@@ -177,3 +177,8 @@ void MainWindow::on_passwordBox_returnPressed()
 {
   ui->ok_button->click();
 }
+
+void MainWindow::on_checkBox_toggled(bool checked)
+{
+    cTableModel->IsKeyToggle();
+}

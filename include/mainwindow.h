@@ -47,6 +47,8 @@ private slots:
 
   void on_passwordBox_returnPressed();
 
+  void on_checkBox_toggled(bool checked);
+
 private:
   void changeBackground(int index);
   void setBackground(QPixmap picture);

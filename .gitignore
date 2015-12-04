@@ -1,3 +1,5 @@
+# database
+/data/data.db
 # QT
 *.pro.user
 *.pro.user.*

@@ -16,6 +16,9 @@ public:
   };
 
   CustomerTableModel(QObject *parent, QSqlDatabase *db);
+
+  void Initialize();
+  void IsKeyToggle();
 };
 
 #endif // CUSTOMERTABLEMODEL_H

@@ -18,7 +18,8 @@ SOURCES += src/main.cpp \
 		   src/imagebutton.cpp \
 		   src/database.cpp \
     src/qblowfish.cpp \
-    src/customertablemodel.cpp
+    src/customertablemodel.cpp \
+    src/mainwindow.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
@@ -27,7 +28,8 @@ HEADERS  += include/mainwindow.h \
     include/qblowfish.h \
     include/customertablemodel.h
 
-FORMS    +=
+FORMS    += \
+    forms/MainWindow.ui
 
 RESOURCES += \
     cyberresources.qrc

@@ -3,15 +3,12 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPixmap>
-#include <QPropertyAnimation>
-#include <QMovie>
+//#include <QPropertyAnimation>
+//#include <QMovie>
 #include <QLabel>
 #include <QSound>
 #include "database.h"
-<<<<<<< HEAD
 #include "customertablemodel.h"
-=======
->>>>>>> 93cbac2e03dff5cb3206f681c9d4feadbbb4b9d4
 
 namespace Ui {
 class MainWindow;
@@ -24,42 +21,30 @@ public:
   enum Page
   {
     LOGIN,
+    REGISTER,
+    INFO,
     ADMIN,
-    MAIN
+    CUSTOMER
   };
 
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
 public slots:
-  void TigerButton();
-  void LaserOn();
-  void LaserOff();
 
 private slots:
-  void on_finished_intro();
-  void on_page0_clicked();
-  void on_page1_clicked();
-  void on_page2_clicked();
-  void on_page3_clicked();
-  void on_page4_clicked();
-  void on_welcomeBtn_clicked();
 
-  void on_ok_button_clicked();
+  void on_login_buttonBox_accepted();
 
-  void on_clear_button_clicked();
+  void on_login_buttonBox_rejected();
 
-  void on_passwordBox_returnPressed();
+  void on_customer_tableView_activated(const QModelIndex &index);
 
-  void on_checkBox_toggled(bool checked);
+  void on_password_line_returnPressed();
 
-  void on_testimonial_slider_valueChanged(int value);
+  void on_key_customers_checkBox_toggled(bool checked);
 
 private:
-  void changeBackground(int index);
-  void setBackground(QPixmap picture);
-  void setBackground(QMovie *movie, int speed);
-  void WelcomeAnimation();
   Ui::MainWindow *ui;
   Database *db;
   CustomerTableModel *cTableModel;

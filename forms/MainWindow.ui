@@ -24,9 +24,12 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="login_page">
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
      <widget class="QFrame" name="login_frame">
       <property name="geometry">
        <rect>
@@ -48,10 +51,10 @@
       <widget class="QLabel" name="register_label">
        <property name="geometry">
         <rect>
-         <x>210</x>
+         <x>200</x>
          <y>290</y>
-         <width>57</width>
-         <height>14</height>
+         <width>61</width>
+         <height>20</height>
         </rect>
        </property>
        <property name="text">
@@ -63,8 +66,8 @@
         <rect>
          <x>20</x>
          <y>290</y>
-         <width>57</width>
-         <height>14</height>
+         <width>71</width>
+         <height>16</height>
         </rect>
        </property>
        <property name="text">
@@ -77,7 +80,7 @@
          <x>30</x>
          <y>140</y>
          <width>221</width>
-         <height>60</height>
+         <height>80</height>
         </rect>
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout">
@@ -136,8 +139,23 @@
           </item>
           <item>
            <widget class="QLineEdit" name="password_line">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="autoFillBackground">
+             <bool>false</bool>
+            </property>
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);</string>
+            </property>
+            <property name="inputMethodHints">
+             <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+            </property>
+            <property name="echoMode">
+             <enum>QLineEdit::Password</enum>
             </property>
            </widget>
           </item>
@@ -213,7 +231,7 @@
         <rect>
          <x>30</x>
          <y>70</y>
-         <width>311</width>
+         <width>314</width>
          <height>311</height>
         </rect>
        </property>
@@ -423,10 +441,10 @@
      <widget class="QFrame" name="administrator_frame">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>50</y>
-        <width>551</width>
-        <height>451</height>
+        <x>10</x>
+        <y>10</y>
+        <width>781</width>
+        <height>531</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -440,8 +458,8 @@
         <rect>
          <x>6</x>
          <y>62</y>
-         <width>541</width>
-         <height>351</height>
+         <width>761</width>
+         <height>461</height>
         </rect>
        </property>
        <property name="currentIndex">
@@ -452,8 +470,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>541</width>
-          <height>295</height>
+          <width>761</width>
+          <height>389</height>
          </rect>
         </property>
         <attribute name="label">
@@ -462,12 +480,42 @@
         <widget class="QTableView" name="customer_tableView">
          <property name="geometry">
           <rect>
-           <x>210</x>
+           <x>190</x>
            <y>1</y>
-           <width>321</width>
-           <height>291</height>
+           <width>531</width>
+           <height>381</height>
           </rect>
          </property>
+         <property name="cursor" stdset="0">
+          <cursorShape>OpenHandCursor</cursorShape>
+         </property>
+         <property name="sizeAdjustPolicy">
+          <enum>QAbstractScrollArea::AdjustToContents</enum>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>true</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <property name="sortingEnabled">
+          <bool>true</bool>
+         </property>
+         <property name="cornerButtonEnabled">
+          <bool>false</bool>
+         </property>
+         <attribute name="horizontalHeaderMinimumSectionSize">
+          <number>30</number>
+         </attribute>
+         <attribute name="horizontalHeaderStretchLastSection">
+          <bool>true</bool>
+         </attribute>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+         <attribute name="verticalHeaderHighlightSections">
+          <bool>false</bool>
+         </attribute>
         </widget>
         <widget class="QWidget" name="verticalLayoutWidget">
          <property name="geometry">
@@ -475,7 +523,7 @@
            <x>19</x>
            <y>29</y>
            <width>161</width>
-           <height>131</height>
+           <height>137</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -515,8 +563,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>541</width>
-          <height>295</height>
+          <width>761</width>
+          <height>389</height>
          </rect>
         </property>
         <attribute name="label">
@@ -525,10 +573,10 @@
         <widget class="QTableView" name="tableView">
          <property name="geometry">
           <rect>
-           <x>210</x>
+           <x>190</x>
            <y>0</y>
-           <width>321</width>
-           <height>291</height>
+           <width>531</width>
+           <height>381</height>
           </rect>
          </property>
         </widget>
@@ -538,7 +586,7 @@
            <x>20</x>
            <y>30</y>
            <width>161</width>
-           <height>121</height>
+           <height>140</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -605,8 +653,8 @@
       <widget class="QLabel" name="admin_logout_label">
        <property name="geometry">
         <rect>
-         <x>470</x>
-         <y>420</y>
+         <x>670</x>
+         <y>20</y>
          <width>71</width>
          <height>16</height>
         </rect>
@@ -622,6 +670,8 @@
     </widget>
     <widget class="QWidget" name="customer_page"/>
    </widget>
+   <zorder>stackedWidget</zorder>
+   <zorder>admin_logout_label</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -629,7 +679,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

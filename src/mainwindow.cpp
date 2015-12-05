@@ -117,3 +117,17 @@ void MainWindow::InitTestimonialTableView()
   ui->testimonial_tableView->horizontalHeader()->setStretchLastSection(true);
   ui->testimonial_tableView->resizeRowsToContents();
 }
+
+void MainWindow::on_testimonial_remove_button_clicked()
+{
+  if(tTableModel->removeRow(ui->testimonial_tableView->currentIndex().row()))
+  {
+    tTableModel->submitAll();
+    tTableModel->select();
+  }
+  else
+  {
+    qDebug() << "SELECT A ROW YA DINGUS!!";
+  }
+
+}

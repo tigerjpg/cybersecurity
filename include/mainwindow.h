@@ -51,6 +51,8 @@ private slots:
 
   void on_testimonial_add_button_clicked();
 
+  void on_testimonial_remove_button_clicked();
+
 private:
   Ui::MainWindow *ui;
   Database *db;

@@ -12,7 +12,8 @@ public:
     ID,
     NAME,
     TESTIMONIAL,
-    IMAGE
+    IMAGE,
+    APPROVED
   };
 
   TestimonialTableModel(QObject *parent, QSqlDatabase *db);

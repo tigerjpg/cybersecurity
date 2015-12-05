@@ -93,7 +93,7 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
 
 void MainWindow::on_testimonial_tableView_entered(const QModelIndex &index)
 {
-//  ui->testimonial_tableView->openPersistentEditor(index);
+  //  ui->testimonial_tableView->openPersistentEditor(index);
 }
 
 void MainWindow::on_testimonial_add_button_clicked()
@@ -112,6 +112,7 @@ void MainWindow::InitTestimonialTableView()
   ui->testimonial_tableView->verticalHeader()->setVisible(false);
   ui->testimonial_tableView->hideColumn(TestimonialTableModel::ID);
   ui->testimonial_tableView->hideColumn(TestimonialTableModel::IMAGE);
+  ui->testimonial_tableView->hideColumn(TestimonialTableModel::APPROVED);
   ui->testimonial_tableView->setWordWrap(true);
   ui->testimonial_tableView->setSortingEnabled(true);
   ui->testimonial_tableView->horizontalHeader()->setStretchLastSection(true);
@@ -124,10 +125,47 @@ void MainWindow::on_testimonial_remove_button_clicked()
   {
     tTableModel->submitAll();
     tTableModel->select();
+    qDebug() << "TESTIMONIAL REMOVED!";
   }
   else
   {
     qDebug() << "SELECT A ROW YA DINGUS!!";
   }
 
+}
+
+void MainWindow::on_testimonial_approve_button_clicked()
+{
+  int row = ui->testimonial_tableView->currentIndex().row();
+  if(row > -1)
+  {
+    if(!tTableModel->record(row).field("approved").value().toInt())
+    {
+      QString name = tTableModel->record(row).field("name").value().toString();
+      if(db->SetQuery("update testimonials set approved = 1 where name =\"" + name + "\";"))
+      {
+        if(db->Exec())
+        {
+          tTableModel->select();
+          qDebug() << "TESTIMONIAL APPROVED!";
+        }
+        else
+        {
+          qDebug() << "INVALID QUERY!";
+        }
+      }
+      else
+      {
+        qDebug() << "INVALID QUERY!";
+      }
+    }
+    else
+    {
+      qDebug() << "TESTIMONIAL ALREADY APPROVED!";
+    }
+  }
+  else
+  {
+    qDebug() << "SELECT A ROW YA DINGUS!!";
+  }
 }

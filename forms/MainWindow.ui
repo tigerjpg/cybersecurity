@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="login_page">
      <property name="cursor">
@@ -686,9 +686,6 @@
              <set>Qt::AlignCenter</set>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="testimonial_display_comboBox"/>
           </item>
          </layout>
         </widget>

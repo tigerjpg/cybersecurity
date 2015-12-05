@@ -16,11 +16,13 @@ AddTestimonialPopup::~AddTestimonialPopup()
 
 void AddTestimonialPopup::on_testimonial_popup_buttonBox_accepted()
 {
-  if(!ui->testimonial_popup_nameLineEdit->text().isEmpty() && !ui->testimonial_popup_textEdit->toPlainText().isEmpty())
+  if(!ui->testimonial_popup_nameLineEdit->text().isEmpty() &&
+     !ui->testimonial_popup_textEdit->toPlainText().isEmpty())
   {
     if(ui->testimonial_popup_nameLineEdit->hasAcceptableInput())
     {
-      if(db->AddTestimonial(ui->testimonial_popup_nameLineEdit->text(), ui->testimonial_popup_textEdit->toPlainText()))
+      if(db->AddTestimonial(ui->testimonial_popup_nameLineEdit->text(),
+                            ui->testimonial_popup_textEdit->toPlainText()))
       {
         qDebug() << "TESTIMONIAL ACCEPTED!";
         ui->testimonial_popup_nameLineEdit->clear();

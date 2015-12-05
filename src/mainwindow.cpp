@@ -91,19 +91,17 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
   }
 }
 
-void MainWindow::on_testimonial_tableView_entered(const QModelIndex &index)
-{
-  //  ui->testimonial_tableView->openPersistentEditor(index);
-}
-
 void MainWindow::on_testimonial_add_button_clicked()
 {
   AddTestimonialPopup *p;
-  emit ui->customer_tableView->model()->layoutAboutToBeChanged();
+  //instantiate popup window
   p = new AddTestimonialPopup(0, db, tTableModel);
+
+  //Disable other windows
+  p->setWindowModality(Qt::ApplicationModal);
+  //display popup
   p->show();
 }
-
 
 void MainWindow::InitTestimonialTableView()
 {

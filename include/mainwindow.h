@@ -47,8 +47,6 @@ private slots:
 
   void on_administrator_toolBox_currentChanged(int index);
 
-  void on_testimonial_tableView_entered(const QModelIndex &index);
-
   void on_testimonial_add_button_clicked();
 
   void on_testimonial_remove_button_clicked();

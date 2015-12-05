@@ -19,6 +19,10 @@ public:
 private slots:
   void on_testimonial_popup_buttonBox_accepted();
 
+  void on_testimonial_popup_buttonBox_rejected();
+
+  void on_testimonial_popup_textEdit_textChanged();
+
 private:
   Ui::AddTestimonialPopup *ui;
   TestimonialTableModel *model;

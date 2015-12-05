@@ -72,6 +72,26 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 }
 
 /*!
+ * \brief Database::AddTestimonial
+ * \param name
+ * \param testimonial
+ * \return
+ */
+bool Database::AddTestimonial(QString name, QString testimonial)
+{
+  if(query.exec("insert into testimonials values(NULL, \"" + name
+                + "\", \"" + testimonial + "\", NULL);"))
+  {
+    return true;
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
+/*!
  * \brief Database::RemoveCustomer Remove a customer from the database
  * \param name Customer's name
  * \return true if successful

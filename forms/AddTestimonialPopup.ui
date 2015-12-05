@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="testimonial_popup_label">
    <property name="geometry">
     <rect>
      <x>140</x>
@@ -26,7 +26,7 @@
     <string>Add a Testimonial</string>
    </property>
   </widget>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="testimonial_popup_textEdit">
    <property name="geometry">
     <rect>
      <x>23</x>
@@ -36,7 +36,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QDialogButtonBox" name="buttonBox">
+  <widget class="QDialogButtonBox" name="testimonial_popup_buttonBox">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -49,7 +49,7 @@
     <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="testimonial_popup_nameLineEdit">
    <property name="geometry">
     <rect>
      <x>30</x>

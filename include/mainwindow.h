@@ -57,6 +57,7 @@ private:
   CustomerTableModel *cTableModel;
   TestimonialTableModel *tTableModel;
   QVector<QPixmap> mainBackground;
+  void InitTestimonialTableView();
 };
 
 #endif // MAINWINDOW_H

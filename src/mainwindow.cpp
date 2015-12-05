@@ -6,9 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
   db = new Database("./data/data.db", "QSQLITE");
-  cTableModel = new CustomerTableModel(this, db);
-  tTableModel = new TestimonialTableModel(this, db);
-
 }
 MainWindow::~MainWindow()
 {
@@ -21,6 +18,11 @@ void MainWindow::on_login_buttonBox_accepted()
   {
     if(db->Authenticate(ui->username_line->text(), ui->password_line->text()))
     {
+      cTableModel = new CustomerTableModel(this, db);
+      tTableModel = new TestimonialTableModel(this, db);
+      ui->customer_tableView->setModel(cTableModel);
+      ui->testimonial_tableView->setModel(tTableModel);
+      InitTestimonialTableView();
       ui->username_line->clear();
       ui->password_line->clear();
       ui->stackedWidget->setCurrentIndex(ADMIN);
@@ -81,24 +83,37 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
   switch(index)
   {
   case CUSTOMERS:
-    ui->customer_tableView->setModel(cTableModel);
+    cTableModel->select();
     break;
   case TESTIMONIALS:
-    ui->testimonial_tableView->setModel(tTableModel);
-    ui->testimonial_tableView->hideColumn(TestimonialTableModel::ID);
-    ui->testimonial_tableView->hideColumn(TestimonialTableModel::IMAGE);
-    ui->testimonial_tableView->horizontalHeader()->setStretchLastSection(true);
-    ui->testimonial_tableView->resizeRowsToContents();
+    InitTestimonialTableView();
+    tTableModel->select();
   }
 }
 
 void MainWindow::on_testimonial_tableView_entered(const QModelIndex &index)
 {
+//  ui->testimonial_tableView->openPersistentEditor(index);
 }
 
 void MainWindow::on_testimonial_add_button_clicked()
 {
   AddTestimonialPopup *p;
-  p = new AddTestimonialPopup();
+  emit ui->customer_tableView->model()->layoutAboutToBeChanged();
+  p = new AddTestimonialPopup(0, db, tTableModel);
   p->show();
+}
+
+
+void MainWindow::InitTestimonialTableView()
+{
+  ui->testimonial_tableView->setEditTriggers(QTableView::NoEditTriggers);
+  ui->testimonial_tableView->setAlternatingRowColors(true);
+  ui->testimonial_tableView->verticalHeader()->setVisible(false);
+  ui->testimonial_tableView->hideColumn(TestimonialTableModel::ID);
+  ui->testimonial_tableView->hideColumn(TestimonialTableModel::IMAGE);
+  ui->testimonial_tableView->setWordWrap(true);
+  ui->testimonial_tableView->setSortingEnabled(true);
+  ui->testimonial_tableView->horizontalHeader()->setStretchLastSection(true);
+  ui->testimonial_tableView->resizeRowsToContents();
 }

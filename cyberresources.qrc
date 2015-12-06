@@ -20,5 +20,10 @@
         <file>images/TIGERtitle.png</file>
         <file>sounds/tiger.wav</file>
         <file>sounds/laser.wav</file>
+        <file>html/TIGERThreat.html</file>
+        <file>html/TIGERAnalytics.html</file>
+        <file>html/TIGERInsider.html</file>
+        <file>html/TIGERMemoryIntegrity.html</file>
+        <file>html/TIGEREmail.html</file>
     </qresource>
 </RCC>

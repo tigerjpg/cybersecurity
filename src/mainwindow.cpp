@@ -4,12 +4,23 @@ MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
-  ui->setupUi(this);
   db = new Database("./data/data.db", "QSQLITE");
-
   this->setFixedSize(800,600);
 
-  ui->stacked_pages->setCurrentIndex(LOGIN);
+  // setup the background
+  background = new QLabel(this);
+  QMovie *movie = new QMovie(":/images/slowmatrix.gif");
+  setBackground(movie,45);
+
+ // setups the rest of the ui on top of the background
+ ui->setupUi(this);
+ testimonials = NULL;
+ UpdateTestimonialList();
+ LoadProductList();
+
+
+ // TEMP sets the default page to login screen
+ ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 MainWindow::~MainWindow()
 {
@@ -286,6 +297,16 @@ void MainWindow::Register()
 
 }
 
+void MainWindow::setBackground(QMovie *movie, int speed)
+{
+  // loads the background movie into a label
+  background->resize(this->size());
+  background->setMovie(movie);
+
+  movie->setSpeed(speed);
+  movie->start();
+}
+
 
 void MainWindow::WelcomeAnimation()
 {
@@ -298,6 +319,7 @@ void MainWindow::WelcomeAnimation()
   tigershield->start();
 }
 
+
 void MainWindow::Register_ClearForms()
 {
   ui->username_line_2->clear();
@@ -308,10 +330,64 @@ void MainWindow::Register_ClearForms()
   ui->company_line->clear();
 }
 
+void MainWindow::SetTestimonialView(int index)
+{
+  if(index >= 0 && index < testimonials->size())
+  {
+    QPixmap image( "images/" + testimonials->at(index).field("image").value().toString() );
+    image = image.scaled(ui->customer_testimonials_picture->width(), ui->customer_testimonials_picture->height(), Qt::KeepAspectRatio);
+
+    ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
+    ui->customer_testimonials_picture->setPixmap(image);
+//    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
+//    qDebug() << "TESTIMONIAL IMAGE PATH: " << testimonials->at(position).field("image").value().toString();
+  }
+  else
+  {
+    qDebug() << "***** INVALID TESTIMONIAL INDEX!!! ******";
+  }
+}
+
+void MainWindow::UpdateTestimonialList()
+{
+  if(testimonials != NULL){
+      delete testimonials;
+    }
+  testimonials = db->GetData("testimonials");
+  qDebug() << "TESTIMONIALS LIST SIZE: " << testimonials->size();
+  ui->customer_testimonial_slider->setMinimum(0);
+  ui->customer_testimonial_slider->setMaximum(testimonials->size()-1);
+  SetTestimonialView(ui->customer_testimonial_slider->value());
+}
+
+void MainWindow::LoadProductList()
+{
+  ProductInfo temp;
+  temp.productName = "Tiger© Threat Protection";
+  temp.html        = "qrc:/html/TIGERThreat.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Insider Threat";
+  temp.html        = "qrc:/html/TIGERInsider.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Analytics";
+  temp.html        = "qrc:/html/TIGERAnalytics.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Memory Integrity";
+  temp.html        = "qrc:/html/TIGERMemoryIntegrity.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Email Security";
+  temp.html        = "qrc:/html/TIGEREmail.html";
+  ProductInfoList.push_back(temp);
+
+  ui->customer_products_slider->setMinimum(0);
+  ui->customer_products_slider->setMaximum(ProductInfoList.size()-1);
+  ui->customer_products_title->setText(ProductInfoList.at(ui->customer_products_slider->value()).productName);
+  ui->customer_products_webview->setUrl(ProductInfoList.at(ui->customer_products_slider->value()).html);
+}
+
 void MainWindow::on_finished_intro()
 {
   QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
-  //  connect(titlein, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
   titlein->setDuration(200);
   ui->welcomeTitle->show();
   titlein->setStartValue(QRect(262,-120,500,120));
@@ -322,8 +398,7 @@ void MainWindow::on_finished_intro()
 
 
 void MainWindow::on_welcomeBtn_clicked()
-{
-}
+{}
 
 void MainWindow::on_customer_remove_button_clicked()
 {
@@ -491,6 +566,33 @@ void MainWindow::on_customer_send_pamphlet_button_clicked()
   {
     qDebug() << "SELECT A ROW YA DINGUS!";
   }
+}
+
+void MainWindow::on_customer_testimonial_slider_sliderMoved(int position)
+{
+  SetTestimonialView(position);
+}
+
+void MainWindow::on_customer_testimonial_slider_valueChanged(int value)
+{
+  SetTestimonialView(value);
+}
+
+void MainWindow::on_toolBox_currentChanged(int index)
+{
+    switch(index){
+      case CUST_PRODUCTS : break;
+      case CUST_TESTIMONIALS : UpdateTestimonialList();
+                               break;
+      case CUST_PURCHASE : break;
+      default : break;
+      }
+}
+
+void MainWindow::on_customer_products_slider_valueChanged(int value)
+{
+  ui->customer_products_title->setText(ProductInfoList.at(value).productName);
+  ui->customer_products_webview->setUrl(ProductInfoList.at(value).html);
 }
 
 void MainWindow::on_GeneralInfoButton_clicked()

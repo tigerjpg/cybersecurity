@@ -298,6 +298,16 @@ void MainWindow::WelcomeAnimation()
   tigershield->start();
 }
 
+void MainWindow::Register_ClearForms()
+{
+  ui->username_line_2->clear();
+  ui->password_line_2->clear();
+  ui->address_line->clear();
+  ui->terms_box->setChecked(0);
+  ui->interest_box->setCurrentIndex(0);
+  ui->company_line->clear();
+}
+
 void MainWindow::on_finished_intro()
 {
   QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
@@ -317,7 +327,9 @@ void MainWindow::on_welcomeBtn_clicked()
 
 void MainWindow::on_customer_remove_button_clicked()
 {
-  if(cTableModel->removeRow(ui->customer_tableView->currentIndex().row()))
+  int row =ui->customer_tableView->currentIndex().row();
+
+  if(cTableModel->removeRow(row))
   {
     cTableModel->submitAll();
     cTableModel->select();
@@ -597,18 +609,13 @@ void MainWindow::on_terms_box_toggled(bool checked)
 void MainWindow::on_register_okay_button_clicked()
 {
   Register();
-  ui->username_line_2->clear();
-  ui->password_line_2->clear();
-  ui->address_line->clear();
-  ui->terms_box->setChecked(0);
-  ui->interest_box->clear();
-  ui->company_line->clear();
+  Register_ClearForms();
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
 void MainWindow::on_register_cancel_button_clicked()
 {
-  // Maybe forms need to be cleared.
+  Register_ClearForms();
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 

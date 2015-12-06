@@ -103,6 +103,7 @@ private:
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
+  void Register_ClearForms();
 
   Ui::MainWindow *ui;
   Database *db;

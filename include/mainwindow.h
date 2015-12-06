@@ -4,9 +4,10 @@
 #include <QVector>
 #include <QPixmap>
 //#include <QPropertyAnimation>
-//#include <QMovie>
+#include <QMovie>
 #include <QLabel>
 #include <QSound>
+#include <QList>
 #include "database.h"
 #include "customertablemodel.h"
 #include "testimonialtablemodel.h"
@@ -29,6 +30,18 @@ public:
     INFORMATION,
     ADMINISTRATOR,
     CUSTOMER
+  };
+
+  enum CustomerPage {
+    CUST_PRODUCTS,
+    CUST_TESTIMONIALS,
+    CUST_PURCHASE
+  };
+
+  struct ProductInfo {
+    QString productName;
+    QString html;
+    double  price;
   };
 
   explicit MainWindow(QWidget *parent = 0);
@@ -91,6 +104,14 @@ private slots:
 
   void on_customer_send_pamphlet_button_clicked();
 
+  void on_toolBox_currentChanged(int index);
+
+  void on_customer_testimonial_slider_sliderMoved(int position);
+
+  void on_customer_testimonial_slider_valueChanged(int value);
+
+  void on_customer_products_slider_valueChanged(int value);
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
@@ -101,6 +122,9 @@ private:
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
+  void SetTestimonialView(int index);
+  void UpdateTestimonialList();
+  void LoadProductList();
 
   Ui::MainWindow *ui;
   Database *db;
@@ -108,6 +132,9 @@ private:
   TestimonialTableModel *tTableModel;
   PurchasesTableModel *pTableModel;
   QVector<QPixmap> mainBackground;
+  QList<QSqlRecord> *testimonials;
+  QList<ProductInfo> ProductInfoList;
+  QLabel *background;
   void InitTestimonialTableView();
   void InitCustomerTableView();
 };

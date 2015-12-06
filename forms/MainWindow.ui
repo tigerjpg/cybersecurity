@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="login_page">
      <property name="cursor">
@@ -466,15 +466,15 @@
         </rect>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="admin_customer_page">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>761</width>
+          <height>389</height>
          </rect>
         </property>
         <attribute name="label">
@@ -526,7 +526,7 @@
            <x>19</x>
            <y>29</y>
            <width>161</width>
-           <height>137</height>
+           <height>175</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -556,6 +556,30 @@
             <property name="text">
              <string>Key Customers</string>
             </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <item>
+             <property name="text">
+              <string>all interest levels</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>not interested</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>somewhat interested</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>very interested</string>
+             </property>
+            </item>
            </widget>
           </item>
          </layout>

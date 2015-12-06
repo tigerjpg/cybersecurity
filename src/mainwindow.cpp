@@ -167,3 +167,17 @@ void MainWindow::on_testimonial_approve_button_clicked()
     qDebug() << "SELECT A ROW YA DINGUS!!";
   }
 }
+
+void MainWindow::on_customer_remove_button_clicked()
+{
+  if(cTableModel->removeRow(ui->customer_tableView->currentIndex().row()))
+  {
+    cTableModel->submitAll();
+    cTableModel->select();
+    qDebug() << "CUSTOMER REMOVED!";
+  }
+  else
+  {
+    qDebug() << "SELECT A ROW YA DINGUS!!";
+  }
+}

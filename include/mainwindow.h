@@ -38,11 +38,6 @@ private slots:
 
 
 private:
-  void initializeCustomerView();
-  bool defaultCustomerView();
-  bool keyCustomerView();
-  bool interestCustomerView(int i);
-  bool interestAndKeyCustomerView(int i);
   void changeBackground(int index);
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);

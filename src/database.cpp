@@ -43,9 +43,9 @@ bool Database::Authenticate(QString username, QString password)
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
-  query.exec("select * from admins where username = \""
+  query.exec("select * from users where username = \""
                     + username + "\" and password = \""
-                    + encryptedStr + "\";");
+                    + encryptedStr + "\" and admin = 1;");
   return query.next();
 }
 
@@ -192,6 +192,19 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
     qDebug() << query.lastError().text();
     throw InvalidQuery();
   }
+}
+
+QList<QSqlRecord> Database::GetData(QString tableName)
+{
+  QList<QSqlRecord> *list = new QList<QSqlRecord>;
+  if(query.exec("select * from \"" + tableName +"\";"))
+  {
+    while(query.next())
+    {
+      list->push_back(query.record());
+    }
+  }
+  return *list;
 }
 
 QString Database::getTestimonialAtIndex(int i)

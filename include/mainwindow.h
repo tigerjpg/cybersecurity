@@ -36,6 +36,14 @@ private slots:
 
 
 
+  void on_GeneralInfoButton_clicked();
+
+  void on_MissioButton_clicked();
+
+  void on_WhatWeDo_clicked();
+
+  void on_HowWeDo_clicked();
+
 private:
   void initializeCustomerView();
   bool defaultCustomerView();

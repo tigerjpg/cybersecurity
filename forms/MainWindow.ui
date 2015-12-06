@@ -409,19 +409,6 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QTextBrowser" name="information_text">
-       <property name="geometry">
-        <rect>
-         <x>25</x>
-         <y>120</y>
-         <width>331</width>
-         <height>281</height>
-        </rect>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(255, 255, 255);</string>
-       </property>
-      </widget>
       <widget class="QScrollBar" name="information_verticalScrollBar">
        <property name="geometry">
         <rect>
@@ -449,6 +436,68 @@
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="GeneralInfoButton">
+       <property name="geometry">
+        <rect>
+         <x>10</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>General</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="MissioButton">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Mission</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="WhatWeDo">
+       <property name="geometry">
+        <rect>
+         <x>190</x>
+         <y>80</y>
+         <width>75</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>What We Do</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="HowWeDo">
+       <property name="geometry">
+        <rect>
+         <x>284</x>
+         <y>80</y>
+         <width>81</width>
+         <height>23</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>How We Do it</string>
+       </property>
+      </widget>
+      <widget class="QTextBrowser" name="CopanyInfoBrowser">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>120</y>
+         <width>311</width>
+         <height>281</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -487,7 +536,7 @@
           <x>0</x>
           <y>0</y>
           <width>541</width>
-          <height>295</height>
+          <height>297</height>
          </rect>
         </property>
         <attribute name="label">
@@ -663,7 +712,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

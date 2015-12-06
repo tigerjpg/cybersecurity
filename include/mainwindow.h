@@ -35,7 +35,17 @@ private slots:
   void on_finished_intro();
   void on_welcomeBtn_clicked();
 
+  void on_GeneralInfoButton_clicked();
 
+  void on_ConceptOfOperations_clicked();
+
+  void on_SupportedPlattaforms_clicked();
+
+  void on_RegisterButton_clicked();
+
+  void on_OKgoBackLogIn_clicked();
+
+  void on_InformationButton_clicked();
 
 private:
   void changeBackground(int index);

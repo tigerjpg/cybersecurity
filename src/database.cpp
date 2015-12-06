@@ -43,9 +43,9 @@ bool Database::Authenticate(QString username, QString password)
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
-  query.exec("select * from admins where username = \""
+  query.exec("select * from users where username = \""
                     + username + "\" and password = \""
-                    + encryptedStr + "\";");
+                    + encryptedStr + "\" and admin = 1;");
   return query.next();
 }
 

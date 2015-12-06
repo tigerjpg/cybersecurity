@@ -6,6 +6,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   ui->setupUi(this);
   db = new Database("./data/data.db", "QSQLITE");
+
+  this->setFixedSize(800,600);
+
+  ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 MainWindow::~MainWindow()
 {
@@ -25,7 +29,7 @@ void MainWindow::on_login_buttonBox_accepted()
       InitTestimonialTableView();
       ui->username_line->clear();
       ui->password_line->clear();
-      ui->stackedWidget->setCurrentIndex(ADMIN);
+      ui->stacked_pages->setCurrentIndex(ADMINISTRATOR);
       ui->customer_tableView->setModel(cTableModel);
       ui->customer_tableView->hideColumn(CustomerTableModel::ID);
       ui->customer_tableView->resizeColumnToContents(CustomerTableModel::NAME);
@@ -48,7 +52,7 @@ void MainWindow::on_login_buttonBox_rejected()
 {
   ui->username_line->clear();
   ui->password_line->clear();
-  ui->stackedWidget->setCurrentIndex(0 /*make this WELCOME later*/);
+  ui->stacked_pages->setCurrentIndex(0 /*make this WELCOME later*/);
 }
 
 void MainWindow::on_customer_tableView_activated(const QModelIndex &index)
@@ -206,6 +210,34 @@ void MainWindow::on_testimonial_approve_button_clicked()
   {
     qDebug() << "SELECT A ROW YA DINGUS!!";
   }
+}
+
+void MainWindow::WelcomeAnimation()
+{
+  ui->welcomeBtn->setEnabled(false);
+  QPropertyAnimation *tigershield = new QPropertyAnimation(ui->welcomeBtn, "geometry");
+  connect(tigershield, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
+  tigershield->setDuration(1500);
+  tigershield->setStartValue(QRect(-25, -216, 1200, 1200));
+  tigershield->setEndValue(QRect((1024/2)-178, (768/2)-200, 400, 400));
+  tigershield->start();
+}
+
+void MainWindow::on_finished_intro()
+{
+  QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
+//  connect(titlein, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
+  titlein->setDuration(200);
+  ui->welcomeTitle->show();
+  titlein->setStartValue(QRect(262,-120,500,120));
+  titlein->setEndValue(QRect(262,57,500,120));
+  titlein->start();
+  ui->welcomeBtn->setEnabled(true);
+}
+
+
+void MainWindow::on_welcomeBtn_clicked()
+{
 }
 
 void MainWindow::on_customer_remove_button_clicked()

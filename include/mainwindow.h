@@ -20,19 +20,20 @@ class MainWindow;
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
+
 public:
-  enum Page
-  {
+  enum Page {
+    INTRO,
     LOGIN,
     REGISTER,
-    INFO,
-    ADMIN,
+    INFORMATION,
+    ADMINISTRATOR,
     CUSTOMER
   };
 
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
-
+  void WelcomeAnimation();
 public slots:
 
 private slots:
@@ -62,6 +63,11 @@ private slots:
   void on_customer_purchase_button_clicked();
 
   void on_customer_submit_changes_button_clicked();
+
+private slots:
+  void on_finished_intro();
+  void on_welcomeBtn_clicked();
+
 
 private:
   Ui::MainWindow *ui;

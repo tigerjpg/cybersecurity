@@ -2,6 +2,7 @@
 #define DATABASE_H
 #include <QtSql>
 #include <QException>
+#include <QList>
 #include "qblowfish.h"
 #define KEY_HEX "0d3dd5d20734921c01bd78179fabf9ac"
 
@@ -43,6 +44,9 @@ public:
   bool IsEmpty(QString tableName);
   ///Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
+
+  QList<QSqlRecord> GetData(QString tableName);
+
 
   QString getTestimonialAtIndex(int i);
   QString getImageAtIndex(int i);

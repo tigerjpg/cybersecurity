@@ -15,17 +15,33 @@ DEPENDPATH += src
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
-           src/mainwindow.cpp \
-       src/imagebutton.cpp \
-       src/database.cpp \
-    src/qblowfish.cpp
+		   src/imagebutton.cpp \
+		   src/database.cpp \
+    src/qblowfish.cpp \
+    src/customertablemodel.cpp \
+    src/mainwindow.cpp \
+    src/testimonialtablemodel.cpp \
+    src/addtestimonialpopup.cpp \
+    src/viewpurchasespopup.cpp \
+    src/purchasestablemodel.cpp \
+    src/addcustomerpopup.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
       include/database.h \
     include/qblowfish_p.h \
-    include/qblowfish.h
+    include/qblowfish.h \
+    include/customertablemodel.h \
+    include/testimonialtablemodel.h \
+    include/addtestimonialpopup.h \
+    include/viewpurchasespopup.h \
+    include/purchasestablemodel.h \
+    include/addcustomerpopup.h
 
-FORMS    += forms/MainWindow.ui
+FORMS    += \
+    forms/MainWindow.ui \
+    forms/AddTestimonialPopup.ui \
+    forms/ViewPurchasesPopup.ui \
+    forms/AddCustomerPopup.ui
 
 RESOURCES += cyberresources.qrc

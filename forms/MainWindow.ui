@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QStackedWidget" name="stackedWidget">
+   <widget class="QStackedWidget" name="stacked_pages">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -24,8 +24,42 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
+    <widget class="QWidget" name="intro_page">
+     <widget class="imagebutton" name="welcomeBtn">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>157</y>
+        <width>400</width>
+        <height>400</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>PushButton</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="welcomeTitle">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>30</y>
+        <width>500</width>
+        <height>120</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>:/images/TIGERtitle.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="login_page">
      <widget class="QFrame" name="login_frame">
       <property name="geometry">
@@ -515,8 +549,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>541</width>
-          <height>295</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -635,6 +669,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>imagebutton</class>
+   <extends>QPushButton</extends>
+   <header location="global">imagebutton.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

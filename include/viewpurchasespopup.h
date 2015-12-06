@@ -8,6 +8,10 @@ namespace Ui {
 class ViewPurchasesPopup;
 }
 
+/*!
+ * \brief The ViewPurchasesPopup class
+ * is a popup window for viewing a specific customers purchases.
+ */
 class ViewPurchasesPopup : public QWidget
 {
   Q_OBJECT

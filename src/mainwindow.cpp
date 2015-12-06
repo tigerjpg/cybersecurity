@@ -31,11 +31,7 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->password_line->clear();
       ui->stacked_pages->setCurrentIndex(ADMINISTRATOR);
       ui->customer_tableView->setModel(cTableModel);
-      ui->customer_tableView->hideColumn(CustomerTableModel::ID);
-      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::INTEREST);
-      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::SENT);
-      ui->customer_tableView->horizontalHeader()->setStretchLastSection(true);
-      //      ui->customer_tableView->resizeColumnsToContents();
+      InitCustomerTableView();
     }
     else
     {
@@ -142,6 +138,10 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
   }
 }
 
+/*!
+ * \brief MainWindow::on_testimonial_add_button_clicked
+ * Add a testimonial. Creates a popup window.
+ */
 void MainWindow::on_testimonial_add_button_clicked()
 {
   AddTestimonialPopup *p;
@@ -154,6 +154,10 @@ void MainWindow::on_testimonial_add_button_clicked()
   p->show();
 }
 
+/*!
+ * \brief MainWindow::InitTestimonialTableView
+ * Initialize the Testimonial TableView
+ */
 void MainWindow::InitTestimonialTableView()
 {
   ui->testimonial_tableView->setEditTriggers(QTableView::NoEditTriggers);
@@ -168,6 +172,22 @@ void MainWindow::InitTestimonialTableView()
   ui->testimonial_tableView->resizeRowsToContents();
 }
 
+/*!
+ * \brief MainWindow::InitCustomerTableView
+ * Initialize the customer tableView
+ */
+void MainWindow::InitCustomerTableView()
+{
+  ui->customer_tableView->hideColumn(CustomerTableModel::ID);
+  ui->customer_tableView->resizeColumnToContents(CustomerTableModel::INTEREST);
+  ui->customer_tableView->resizeColumnToContents(CustomerTableModel::SENT);
+  ui->customer_tableView->horizontalHeader()->setStretchLastSection(true);
+}
+
+/*!
+ * \brief MainWindow::on_testimonial_remove_button_clicked
+ * Remove a testimonial
+ */
 void MainWindow::on_testimonial_remove_button_clicked()
 {
   if(tTableModel->removeRow(ui->testimonial_tableView->currentIndex().row()))
@@ -183,6 +203,10 @@ void MainWindow::on_testimonial_remove_button_clicked()
 
 }
 
+/*!
+ * \brief MainWindow::on_testimonial_approve_button_clicked
+ * Approve a testimonial
+ */
 void MainWindow::on_testimonial_approve_button_clicked()
 {
   int row = ui->testimonial_tableView->currentIndex().row();
@@ -375,6 +399,10 @@ void MainWindow::on_customer_add_pushButton_clicked()
   p->show();
 }
 
+/*!
+ * \brief MainWindow::on_customer_send_pamphlet_button_clicked
+ * Alter customers table "sent" value
+ */
 void MainWindow::on_customer_send_pamphlet_button_clicked()
 {
   //Check if row is selected

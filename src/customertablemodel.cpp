@@ -3,6 +3,14 @@
 CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
                    :QSqlTableModel(parent, *db)
 {
+  Initialize();
+}
+
+/*!
+ * \brief CustomerTableModel::Initialize
+ */
+void CustomerTableModel::Initialize()
+{
   this->setEditStrategy(QSqlTableModel::OnManualSubmit);
   this->setTable("customers");
   this->setHeaderData(ID, Qt::Horizontal, tr("ID"), QSqlTableModel::OnManualSubmit);
@@ -11,16 +19,15 @@ CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
   this->setHeaderData(KEY, Qt::Horizontal, tr("Key"), QSqlTableModel::OnManualSubmit);
   this->setHeaderData(INTEREST, Qt::Horizontal, tr("Interest"), QSqlTableModel::OnManualSubmit);
   this->setHeaderData(SENT, Qt::Horizontal, tr("Pamphlet Sent"), QSqlTableModel::OnManualSubmit);
-  this->select();
-}
-
-void CustomerTableModel::Initialize()
-{
-  this->setTable("customers");
   this->setFilter("");
   this->select();
 }
 
+/*!
+ * \brief CustomerTableModel::IsKeyToggle
+ * If a customer is a key customer, set them to not be a key customer.
+ * If a customer is not a key customer, make them a key customer.
+ */
 void CustomerTableModel::IsKeyToggle()
 {
   if (this->filter() == "key == 1")

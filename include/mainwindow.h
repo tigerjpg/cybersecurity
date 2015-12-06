@@ -81,6 +81,7 @@ private:
   PurchasesTableModel *pTableModel;
   QVector<QPixmap> mainBackground;
   void InitTestimonialTableView();
+  void InitCustomerTableView();
 };
 
 #endif // MAINWINDOW_H

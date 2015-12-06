@@ -187,6 +187,12 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
   }
 }
 
+/*!
+ * \brief Database::GetData
+ * Get a QList of all records in a specified table.
+ * \param tableName The name of the table to retrieve data from
+ * \return QList<QSqlRecord> containing all records in table
+ */
 QList<QSqlRecord> Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
@@ -200,6 +206,11 @@ QList<QSqlRecord> Database::GetData(QString tableName)
   return *list;
 }
 
+/*!
+ * \brief Database::getTestimonialAtIndex
+ * \param i index
+ * \return The testimonial at a specific index
+ */
 QString Database::getTestimonialAtIndex(int i)
 {
   QString id = QString::number(i);
@@ -213,6 +224,11 @@ QString Database::getTestimonialAtIndex(int i)
   return "Woops!";
 }
 
+/*!
+ * \brief Database::getImageAtIndex
+ * \param i
+ * \return image name at a specified index
+ */
 QString Database::getImageAtIndex(int i)
 {
   QString id = QString::number(i);

@@ -7,9 +7,12 @@ PurchasesTableModel::PurchasesTableModel(QObject *parent, QSqlDatabase *db, int 
   this->setTable("purchasesView");
   this->setFilter("id = " + id);
   Initialize();
-  qDebug() << this->select();
 }
 
+/*!
+ * \brief PurchasesTableModel::Initialize
+ * Initialize settings for PurchasesTableModel
+ */
 void PurchasesTableModel::Initialize()
 {
   this->setHeaderData(CUSTNAME, Qt::Horizontal, tr("Customer Name"), QSqlTableModel::OnManualSubmit);

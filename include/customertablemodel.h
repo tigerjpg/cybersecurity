@@ -7,6 +7,7 @@ class CustomerTableModel : public QSqlTableModel
 {
   Q_OBJECT
 public:
+  ///Fields in the Customer Table
   enum Fields
   {
     ID,
@@ -19,7 +20,9 @@ public:
 
   CustomerTableModel(QObject *parent, QSqlDatabase *db);
 
+  ///Initialize model settings
   void Initialize();
+  ///Set customer to key customer or not
   void IsKeyToggle();
 };
 

@@ -15,6 +15,9 @@ public:
     explicit ContactUs(QWidget *parent = 0);
     ~ContactUs();
 
+private slots:
+    void on_OKEscapeContactUs_clicked();
+
 private:
     Ui::ContactUs *ui;
 };

@@ -6,6 +6,7 @@ AddTestimonialPopup::AddTestimonialPopup(QWidget *parent, Database *data, Testim
   ui(new Ui::AddTestimonialPopup), model(tTableModel), db(data)
 {
   ui->setupUi(this);
+  this->setWindowTitle("Add Testimonial");
   ui->testimonial_popup_nameLineEdit->setValidator(new QRegExpValidator(QRegExp("[\\w\\s]*"), this));
 }
 

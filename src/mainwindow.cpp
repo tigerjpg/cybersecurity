@@ -270,3 +270,21 @@ void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
   }
   cTableModel->select();
 }
+
+void MainWindow::on_customer_purchase_button_clicked()
+{
+  int row = ui->customer_tableView->currentIndex().row();
+  if(row != -1)
+  {
+    int id = cTableModel->record(row).field("id").value().toInt();
+    pTableModel = new PurchasesTableModel(this, db, id);
+    ViewPurchasesPopup *p;
+    p = new ViewPurchasesPopup(0, db, pTableModel);
+    p->setWindowModality(Qt::ApplicationModal);
+    p->show();
+  }
+  else
+  {
+    qDebug() << "SELECT A ROW YA DINGUS!!";
+  }
+}

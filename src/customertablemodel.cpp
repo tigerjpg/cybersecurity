@@ -3,6 +3,7 @@
 CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
                    :QSqlTableModel(parent, *db)
 {
+  this->setEditStrategy(QSqlTableModel::OnManualSubmit);
   this->setTable("customers");
   this->select();
 }

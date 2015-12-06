@@ -11,6 +11,8 @@
 #include "customertablemodel.h"
 #include "testimonialtablemodel.h"
 #include "addtestimonialpopup.h"
+#include "viewpurchasespopup.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -57,11 +59,14 @@ private slots:
 
   void on_customer_interest_comboBox_currentIndexChanged(int index);
 
+  void on_customer_purchase_button_clicked();
+
 private:
   Ui::MainWindow *ui;
   Database *db;
   CustomerTableModel *cTableModel;
   TestimonialTableModel *tTableModel;
+  PurchasesTableModel *pTableModel;
   QVector<QPixmap> mainBackground;
   void InitTestimonialTableView();
 };

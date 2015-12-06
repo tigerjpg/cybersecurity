@@ -5,6 +5,7 @@
 
 class CustomerTableModel : public QSqlTableModel
 {
+  Q_OBJECT
 public:
   enum Fields
   {

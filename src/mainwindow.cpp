@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
   this->setFixedSize(800,600);
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
+  ui->stacked_pages->setCurrentIndex(REGISTER);
+  ui->register_buttonBox->setEnabled(false);
 
 
 
@@ -18,6 +20,27 @@ MainWindow::~MainWindow()
 {
   delete ui;
 }
+
+bool MainWindow::RegistrationCompleted()
+{
+  if(!ui->username_label_2->text().isEmpty() &&
+     !ui->password_label_2->text().isEmpty() &&
+     !ui->company_line->text().isEmpty() &&
+     !ui->address_line->text().isEmpty() &&
+     ui->interest_box->currentIndex() > 0 &&
+     ui->terms_box->isChecked())
+  {
+    qDebug() << "registration complete\n";
+    return true;
+  }
+  else
+  {
+    qDebug() << "registration incomplete\n";
+    ui->register_buttonBox->setEnabled(false);
+    return false;
+  }
+}
+
 
 void MainWindow::WelcomeAnimation()
 {
@@ -76,3 +99,44 @@ bool MainWindow::interestAndKeyCustomerView(int i)
   return sql_table_model->select();
 }
 
+
+void MainWindow::on_register_buttonBox_accepted()
+{
+
+}
+
+void MainWindow::on_username_line_2_editingFinished()
+{
+    if(RegistrationCompleted())
+      ui->register_buttonBox->setEnabled(true);
+}
+
+void MainWindow::on_password_line_2_editingFinished()
+{
+  if(RegistrationCompleted())
+    ui->register_buttonBox->setEnabled(true);
+}
+
+void MainWindow::on_company_line_editingFinished()
+{
+  if(RegistrationCompleted())
+    ui->register_buttonBox->setEnabled(true);
+}
+
+void MainWindow::on_address_line_editingFinished()
+{
+  if(RegistrationCompleted())
+    ui->register_buttonBox->setEnabled(true);
+}
+
+void MainWindow::on_interest_box_currentIndexChanged(int index)
+{
+  if(RegistrationCompleted())
+    ui->register_buttonBox->setEnabled(true);
+}
+
+void MainWindow::on_terms_box_toggled(bool checked)
+{
+  if(RegistrationCompleted())
+    ui->register_buttonBox->setEnabled(true);
+}

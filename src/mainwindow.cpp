@@ -43,10 +43,11 @@ bool MainWindow::RegistrationCompleted()
 
 void MainWindow::Register()
 {
-  db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
-                  QString::number(ui->interest_box->currentIndex()-1), "false");
-
-
+  if(db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
+                  QString::number(ui->interest_box->currentIndex()-1), "false"))
+  {
+    qDebug() << ui->company_line->text() << " added to the customer table.\n";
+  }
 }
 
 
@@ -147,4 +148,5 @@ void MainWindow::on_terms_box_toggled(bool checked)
 void MainWindow::on_register_okay_button_clicked()
 {
   Register();
+  ui->stacked_pages->setCurrentIndex(LOGIN);
 }

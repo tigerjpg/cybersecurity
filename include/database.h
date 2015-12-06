@@ -31,7 +31,7 @@ public:
   ///Add a customer to the database
   bool AddCustomer(QString name, QString address, QString interest, QString key);
   ///Add a user to the database
-  bool AddUser(QString username, QString password, QString admin);
+  bool AddUser(QString id, QString username, QString password, QString admin);
   ///Remove a customer from the database
   bool RemoveCustomer(QString name);
   ///Set a query
@@ -44,6 +44,8 @@ public:
   bool IsEmpty(QString tableName);
   ///Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
+  ///Returns the id of the customer with the matching name
+  QString GetCustomerIdByName(QString name);
 
   QList<QSqlRecord> GetData(QString tableName);
 

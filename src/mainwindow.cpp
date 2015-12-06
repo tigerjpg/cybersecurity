@@ -40,15 +40,20 @@ bool MainWindow::RegistrationCompleted()
 
 void MainWindow::Register()
 {
-  if(db->AddUser(ui->username_line_2->text(), ui->password_line_2->text(), "false"))
-  {
-    qDebug() << ui->username_line_2->text() << " added the the users table.\n";
-  }
+
   if(db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
                   QString::number(ui->interest_box->currentIndex()-1), "false"))
   {
     qDebug() << ui->company_line->text() << " added to the customer table.\n";
+
+    if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text(), "false"))
+    {
+      qDebug() << ui->username_line_2->text() << " added the the users table.\n";
+    }
   }
+
+
+
 }
 
 

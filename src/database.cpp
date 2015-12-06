@@ -62,7 +62,7 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
   if(query.exec("insert into customers values(NULL, \"" + name +
-                "\", \"" + address + "\", " + interest + ", " + key +");"))
+                "\", \"" + address + "\", " + interest + ", " + key +",0);"))
     return true;
   else
   {
@@ -78,7 +78,7 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
  * \param key true if is administrator
  * \return true if successful
  */
-bool Database::AddUser(QString username, QString password, QString admin)
+bool Database::AddUser(QString id, QString username, QString password, QString admin)
 {
   QBlowfish bf(QByteArray::fromHex(KEY_HEX));
   bf.setPaddingEnabled(true);
@@ -87,8 +87,8 @@ bool Database::AddUser(QString username, QString password, QString admin)
 
   if(admin == "true") { admin = "1"; }
   else if(admin == "false") { admin = "0"; }
-  if(query.exec("insert into users values(\"" + username +
-                "\", \"" + encryptedStr + "\", \"" + admin + "\", 0);"))
+  if(query.exec("insert into users values(\"" + id +
+                "\", \"" + username + "\", \"" + encryptedStr + "\", 0);"))
     return true;
   else
   {
@@ -186,6 +186,33 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
                 "\" where \"" + fieldName + "\" = \"" + value + "\";"))
   {
     return query.next();
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
+/*!
+ * \brief Database::GetCustomerIdByName
+ * \param name
+ * \return the id of the customer
+ */
+QString Database::GetCustomerIdByName(QString name)
+{
+  if(query.exec("select id from customers where name = \"" + name + "\";"))
+  {
+    qDebug() << query.result();
+    if(query.next())
+    {
+      return query.record().field("id").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
   }
   else
   {

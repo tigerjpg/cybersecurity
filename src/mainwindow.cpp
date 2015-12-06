@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
 
+  //ui->stacked_pages->setCurrentIndex(INFORMATION);
+
 
 
 }
@@ -162,46 +164,88 @@ void MainWindow::on_GeneralInfoButton_clicked()
     QString generalInfo = "T.I.G.E.R Inc\n\n"
                           "Address: 3 Cheetah Avenue, Irvine, C.A 92614\n"
                           "Phone Number: 949-420-6969\n"
-                          "Email Address: TigerInc@Tiger.cjpg";
+                          "Email Address: TigerInc@Tiger.cjpg\n\n";
+    QString missionStatement = "Our Mission:\n\n"
+                               "This company was created by Ernest L. Cheetahiser in January, 1991."
+                               "The reason to create this company was to provide the public with solutions "
+                               "to new cyber security threats. "
+                               "We want to make the business world safe and reliable in order to have a more "
+                               "stable market and economy.\n\n";
+
+    QString whatWeDo = "What We Do: \n\n"
+                       "We create all kinds of solutions to cyberthreats."
+                       " We create products that prevent data leaks from within and outside the company. "
+                       "We also create environments that fight cyber attackers and provide ways to know the source "
+                       "of the issue so future attacks can be prevented. The company has in it's mind that time"
+                       " is precious, that is why we provide the fastest and most reliable technical and costumer service in the market. "
+                       "We care and protect our costumers better than ourselves\n\n.";
+
+    QString howWeDo = "How We do it:\n\n"
+                      "We use cutting edge technology for our systems as well as the most efficient software. "
+                      "Our development team makes sure that the data we manage is always safe and our software "
+                      "not interfering with the traffic. Because we care about our clients, we have meetings with company "
+                      "employees to find ways to improve our services and products.\n\n";
+
+
+
     //ui->information_text->setText(generalInfo);
 
-    QTextBrowser :: wordWrapMode();
-   QTextBrowser :: setReadOnly(generalInfo);
-}
-
-void MainWindow::on_MissioButton_clicked()
-{
-    QString missionStatement = "Our Mission:\n\n"
-                               "This company was created by Ernest L. Cheetahiser in January, 1991.\n"
-                               "The reason to create this company was to provide the public with solutions\n"
-                               "to new cyber security threats.\n"
-                               "We want to make the business world safe and reliable in order to have a more\n"
-                               "stable market and economy.";
-    //ui->information_text->setText(missionStatement);
-
-     QTextBrowser :: wordWrapMode();
-    QTextBrowser :: setReadOnly(missionStatement);
-
-
+    ui->InformationSpace->setText(generalInfo + missionStatement + whatWeDo + howWeDo);
 
 }
 
-void MainWindow::on_WhatWeDo_clicked()
+void MainWindow::on_ConceptOfOperations_clicked()
 {
-    QString whatWeDo = "What We Do: \n\n"
-                       "We create all kinds of solutions to cyberthreats. We create products that prevent data leaks from within and outside the company. We also create environments that fight cyber attackers and provide ways to know the source of the issue so future attacks can be prevented. The company has in it's mind that time is precious, that is why we provide the fastest and most reliable technical and costumer service in the market. We care and protect our costumers better than ourselves.";
-    //whatWeDo.
+    QString conceptOfOperations = "Concept Of Operations\n\n"
+                                  "TIGER products are delivered within 2 business day of purchase. TIGER's Technitians come to the"
+            "costumer, take control of all the hardware necessary to install the purchased products. Upon installation, the"
+            "company will provide the services promised in time matter. The company will run a test to see if the software"
+            "is working as intended. In case of a fail in the test, TIGER will fix the issue without any additional cost, just"
+            "as specified in the policy. TIGER installs the systems within 48 hours. It requires that the costumer provides all"
+           " the current security details of the server. Nothing will be changed, instead, more security features will be"
+            "install on top of the curent. Tiger keeps a data base of employees and contacts them every quarter to see if the systems"
+            "are up to date, or to discuss contract clauses.\n\n";
 
-    QTextBrowser :: wordWrapMode();
-   QTextBrowser :: setReadOnly(whatWeDo);
-
+    ui->InformationSpace->setText(conceptOfOperations);
 }
 
-void MainWindow::on_HowWeDo_clicked()
+void MainWindow::on_SupportedPlattaforms_clicked()
 {
-    QString howWeDo = "How We do it\n\n"
-                      "We use cutting edge technology for our systems as well as the most efficient software. Our development team makes sure that the data we manage is always safe and our software not interfering with the traffic. Because we care about our clients, we have meetings with company employees to find ways to improve our services and products.";
+    QString plattaforms =   "Supported Plattaforms\n\n"
+                            "Ubuntu\n"
+                            "Debian\n"
+                            "Mint\n"
+                            "Fedora\n"
+                            "CentOs/Red Hat Enterprise Linux\n"
+                            "openSUSE/SUSE Linux Enterprise\n"
+                            "Mageia/Mandriva\n"
+                            "Arch Linux\n"
+                            "Slackware Linux\n\n"
 
-    QTextBrowser :: wordWrapMode();
-   QTextBrowser :: setReadOnly(howWeDo);
+                            "Others:\n\n"
+
+                            "none\n\n"
+
+                            "Hardware (Minimum):\n\n"
+
+                                "Intel® Xeon®\n"
+                                "500 TB of Memory";
+
+    ui->InformationSpace->setText(plattaforms);
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+
+   ui->stacked_pages->setCurrentIndex(INFORMATION);
+}
+
+void MainWindow::on_RegisterButton_clicked()
+{
+    ui->stacked_pages->setCurrentIndex(REGISTER);
+}
+
+void MainWindow::on_OKgoBackLogIn_clicked()
+{
+    ui->stacked_pages->setCurrentIndex(LOGIN);
 }

@@ -21,6 +21,7 @@ public:
   enum Page {
     INTRO,
     LOGIN,
+    REGISTER,
     INFORMATION,
     ADMINISTRATOR,
     CUSTOMER
@@ -38,11 +39,15 @@ private slots:
 
   void on_GeneralInfoButton_clicked();
 
-  void on_MissioButton_clicked();
+  void on_ConceptOfOperations_clicked();
 
-  void on_WhatWeDo_clicked();
+  void on_SupportedPlattaforms_clicked();
 
-  void on_HowWeDo_clicked();
+  void on_pushButton_clicked();
+
+  void on_RegisterButton_clicked();
+
+  void on_OKgoBackLogIn_clicked();
 
 private:
   void initializeCustomerView();

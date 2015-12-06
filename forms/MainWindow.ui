@@ -558,7 +558,8 @@ p, li { white-space: pre-wrap; }
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 12pt &quot;Times New Roman&quot;;</string>
+        <string notr="true">font: 12pt &quot;Times New Roman&quot;;
+background-color: rgb(255, 255, 255);</string>
        </property>
       </widget>
       <widget class="QPushButton" name="OKgoBackLogIn">
@@ -586,6 +587,9 @@ p, li { white-space: pre-wrap; }
         <height>531</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
       </property>
@@ -610,7 +614,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>389</height>
+          <height>405</height>
          </rect>
         </property>
         <attribute name="label">
@@ -627,6 +631,9 @@ p, li { white-space: pre-wrap; }
          </property>
          <property name="cursor" stdset="0">
           <cursorShape>OpenHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
          <property name="sizeAdjustPolicy">
           <enum>QAbstractScrollArea::AdjustToContents</enum>
@@ -708,6 +715,9 @@ p, li { white-space: pre-wrap; }
           </item>
           <item>
            <widget class="QCheckBox" name="customer_key_customers_checkBox">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
             <property name="text">
              <string>Key Customers</string>
             </property>
@@ -771,7 +781,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>389</height>
+          <height>405</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1154,7 +1164,7 @@ border: 3px solid gray;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

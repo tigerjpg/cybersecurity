@@ -4,17 +4,23 @@ MainWindow::MainWindow(QWidget *parent) :
   QMainWindow(parent),
   ui(new Ui::MainWindow)
 {
-  ui->setupUi(this);
   db = new Database("./data/data.db", "QSQLITE");
-
   this->setFixedSize(800,600);
 
-  ui->stacked_pages->setCurrentIndex(CUSTOMER);
+  // setup the background
+  background = new QLabel(this);
+  QMovie *movie = new QMovie(":/images/slowmatrix.gif");
+  setBackground(movie,45);
 
-  testimonials = NULL;
-  UpdateTestimonialList();
-  LoadProductList();
-  ui->stacked_pages->setCurrentIndex(LOGIN);
+ // setups the rest of the ui on top of the background
+ ui->setupUi(this);
+ testimonials = NULL;
+ UpdateTestimonialList();
+ LoadProductList();
+
+
+ // TEMP sets the default page to login screen
+ ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 MainWindow::~MainWindow()
 {
@@ -285,6 +291,16 @@ void MainWindow::Register()
 
 
 
+}
+
+void MainWindow::setBackground(QMovie *movie, int speed)
+{
+  // loads the background movie into a label
+  background->resize(this->size());
+  background->setMovie(movie);
+
+  movie->setSpeed(speed);
+  movie->start();
 }
 
 

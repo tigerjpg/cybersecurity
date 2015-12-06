@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QPixmap>
 //#include <QPropertyAnimation>
-//#include <QMovie>
+#include <QMovie>
 #include <QLabel>
 #include <QSound>
 #include <QList>
@@ -134,6 +134,7 @@ private:
   QVector<QPixmap> mainBackground;
   QList<QSqlRecord> *testimonials;
   QList<ProductInfo> ProductInfoList;
+  QLabel *background;
   void InitTestimonialTableView();
   void InitCustomerTableView();
 };

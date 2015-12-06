@@ -32,10 +32,10 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->stacked_pages->setCurrentIndex(ADMINISTRATOR);
       ui->customer_tableView->setModel(cTableModel);
       ui->customer_tableView->hideColumn(CustomerTableModel::ID);
-      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::NAME);
       ui->customer_tableView->resizeColumnToContents(CustomerTableModel::INTEREST);
-      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::KEY);
-//      ui->customer_tableView->resizeColumnsToContents();
+      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::SENT);
+      ui->customer_tableView->horizontalHeader()->setStretchLastSection(true);
+      //      ui->customer_tableView->resizeColumnsToContents();
     }
     else
     {
@@ -71,6 +71,7 @@ void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
   enum Interest
   {
     ALL,
+    NEVER,
     NOT,
     SOMEWHAT,
     VERY
@@ -82,14 +83,17 @@ void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
     case ALL:
       cTableModel->setFilter("key = 1");
       break;
-    case NOT:
+    case NEVER:
       cTableModel->setFilter("key = 1 and interest = 0");
       break;
-    case SOMEWHAT:
+    case NOT:
       cTableModel->setFilter("key = 1 and interest = 1");
       break;
-    case VERY:
+    case SOMEWHAT:
       cTableModel->setFilter("key = 1 and interest = 2");
+      break;
+    case VERY:
+      cTableModel->setFilter("key = 1 and interest = 3");
       break;
     default:
       cTableModel->setFilter("key = 1");
@@ -102,14 +106,17 @@ void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
     case ALL:
       cTableModel->setFilter("");
       break;
-    case NOT:
+    case NEVER:
       cTableModel->setFilter("interest = 0");
       break;
-    case SOMEWHAT:
+    case NOT:
       cTableModel->setFilter("interest = 1");
       break;
-    case VERY:
+    case SOMEWHAT:
       cTableModel->setFilter("interest = 2");
+      break;
+    case VERY:
+      cTableModel->setFilter("interest = 3");
       break;
     default:
       cTableModel->setFilter("");
@@ -226,7 +233,7 @@ void MainWindow::WelcomeAnimation()
 void MainWindow::on_finished_intro()
 {
   QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
-//  connect(titlein, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
+  //  connect(titlein, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
   titlein->setDuration(200);
   ui->welcomeTitle->show();
   titlein->setStartValue(QRect(262,-120,500,120));
@@ -255,11 +262,17 @@ void MainWindow::on_customer_remove_button_clicked()
 }
 
 
+/*!
+ * \brief MainWindow::on_customer_interest_comboBox_currentIndexChanged
+ * View only customers of a certain interest level.
+ * \param index
+ */
 void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
 {
   enum Interest
   {
     ALL,
+    NEVER,
     NOT,
     SOMEWHAT,
     VERY
@@ -272,14 +285,17 @@ void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
     case ALL:
       cTableModel->setFilter("");
       break;
-    case NOT:
+    case NEVER:
       cTableModel->setFilter("interest = 0");
       break;
-    case SOMEWHAT:
+    case NOT:
       cTableModel->setFilter("interest = 1");
       break;
-    case VERY:
+    case SOMEWHAT:
       cTableModel->setFilter("interest = 2");
+      break;
+    case VERY:
+      cTableModel->setFilter("interest = 3");
       break;
     }
   }
@@ -290,26 +306,35 @@ void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
     case ALL:
       cTableModel->setFilter("key = 1");
       break;
-    case NOT:
+    case NEVER:
       cTableModel->setFilter("key = 1 and interest = 0");
       break;
-    case SOMEWHAT:
+    case NOT:
       cTableModel->setFilter("key = 1 and interest = 1");
       break;
-    case VERY:
+    case SOMEWHAT:
       cTableModel->setFilter("key = 1 and interest = 2");
+      break;
+    case VERY:
+      cTableModel->setFilter("key = 1 and interest = 3");
       break;
     }
   }
   cTableModel->select();
 }
 
+/*!
+ * \brief MainWindow::on_customer_purchase_button_clicked
+ * Create a popup window with a table with the purchases
+ * of the specific customer you have selected.
+ */
 void MainWindow::on_customer_purchase_button_clicked()
 {
   int row = ui->customer_tableView->currentIndex().row();
   if(row != -1)
   {
     int id = cTableModel->record(row).field("id").value().toInt();
+    qDebug() << id;
     pTableModel = new PurchasesTableModel(this, db, id);
     ViewPurchasesPopup *p;
     p = new ViewPurchasesPopup(0, db, pTableModel);
@@ -322,6 +347,10 @@ void MainWindow::on_customer_purchase_button_clicked()
   }
 }
 
+/*!
+ * \brief MainWindow::on_customer_submit_changes_button_clicked
+ * Finalize changes made to the customer table
+ */
 void MainWindow::on_customer_submit_changes_button_clicked()
 {
   if(cTableModel->submitAll())
@@ -333,4 +362,49 @@ void MainWindow::on_customer_submit_changes_button_clicked()
     qDebug() << "CHANGES NOT APPLIED TO CUSTOMER TABLE";
   }
 
+}
+
+/*!
+ * \brief MainWindow::on_customer_add_pushButton_clicked
+ * Creates a popup window with a form to add Customers
+ */
+void MainWindow::on_customer_add_pushButton_clicked()
+{
+  AddCustomerPopup *p = new AddCustomerPopup(0, db, cTableModel);
+  p->setWindowModality(Qt::ApplicationModal);
+  p->show();
+}
+
+void MainWindow::on_customer_send_pamphlet_button_clicked()
+{
+  //Check if row is selected
+  int row = ui->customer_tableView->currentIndex().row();
+  if(row > -1)
+  {
+    //If customer has not been sent a pamphlet (sent == 0)
+    if(!cTableModel->record(row).field("sent").value().toInt())
+    {
+      QString name = cTableModel->record(row).field("name").value().toString();
+      if(db->SetQuery("update customers set sent = 1 where name = \"" + name + "\";"))
+      {
+        if(db->Exec())
+        {
+          cTableModel->select();
+          qDebug() << "CUSTOMER HAS BEEN SENT A PAMPHLET! HOO-AHH!";
+        }
+      }
+      else
+      {
+        qDebug() << "INVALID QUERY!";
+      }
+    }
+    else
+    {
+      qDebug() << "CUSTOMER HAS ALREADY BEEN SENT A PAMPHLET! GOSH";
+    }
+  }
+  else
+  {
+    qDebug() << "SELECT A ROW YA DINGUS!";
+  }
 }

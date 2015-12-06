@@ -13,7 +13,8 @@ public:
     NAME,
     ADDRESS,
     INTEREST,
-    KEY
+    KEY,
+    SENT
   };
 
   CustomerTableModel(QObject *parent, QSqlDatabase *db);

@@ -10,6 +10,7 @@ CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
   this->setHeaderData(ADDRESS, Qt::Horizontal, tr("Address"), QSqlTableModel::OnManualSubmit);
   this->setHeaderData(KEY, Qt::Horizontal, tr("Key"), QSqlTableModel::OnManualSubmit);
   this->setHeaderData(INTEREST, Qt::Horizontal, tr("Interest"), QSqlTableModel::OnManualSubmit);
+  this->setHeaderData(SENT, Qt::Horizontal, tr("Pamphlet Sent"), QSqlTableModel::OnManualSubmit);
   this->select();
 }
 

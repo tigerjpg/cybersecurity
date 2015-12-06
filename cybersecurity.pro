@@ -23,7 +23,8 @@ SOURCES += src/main.cpp \
     src/testimonialtablemodel.cpp \
     src/addtestimonialpopup.cpp \
     src/viewpurchasespopup.cpp \
-    src/purchasestablemodel.cpp
+    src/purchasestablemodel.cpp \
+    src/addcustomerpopup.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
@@ -34,12 +35,14 @@ HEADERS  += include/mainwindow.h \
     include/testimonialtablemodel.h \
     include/addtestimonialpopup.h \
     include/viewpurchasespopup.h \
-    include/purchasestablemodel.h
+    include/purchasestablemodel.h \
+    include/addcustomerpopup.h
 
 FORMS    += \
     forms/MainWindow.ui \
     forms/AddTestimonialPopup.ui \
-    forms/ViewPurchasesPopup.ui
+    forms/ViewPurchasesPopup.ui \
+    forms/AddCustomerPopup.ui
 
 RESOURCES += \
     cyberresources.qrc

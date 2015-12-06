@@ -1,4 +1,4 @@
-#include "include/purchasestablemodel.h"
+#include "purchasestablemodel.h"
 #include <QDebug>
 PurchasesTableModel::PurchasesTableModel(QObject *parent, QSqlDatabase *db, int customer):
                                          QSqlTableModel(parent, *db)

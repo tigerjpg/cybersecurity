@@ -57,12 +57,13 @@ bool Database::Authenticate(QString username, QString password)
  * \param key true if is key customer
  * \return true if successful
  */
-bool Database::AddCustomer(QString name, QString address, QString interest, QString key)
+bool Database::AddCustomer(QString name, QString address, QString interest, QString key, QString sent)
 {
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
   if(query.exec("insert into customers values(NULL, \"" + name +
-                "\", \"" + address + "\", " + interest + ", " + key +");"))
+                "\", \"" + address + "\", " + interest + ", "
+                + key + ", " + sent + ");"))
     return true;
   else
   {

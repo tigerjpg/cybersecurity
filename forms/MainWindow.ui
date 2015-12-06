@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -53,7 +53,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>:/images/TIGERtitle.png</pixmap>
+       <pixmap resource="../cyberresources.qrc">:/images/TIGERtitle.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -569,10 +569,10 @@
         <widget class="QWidget" name="verticalLayoutWidget">
          <property name="geometry">
           <rect>
-           <x>19</x>
-           <y>29</y>
-           <width>161</width>
-           <height>351</height>
+           <x>0</x>
+           <y>0</y>
+           <width>178</width>
+           <height>381</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -584,6 +584,13 @@
            </widget>
           </item>
           <item>
+           <widget class="QPushButton" name="customer_remove_button">
+            <property name="text">
+             <string>Remove Customer</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="customer_purchase_button">
             <property name="text">
              <string>View Purchases</string>
@@ -591,9 +598,9 @@
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="customer_remove_button">
+           <widget class="QPushButton" name="customer_send_pamphlet_button">
             <property name="text">
-             <string>Remove Customer</string>
+             <string>Send Pamphlet</string>
             </property>
            </widget>
           </item>
@@ -609,6 +616,11 @@
             <item>
              <property name="text">
               <string>all interest levels</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>never call again</string>
              </property>
             </item>
             <item>
@@ -821,6 +833,8 @@
    <header location="global">imagebutton.h</header>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../cyberresources.qrc"/>
+ </resources>
  <connections/>
 </ui>

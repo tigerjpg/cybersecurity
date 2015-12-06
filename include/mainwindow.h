@@ -12,7 +12,7 @@
 #include "testimonialtablemodel.h"
 #include "addtestimonialpopup.h"
 #include "viewpurchasespopup.h"
-
+#include "addcustomerpopup.h"
 namespace Ui {
 class MainWindow;
 }
@@ -68,6 +68,10 @@ private slots:
   void on_finished_intro();
   void on_welcomeBtn_clicked();
 
+
+  void on_customer_add_pushButton_clicked();
+
+  void on_customer_send_pamphlet_button_clicked();
 
 private:
   Ui::MainWindow *ui;

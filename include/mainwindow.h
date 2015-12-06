@@ -4,7 +4,7 @@
 #include <QVector>
 #include <QPixmap>
 //#include <QPropertyAnimation>
-//#include <QMovie>
+#include <QMovie>
 #include <QLabel>
 #include <QSound>
 #include "database.h"

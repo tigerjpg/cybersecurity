@@ -7,14 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
   db = new Database("./data/data.db", "QSQLITE");
   this->setFixedSize(800,600);
 
-  // loads the background movie into a label
+  // setup the background
+  background = new QLabel(this);
   QMovie *movie = new QMovie(":/images/slowmatrix.gif");
-  QLabel *background = new QLabel(this);
-  background->resize(this->size());
-  background->setMovie(movie);
-
-  movie->setSpeed(45);
-  movie->start();
+  setBackground(movie,45);
 
  // setups the rest of the ui on top of the background
  ui->setupUi(this);
@@ -287,6 +283,16 @@ void MainWindow::Register()
   {
     qDebug() << ui->company_line->text() << " added to the customer table.\n";
   }
+}
+
+void MainWindow::setBackground(QMovie *movie, int speed)
+{
+  // loads the background movie into a label
+  background->resize(this->size());
+  background->setMovie(movie);
+
+  movie->setSpeed(speed);
+  movie->start();
 }
 
 

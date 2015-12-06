@@ -107,7 +107,8 @@ private:
   CustomerTableModel *cTableModel;
   TestimonialTableModel *tTableModel;
   PurchasesTableModel *pTableModel;
-  QVector<QPixmap> mainBackground;
+  QLabel *background;
+  //QVector<QPixmap> mainBackground;
   void InitTestimonialTableView();
   void InitCustomerTableView();
 };

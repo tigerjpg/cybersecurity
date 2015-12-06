@@ -3,12 +3,16 @@
 #include <QMainWindow>
 #include <QVector>
 #include <QPixmap>
-#include <QPropertyAnimation>
-#include <QMovie>
+//#include <QPropertyAnimation>
+//#include <QMovie>
 #include <QLabel>
 #include <QSound>
 #include "database.h"
-
+#include "customertablemodel.h"
+#include "testimonialtablemodel.h"
+#include "addtestimonialpopup.h"
+#include "viewpurchasespopup.h"
+#include "addcustomerpopup.h"
 namespace Ui {
 class MainWindow;
 }
@@ -29,7 +33,35 @@ public:
 
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
+public slots:
 
+private slots:
+
+  void on_login_buttonBox_accepted();
+
+  void on_login_buttonBox_rejected();
+
+  void on_customer_tableView_activated(const QModelIndex &index);
+
+  void on_password_line_returnPressed();
+
+  void on_customer_key_customers_checkBox_toggled(bool checked);
+
+  void on_administrator_toolBox_currentChanged(int index);
+
+  void on_testimonial_add_button_clicked();
+
+  void on_testimonial_remove_button_clicked();
+
+  void on_testimonial_approve_button_clicked();
+
+  void on_customer_remove_button_clicked();
+
+  void on_customer_interest_comboBox_currentIndexChanged(int index);
+
+  void on_customer_purchase_button_clicked();
+
+  void on_customer_submit_changes_button_clicked();
 
 private slots:
   void on_finished_intro();
@@ -55,6 +87,9 @@ private slots:
   //--------------------------------------------------
   void on_OKgoBackLogIn_clicked();
 
+  void on_customer_add_pushButton_clicked();
+
+  void on_customer_send_pamphlet_button_clicked();
 
 private:
   // Function to check if all fields in the registration table are filled
@@ -66,10 +101,15 @@ private:
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
+
   Ui::MainWindow *ui;
   Database *db;
-  QSqlTableModel *sql_table_model;
+  CustomerTableModel *cTableModel;
+  TestimonialTableModel *tTableModel;
+  PurchasesTableModel *pTableModel;
   QVector<QPixmap> mainBackground;
+  void InitTestimonialTableView();
+  void InitCustomerTableView();
 };
 
 #endif // MAINWINDOW_H

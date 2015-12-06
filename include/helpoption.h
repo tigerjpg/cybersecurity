@@ -15,6 +15,9 @@ public:
     explicit HelpOption(QWidget *parent = 0);
     ~HelpOption();
 
+private slots:
+    void on_OKExitHelpB_clicked();
+
 private:
     Ui::HelpOption *ui;
 };

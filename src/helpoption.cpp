@@ -12,3 +12,8 @@ HelpOption::~HelpOption()
 {
     delete ui;
 }
+
+void HelpOption::on_OKExitHelpB_clicked()
+{
+    ui->EverythingHelpstackedWidget->close();
+}

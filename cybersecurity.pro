@@ -19,17 +19,20 @@ SOURCES += src/main.cpp \
        src/imagebutton.cpp \
        src/database.cpp \
     src/qblowfish.cpp \
-    src/contactus.cpp
+    src/contactus.cpp \
+    src/helpoption.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
       include/database.h \
     include/qblowfish_p.h \
     include/qblowfish.h \
-    include/contactus.h
+    include/contactus.h \
+    include/helpoption.h
 
 FORMS    += forms/MainWindow.ui \
-    forms/contactus.ui
+    forms/contactus.ui \
+    form/helpoption.ui
 
 RESOURCES += \
     cyberresources.qrc

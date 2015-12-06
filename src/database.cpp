@@ -14,6 +14,7 @@ Database::Database(QString path, QString driver) : QSqlDatabase(addDatabase(driv
   setDatabaseName(path);
   open();
   query = QSqlQuery(*this);
+  query.exec("PRAGMA foreign_keys = ON;");
 }
 
 /*!
@@ -43,9 +44,9 @@ bool Database::Authenticate(QString username, QString password)
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
-  query.exec("select * from users where username = \""
+  query.exec("select * from admins where username = \""
                     + username + "\" and password = \""
-                    + encryptedStr + "\" and admin = 1;");
+                    + encryptedStr + "\";");
   return query.next();
 }
 

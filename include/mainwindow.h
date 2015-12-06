@@ -21,6 +21,7 @@ public:
   enum Page {
     INTRO,
     LOGIN,
+    REGISTER,
     INFORMATION,
     ADMINISTRATOR,
     CUSTOMER

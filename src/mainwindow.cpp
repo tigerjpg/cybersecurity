@@ -623,11 +623,7 @@ void MainWindow::on_GeneralInfoButton_clicked()
                     "employees to find ways to improve our services and products.\n\n";
 
 
-
-  //ui->information_text->setText(generalInfo);
-
-  ui->InformationSpace->setText(generalInfo + missionStatement + whatWeDo + howWeDo);
-
+    ui->InformationSpace->setText(generalInfo + missionStatement + whatWeDo + howWeDo);
 }
 
 void MainWindow::on_ConceptOfOperations_clicked()

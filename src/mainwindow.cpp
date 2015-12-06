@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
   db = new Database("./data/data.db", "QSQLITE");
   this->setFixedSize(800,600);
 
-  ui->stacked_pages->setCurrentIndex(LOGIN);
+  ui->stacked_pages->setCurrentIndex(CUSTOMER);
 
 
 
@@ -76,3 +76,8 @@ bool MainWindow::interestAndKeyCustomerView(int i)
   return sql_table_model->select();
 }
 
+void MainWindow::on_customer_testimonial_slider_sliderMoved(int position)
+{
+    ui->customer_testimonials_text->setText(db->getTestimonialAtIndex(position));
+    ui->customer_testimonials_picture->setPixmap(QPixmap(db->getImageAtIndex(position)));
+}

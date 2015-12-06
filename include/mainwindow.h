@@ -20,6 +20,7 @@ class MainWindow : public QMainWindow {
 public:
   enum Page {
     INTRO,
+    REGISTER,
     LOGIN,
     INFORMATION,
     ADMINISTRATOR,
@@ -35,6 +36,10 @@ private slots:
   void on_welcomeBtn_clicked();
 
 
+
+  void on_toolBox_currentChanged(int index);
+
+  void on_customer_testimonial_slider_sliderMoved(int position);
 
 private:
   void initializeCustomerView();

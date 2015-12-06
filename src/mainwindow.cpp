@@ -31,6 +31,7 @@ bool MainWindow::RegistrationCompleted()
      ui->terms_box->isChecked())
   {
     qDebug() << "registration complete\n";
+    ui->register_okay_button->setEnabled(true);
     return true;
   }
   else
@@ -115,38 +116,33 @@ bool MainWindow::interestAndKeyCustomerView(int i)
 
 void MainWindow::on_username_line_2_editingFinished()
 {
-    if(RegistrationCompleted())
-      ui->register_okay_button->setEnabled(true);
+    RegistrationCompleted();
 }
 
 void MainWindow::on_password_line_2_editingFinished()
 {
-  if(RegistrationCompleted())
-    ui->register_okay_button->setEnabled(true);
+  RegistrationCompleted();
 }
 
 void MainWindow::on_company_line_editingFinished()
 {
-  if(RegistrationCompleted())
-    ui->register_okay_button->setEnabled(true);
+  RegistrationCompleted();
 }
 
 void MainWindow::on_address_line_editingFinished()
 {
-  if(RegistrationCompleted())
-    ui->register_okay_button->setEnabled(true);
+  RegistrationCompleted();
+
 }
 
 void MainWindow::on_interest_box_currentIndexChanged(int index)
 {
-  if(RegistrationCompleted())
-    ui->register_okay_button->setEnabled(true);
+  RegistrationCompleted();
 }
 
 void MainWindow::on_terms_box_toggled(bool checked)
 {
-  if(RegistrationCompleted())
-    ui->register_okay_button->setEnabled(true);
+  RegistrationCompleted();
 }
 
 void MainWindow::on_register_okay_button_clicked()

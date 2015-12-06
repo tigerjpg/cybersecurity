@@ -72,7 +72,6 @@ void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
   };
   if(checked)
   {
-    qDebug() << ui->customer_interest_comboBox->currentText();
     switch(ui->customer_interest_comboBox->currentIndex())
     {
     case ALL:

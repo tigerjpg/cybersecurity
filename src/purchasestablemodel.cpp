@@ -7,6 +7,7 @@ PurchasesTableModel::PurchasesTableModel(QObject *parent, QSqlDatabase *db, int 
   this->setTable("purchasesView");
   this->setFilter("id = " + id);
   Initialize();
+  this->select();
 }
 
 /*!

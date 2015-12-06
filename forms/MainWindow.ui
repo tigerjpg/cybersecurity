@@ -274,6 +274,9 @@
           <property name="styleSheet">
            <string notr="true">background-color: rgb(255, 255, 255);</string>
           </property>
+          <property name="echoMode">
+           <enum>QLineEdit::PasswordEchoOnEdit</enum>
+          </property>
          </widget>
         </item>
         <item row="2" column="0">
@@ -427,16 +430,16 @@ p, li { white-space: pre-wrap; }
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QDialogButtonBox" name="register_buttonBox">
-          <property name="standardButtons">
-           <set>QDialogButtonBox::Ok</set>
+         <widget class="QPushButton" name="register_okay_button">
+          <property name="text">
+           <string>Okay</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="register_cancel_button">
           <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+           <enum>Qt::ClickFocus</enum>
           </property>
           <property name="text">
            <string>Cancel</string>

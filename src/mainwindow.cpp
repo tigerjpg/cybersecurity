@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
   ui->stacked_pages->setCurrentIndex(REGISTER);
-  ui->register_buttonBox->setEnabled(false);
+  ui->register_okay_button->setEnabled(false);
 
 
 
@@ -36,9 +36,17 @@ bool MainWindow::RegistrationCompleted()
   else
   {
     qDebug() << "registration incomplete\n";
-    ui->register_buttonBox->setEnabled(false);
+    ui->register_okay_button->setEnabled(false);
     return false;
   }
+}
+
+void MainWindow::Register()
+{
+  db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
+                  QString::number(ui->interest_box->currentIndex()-1), "false");
+
+
 }
 
 
@@ -100,43 +108,43 @@ bool MainWindow::interestAndKeyCustomerView(int i)
 }
 
 
-void MainWindow::on_register_buttonBox_accepted()
-{
-
-}
-
 void MainWindow::on_username_line_2_editingFinished()
 {
     if(RegistrationCompleted())
-      ui->register_buttonBox->setEnabled(true);
+      ui->register_okay_button->setEnabled(true);
 }
 
 void MainWindow::on_password_line_2_editingFinished()
 {
   if(RegistrationCompleted())
-    ui->register_buttonBox->setEnabled(true);
+    ui->register_okay_button->setEnabled(true);
 }
 
 void MainWindow::on_company_line_editingFinished()
 {
   if(RegistrationCompleted())
-    ui->register_buttonBox->setEnabled(true);
+    ui->register_okay_button->setEnabled(true);
 }
 
 void MainWindow::on_address_line_editingFinished()
 {
   if(RegistrationCompleted())
-    ui->register_buttonBox->setEnabled(true);
+    ui->register_okay_button->setEnabled(true);
 }
 
 void MainWindow::on_interest_box_currentIndexChanged(int index)
 {
   if(RegistrationCompleted())
-    ui->register_buttonBox->setEnabled(true);
+    ui->register_okay_button->setEnabled(true);
 }
 
 void MainWindow::on_terms_box_toggled(bool checked)
 {
   if(RegistrationCompleted())
-    ui->register_buttonBox->setEnabled(true);
+    ui->register_okay_button->setEnabled(true);
+}
+
+void MainWindow::on_register_okay_button_clicked()
+{
+  Register();
 }

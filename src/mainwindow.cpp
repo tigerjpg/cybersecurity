@@ -27,10 +27,11 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->password_line->clear();
       ui->stackedWidget->setCurrentIndex(ADMIN);
       ui->customer_tableView->setModel(cTableModel);
-      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::NAME);
-      ui->customer_tableView->hideColumn(CustomerTableModel::KEY);
-      ui->customer_tableView->hideColumn(CustomerTableModel::INTEREST);
       ui->customer_tableView->hideColumn(CustomerTableModel::ID);
+      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::NAME);
+      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::INTEREST);
+      ui->customer_tableView->resizeColumnToContents(CustomerTableModel::KEY);
+//      ui->customer_tableView->resizeColumnsToContents();
     }
     else
     {
@@ -287,4 +288,17 @@ void MainWindow::on_customer_purchase_button_clicked()
   {
     qDebug() << "SELECT A ROW YA DINGUS!!";
   }
+}
+
+void MainWindow::on_customer_submit_changes_button_clicked()
+{
+  if(cTableModel->submitAll())
+  {
+    qDebug() << "CHANGES APPLIED TO CUSTOMER TABLE";
+  }
+  else
+  {
+    qDebug() << "CHANGES NOT APPLIED TO CUSTOMER TABLE";
+  }
+
 }

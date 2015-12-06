@@ -5,6 +5,11 @@ CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
 {
   this->setEditStrategy(QSqlTableModel::OnManualSubmit);
   this->setTable("customers");
+  this->setHeaderData(ID, Qt::Horizontal, tr("ID"), QSqlTableModel::OnManualSubmit);
+  this->setHeaderData(NAME, Qt::Horizontal, tr("Name"), QSqlTableModel::OnManualSubmit);
+  this->setHeaderData(ADDRESS, Qt::Horizontal, tr("Address"), QSqlTableModel::OnManualSubmit);
+  this->setHeaderData(KEY, Qt::Horizontal, tr("Key"), QSqlTableModel::OnManualSubmit);
+  this->setHeaderData(INTEREST, Qt::Horizontal, tr("Interest"), QSqlTableModel::OnManualSubmit);
   this->select();
 }
 

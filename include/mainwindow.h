@@ -61,6 +61,8 @@ private slots:
 
   void on_customer_purchase_button_clicked();
 
+  void on_customer_submit_changes_button_clicked();
+
 private:
   Ui::MainWindow *ui;
   Database *db;

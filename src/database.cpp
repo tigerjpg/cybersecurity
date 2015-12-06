@@ -23,10 +23,10 @@ Database::~Database()
 {
 
   if(query.isActive())
-  {
-    query.finish();
-    query.clear();
-  }
+    {
+      query.finish();
+      query.clear();
+    }
   close();
 }
 
@@ -111,10 +111,10 @@ bool Database::AddUser(QString id, QString username, QString password, QString a
                 "\", \"" + username + "\", \"" + encryptedStr + "\", 0);"))
     return true;
   else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidQuery();
-  }
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
 }
 
 /*!
@@ -155,23 +155,23 @@ bool Database::IsKey(QString name)
 {
   //execute query
   if(this->query.exec("select * from customers where name = \""
-                + name + "\";"))
+                      + name + "\";"))
     //if there is data in the query
     if(query.next())
-    {
-      //get info from "key" field in this record
-      return (query.record().field("key").value().toBool());
-    }
+      {
+        //get info from "key" field in this record
+        return (query.record().field("key").value().toBool());
+      }
     else
+      {
+        qDebug() << query.lastError().text();
+        throw EmptyQuery();
+      }
+  else
     {
       qDebug() << query.lastError().text();
-      throw EmptyQuery();
+      throw InvalidQuery();
     }
-  else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidQuery();
-  }
 }
 
 /*!
@@ -184,10 +184,10 @@ bool Database::IsEmpty(QString tableName)
   if(query.exec("select * from " + tableName + ";"))
     return !query.next();
   else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidTableName();
-  }
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidTableName();
+    }
 }
 
 /*!
@@ -202,14 +202,14 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
 {
   if(query.exec("select * from \"" + tableName +
                 "\" where \"" + fieldName + "\" = \"" + value + "\";"))
-  {
-    return query.next();
-  }
+    {
+      return query.next();
+    }
   else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidQuery();
-  }
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
 }
 
 /*!
@@ -244,17 +244,21 @@ QString Database::GetCustomerIdByName(QString name)
  * \param tableName The name of the table to retrieve data from
  * \return QList<QSqlRecord> containing all records in table
  */
-QList<QSqlRecord> Database::GetData(QString tableName)
+QList<QSqlRecord> * Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
   if(query.exec("select * from \"" + tableName +"\";"))
-  {
-    while(query.next())
     {
-      list->push_back(query.record());
+      while(query.next())
+        {
+          list->push_back(query.record());
+        }
     }
-  }
-  return *list;
+  else
+    {
+      qDebug() << "INVALID QUERY!";
+    }
+  return list;
 }
 
 /*!
@@ -266,12 +270,12 @@ QString Database::getTestimonialAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select testimonial from testimonials where id = \"" + id + "\";"))
-  {
-    if(query.next())
     {
-      return query.record().field("testimonial").value().toString();
+      if(query.next())
+        {
+          return query.record().field("testimonial").value().toString();
+        }
     }
-  }
   return "Woops!";
 }
 
@@ -284,11 +288,11 @@ QString Database::getImageAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select image from testimonials where id = \"" + id + "\";"))
-  {
-    if(query.next())
     {
-      return query.record().field("image").value().toString();
+      if(query.next())
+        {
+          return query.record().field("image").value().toString();
+        }
     }
-  }
   return "Woops!";
 }

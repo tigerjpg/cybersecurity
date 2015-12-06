@@ -49,7 +49,7 @@ public:
   ///Returns the id of the customer with the matching name
   QString GetCustomerIdByName(QString name);
 
-  QList<QSqlRecord> GetData(QString tableName);
+  QList<QSqlRecord> * GetData(QString tableName);
 
 
   QString getTestimonialAtIndex(int i);

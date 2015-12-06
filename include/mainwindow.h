@@ -125,6 +125,7 @@ private:
   void SetTestimonialView(int index);
   void UpdateTestimonialList();
   void LoadProductList();
+  void SetActiveUser(QString id);
 
   Ui::MainWindow *ui;
   Database *db;
@@ -135,6 +136,7 @@ private:
   QList<QSqlRecord> *testimonials;
   QList<ProductInfo> ProductInfoList;
   QLabel *background;
+  QString activeUserId;
   void InitTestimonialTableView();
   void InitCustomerTableView();
 };

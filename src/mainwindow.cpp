@@ -370,6 +370,11 @@ void MainWindow::LoadProductList()
   ui->customer_products_webview->setUrl(ProductInfoList.at(ui->customer_products_slider->value()).html);
 }
 
+void MainWindow::SetActiveUser(QString id)
+{
+  activeUserId = id;
+}
+
 void MainWindow::on_finished_intro()
 {
   QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");

@@ -239,6 +239,27 @@ QString Database::GetCustomerIdByName(QString name)
   }
 }
 
+QString Database::GetUserIdByName(QString username)
+{
+  if(query.exec("select id from users where username = \"" + username + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("id").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
 /*!
  * \brief Database::GetData
  * Get a QList of all records in a specified table.

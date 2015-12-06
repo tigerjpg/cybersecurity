@@ -48,6 +48,8 @@ public:
   bool Contains(QString tableName, QString fieldName, QString value);
   ///Returns the id of the customer with the matching name
   QString GetCustomerIdByName(QString name);
+  ///Returns the id of the user with the matching name
+  QString GetUserIdByName(QString username);
 
   QList<QSqlRecord> * GetData(QString tableName);
 

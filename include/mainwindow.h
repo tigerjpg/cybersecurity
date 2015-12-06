@@ -16,37 +16,26 @@ class MainWindow;
 class MainWindow : public QMainWindow {
   Q_OBJECT
 
+
 public:
+  enum Page {
+    INTRO,
+    LOGIN,
+    REGISTER,
+    INFORMATION,
+    ADMINISTRATOR,
+    CUSTOMER
+  };
+
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
-public slots:
-  void TigerButton();
-  void LaserOn();
-  void LaserOff();
 
 private slots:
   void on_finished_intro();
-  void on_page0_clicked();
-  void on_page1_clicked();
-  void on_page2_clicked();
-  void on_page3_clicked();
-  void on_page4_clicked();
   void on_welcomeBtn_clicked();
 
-  void on_ok_button_clicked();
 
-  void on_clear_button_clicked();
-
-  void on_passwordBox_returnPressed();
-
-  void on_usernameBox_returnPressed();
-
-  void on_checkBox_stateChanged(int arg1);
-
-  void on_interest_level_box_activated(int index);
-
-  void on_testimonial_slider_valueChanged(int value);
 
 private:
   void initializeCustomerView();

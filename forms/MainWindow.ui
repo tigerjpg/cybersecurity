@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -414,11 +414,11 @@
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;The next policy is in accordance with U.S and international laws. &lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  We do not negotiate any of the following terms. Our company has the professionalism necessary to compensate in case that any of our products cause severe damage to a company's data. In such a case, the compensations necessary will be made. We are not responsible for any damage done to an individual or done to a user (excluding mental damages). In case the software causes damage to the company system an investigation will be conducted to corroborate the cause of the damage.&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  There is a 3 time limit corresponding to technical support visits in a single day. There are no reimbursements for technical services provided. No exceptions. Any hardware that we replace has a 1 year warranty with Tiger. If there is any damage to that hardware it will be replaced without cost for up to 2 replacements.&lt;/p&gt;
-&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;  Tiger will not share or use any data that is being protected in the system. In case of a leak by our software, we will provide full compensation and termination of the contract without any fees or charges. In case of Bankruptcy, the company will compensate for the remaining of the contract.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:8pt; font-weight:600;&quot;&gt;The next policy is in accordance with U.S and international laws. &lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;&gt;  We do not negotiate any of the following terms. Our company has the professionalism necessary to compensate in case that any of our products cause severe damage to a company's data. In such a case, the compensations necessary will be made. We are not responsible for any damage done to an individual or done to a user (excluding mental damages). In case the software causes damage to the company system an investigation will be conducted to corroborate the cause of the damage.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;&gt;  There is a 3 time limit corresponding to technical support visits in a single day. There are no reimbursements for technical services provided. No exceptions. Any hardware that we replace has a 1 year warranty with Tiger. If there is any damage to that hardware it will be replaced without cost for up to 2 replacements.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;&gt;  Tiger will not share or use any data that is being protected in the system. In case of a leak by our software, we will provide full compensation and termination of the contract without any fees or charges. In case of Bankruptcy, the company will compensate for the remaining of the contract.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
@@ -451,19 +451,19 @@ p, li { white-space: pre-wrap; }
        </property>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QPushButton" name="register_okay_button">
-          <property name="text">
-           <string>Okay</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <widget class="QPushButton" name="register_cancel_button">
           <property name="focusPolicy">
            <enum>Qt::ClickFocus</enum>
           </property>
           <property name="text">
            <string>Cancel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="register_okay_button">
+          <property name="text">
+           <string>Okay</string>
           </property>
          </widget>
         </item>
@@ -905,20 +905,17 @@ background-color: rgb(255, 255, 255);</string>
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
-      <widget class="QLabel" name="admin_logout_label">
+      <widget class="QPushButton" name="admin_logout_button">
        <property name="geometry">
         <rect>
-         <x>670</x>
-         <y>20</y>
-         <width>71</width>
-         <height>16</height>
+         <x>660</x>
+         <y>10</y>
+         <width>99</width>
+         <height>30</height>
         </rect>
        </property>
        <property name="text">
         <string>Logout</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </widget>

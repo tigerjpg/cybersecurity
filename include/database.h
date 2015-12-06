@@ -27,7 +27,9 @@ public:
   class EmptyQuery       : public QException{};
 
   /// Verify an admin login
-  bool Authenticate(QString username, QString password);
+  bool AuthenticateAdmin(QString username, QString password);
+  /// Verify a user login
+  bool AuthenticateUser(QString username, QString password);
   ///Add a customer to the database
   bool AddCustomer(QString name, QString address, QString interest, QString key, QString sent);
   ///Add a testimonial to the database

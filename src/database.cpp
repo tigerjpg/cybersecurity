@@ -38,16 +38,35 @@ Database::~Database()
  * \param password
  * \return true if admin exists with these credentials
  */
-bool Database::Authenticate(QString username, QString password)
+bool Database::AuthenticateAdmin(QString username, QString password)
 {
   QBlowfish bf(QByteArray::fromHex(KEY_HEX));
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
+
   query.exec("select * from admins where username = \""
                     + username + "\" and password = \""
                     + encryptedStr + "\";");
   return query.next();
+}
+
+bool Database::AuthenticateUser(QString username, QString password)
+{
+  QBlowfish bf(QByteArray::fromHex(KEY_HEX));
+  bf.setPaddingEnabled(true);
+  QByteArray encryptedAr = bf.encrypted(password.toUtf8());
+  QString encryptedStr = encryptedAr.toHex();
+  if(query.exec("select name from users, customers where customers.id = users.id and username = \""
+                + username + "\" and password = \""
+                + encryptedStr + "\" and sent = 1;"))
+  {
+    return query.next();
+  }
+  else
+  {
+    return false;
+  }
 }
 
 /*!
@@ -106,10 +125,16 @@ bool Database::AddUser(QString id, QString username, QString password, QString a
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
 
-  if(admin == "true") { admin = "1"; }
-  else if(admin == "false") { admin = "0"; }
+  if(admin == "true")
+  {
+    admin = "1";
+  }
+  else if(admin == "false")
+  {
+    admin = "0";
+  }
   if(query.exec("insert into users values(\"" + id +
-                "\", \"" + username + "\", \"" + encryptedStr + "\", 0);"))
+                "\", \"" + username + "\", \"" + encryptedStr + "\",\"" + admin + "\");"))
     return true;
   else
     {

@@ -12,7 +12,7 @@ Database::Database(QString path, QString driver) : QSqlDatabase(addDatabase(driv
 {
   setHostName("localhost");
   setDatabaseName(path);
-  Q_ASSERT(open());
+  open();
   query = QSqlQuery(*this);
 }
 
@@ -57,12 +57,13 @@ bool Database::Authenticate(QString username, QString password)
  * \param key true if is key customer
  * \return true if successful
  */
-bool Database::AddCustomer(QString name, QString address, QString interest, QString key)
+bool Database::AddCustomer(QString name, QString address, QString interest, QString key, QString sent)
 {
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
   if(query.exec("insert into customers values(NULL, \"" + name +
-                "\", \"" + address + "\", " + interest + ", " + key +",0);"))
+                "\", \"" + address + "\", " + interest + ", "
+                + key + ", " + sent + ");"))
     return true;
   else
   {
@@ -71,6 +72,25 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
   }
 }
 
+/*!
+ * \brief Database::AddTestimonial
+ * \param name
+ * \param testimonial
+ * \return
+ */
+bool Database::AddTestimonial(QString name, QString testimonial)
+{
+  if(query.exec("insert into testimonials values(NULL, \"" + name
+                + "\", \"" + testimonial + "\", NULL, 0);"))
+  {
+    return true;
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
 /*!
  * \brief Database::AddUser Add a user to the database
  * \param username user's username
@@ -95,8 +115,6 @@ bool Database::AddUser(QString id, QString username, QString password, QString a
     qDebug() << query.lastError().text();
     throw InvalidQuery();
   }
-
-
 }
 
 /*!
@@ -203,7 +221,6 @@ QString Database::GetCustomerIdByName(QString name)
 {
   if(query.exec("select id from customers where name = \"" + name + "\";"))
   {
-    qDebug() << query.result();
     if(query.next())
     {
       return query.record().field("id").value().toString();
@@ -221,6 +238,12 @@ QString Database::GetCustomerIdByName(QString name)
   }
 }
 
+/*!
+ * \brief Database::GetData
+ * Get a QList of all records in a specified table.
+ * \param tableName The name of the table to retrieve data from
+ * \return QList<QSqlRecord> containing all records in table
+ */
 QList<QSqlRecord> Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
@@ -234,6 +257,11 @@ QList<QSqlRecord> Database::GetData(QString tableName)
   return *list;
 }
 
+/*!
+ * \brief Database::getTestimonialAtIndex
+ * \param i index
+ * \return The testimonial at a specific index
+ */
 QString Database::getTestimonialAtIndex(int i)
 {
   QString id = QString::number(i);
@@ -247,6 +275,11 @@ QString Database::getTestimonialAtIndex(int i)
   return "Woops!";
 }
 
+/*!
+ * \brief Database::getImageAtIndex
+ * \param i
+ * \return image name at a specified index
+ */
 QString Database::getImageAtIndex(int i)
 {
   QString id = QString::number(i);

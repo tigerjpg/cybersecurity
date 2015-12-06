@@ -72,6 +72,34 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 }
 
 /*!
+ * \brief Database::AddUser Add a user to the database
+ * \param username user's username
+ * \param password user's password
+ * \param key true if is administrator
+ * \return true if successful
+ */
+bool Database::AddUser(QString username, QString password, QString admin)
+{
+  QBlowfish bf(QByteArray::fromHex(KEY_HEX));
+  bf.setPaddingEnabled(true);
+  QByteArray encryptedAr = bf.encrypted(password.toUtf8());
+  QString encryptedStr = encryptedAr.toHex();
+
+  if(admin == "true") { admin = "1"; }
+  else if(admin == "false") { admin = "0"; }
+  if(query.exec("insert into users values(\"" + username +
+                "\", \"" + encryptedStr + "\", \"" + admin + "\", 0);"))
+    return true;
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+
+
+}
+
+/*!
  * \brief Database::RemoveCustomer Remove a customer from the database
  * \param name Customer's name
  * \return true if successful

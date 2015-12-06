@@ -9,12 +9,48 @@ MainWindow::MainWindow(QWidget *parent) :
   this->setFixedSize(800,600);
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
+
 }
 
 MainWindow::~MainWindow()
 {
   delete ui;
 }
+
+bool MainWindow::RegistrationCompleted()
+{
+  if(!ui->username_label_2->text().isEmpty() &&
+     !ui->password_label_2->text().isEmpty() &&
+     !ui->company_line->text().isEmpty() &&
+     !ui->address_line->text().isEmpty() &&
+     ui->interest_box->currentIndex() > 0 &&
+     ui->terms_box->isChecked())
+  {
+    qDebug() << "registration complete\n";
+    ui->register_okay_button->setEnabled(true);
+    return true;
+  }
+  else
+  {
+    qDebug() << "registration incomplete\n";
+    ui->register_okay_button->setEnabled(false);
+    return false;
+  }
+}
+
+void MainWindow::Register()
+{
+  if(db->AddUser(ui->username_line_2->text(), ui->password_line_2->text(), "false"))
+  {
+    qDebug() << ui->username_line_2->text() << " added the the users table.\n";
+  }
+  if(db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
+                  QString::number(ui->interest_box->currentIndex()-1), "false"))
+  {
+    qDebug() << ui->company_line->text() << " added to the customer table.\n";
+  }
+}
+
 
 void MainWindow::WelcomeAnimation()
 {
@@ -122,6 +158,51 @@ void MainWindow::on_SupportedPlattaforms_clicked()
 void MainWindow::on_RegisterButton_clicked()
 {
     ui->stacked_pages->setCurrentIndex(REGISTER);
+    ui->register_okay_button->setEnabled(false);
+    ui->username_line_2->setValidator(new QRegExpValidator(QRegExp("[\\w]*")));
+    ui->company_line->setValidator(new QRegExpValidator(QRegExp("[\\w\\s]*")));
+}
+
+void MainWindow::on_username_line_2_editingFinished()
+{
+    RegistrationCompleted();
+}
+
+void MainWindow::on_password_line_2_editingFinished()
+{
+  RegistrationCompleted();
+}
+
+void MainWindow::on_company_line_editingFinished()
+{
+  RegistrationCompleted();
+}
+
+void MainWindow::on_address_line_editingFinished()
+{
+  RegistrationCompleted();
+}
+
+void MainWindow::on_interest_box_currentIndexChanged(int index)
+{
+  RegistrationCompleted();
+}
+
+void MainWindow::on_terms_box_toggled(bool checked)
+{
+  RegistrationCompleted();
+}
+
+void MainWindow::on_register_okay_button_clicked()
+{
+  Register();
+  ui->stacked_pages->setCurrentIndex(LOGIN);
+}
+
+void MainWindow::on_register_cancel_button_clicked()
+{
+  // Maybe forms need to be cleared.
+  ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
 void MainWindow::on_OKgoBackLogIn_clicked()

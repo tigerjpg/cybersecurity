@@ -7,6 +7,7 @@
 #include <QMovie>
 #include <QLabel>
 #include <QSound>
+#include <QList>
 #include "database.h"
 
 namespace Ui {
@@ -27,6 +28,12 @@ public:
     CUSTOMER
   };
 
+  enum CustomerPage {
+    CUST_PRODUCTS,
+    CUST_TESTIMONIALS,
+    CUST_PURCHASE
+  };
+
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
@@ -41,6 +48,8 @@ private slots:
 
   void on_customer_testimonial_slider_sliderMoved(int position);
 
+  void on_customer_testimonial_slider_valueChanged(int value);
+
 private:
   void initializeCustomerView();
   bool defaultCustomerView();
@@ -51,10 +60,13 @@ private:
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
+  void SetTestimonialView(int index);
+  void UpdateTestimonialList();
   Ui::MainWindow *ui;
   Database *db;
   QSqlTableModel *sql_table_model;
   QVector<QPixmap> mainBackground;
+  QList<QSqlRecord> *testimonials;
 };
 
 #endif // MAINWINDOW_H

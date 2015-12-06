@@ -486,8 +486,8 @@
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>541</width>
-          <height>297</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -696,6 +696,14 @@
         </attribute>
        </widget>
        <widget class="QWidget" name="customer_testimonials">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>721</width>
+          <height>350</height>
+         </rect>
+        </property>
         <attribute name="label">
          <string>Customer Testimonials</string>
         </attribute>
@@ -710,15 +718,18 @@
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,1">
+           <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="2,1">
+            <property name="sizeConstraint">
+             <enum>QLayout::SetFixedSize</enum>
+            </property>
             <item>
              <widget class="QLabel" name="customer_testimonials_text">
               <property name="font">
                <font>
                 <family>Arial Rounded MT Bold</family>
-                <pointsize>12</pointsize>
-                <weight>75</weight>
-                <bold>true</bold>
+                <pointsize>10</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
                </font>
               </property>
               <property name="text">
@@ -765,8 +776,6 @@
           </item>
          </layout>
         </widget>
-        <zorder>verticalLayoutWidget_3</zorder>
-        <zorder>customer_testimonials_text</zorder>
        </widget>
        <widget class="QWidget" name="customer_purchase">
         <property name="geometry">

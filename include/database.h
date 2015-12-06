@@ -43,7 +43,7 @@ public:
   ///Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
 
-  QList<QSqlRecord> GetData(QString tableName);
+  QList<QSqlRecord> * GetData(QString tableName);
 
 
   QString getTestimonialAtIndex(int i);

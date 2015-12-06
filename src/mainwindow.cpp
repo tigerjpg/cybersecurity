@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->stacked_pages->setCurrentIndex(CUSTOMER);
 
-
+  UpdateTestimonialList();
 
 }
 
@@ -30,10 +30,37 @@ void MainWindow::WelcomeAnimation()
   tigershield->start();
 }
 
+void MainWindow::SetTestimonialView(int index)
+{
+  if(index >= 0 && index < testimonials->size())
+  {
+    QPixmap image( "images/" + testimonials->at(index).field("image").value().toString() );
+    image = image.scaled(ui->customer_testimonials_picture->width(), ui->customer_testimonials_picture->height(), Qt::KeepAspectRatio);
+
+    ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
+    ui->customer_testimonials_picture->setPixmap(image);
+//    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
+//    qDebug() << "TESTIMONIAL IMAGE PATH: " << testimonials->at(position).field("image").value().toString();
+  }
+  else
+  {
+    qDebug() << "***** INVALID TESTIMONIAL INDEX!!! ******";
+  }
+}
+
+void MainWindow::UpdateTestimonialList()
+{
+  delete testimonials;
+  testimonials = db->GetData("testimonials");
+  qDebug() << "TESTIMONIALS LIST SIZE: " << testimonials->size();
+  ui->customer_testimonial_slider->setMinimum(0);
+  ui->customer_testimonial_slider->setMaximum(testimonials->size()-1);
+  SetTestimonialView(ui->customer_testimonial_slider->value());
+}
+
 void MainWindow::on_finished_intro()
 {
   QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
-//  connect(titlein, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
   titlein->setDuration(200);
   ui->welcomeTitle->show();
   titlein->setStartValue(QRect(262,-120,500,120));
@@ -44,8 +71,7 @@ void MainWindow::on_finished_intro()
 
 
 void MainWindow::on_welcomeBtn_clicked()
-{
-}
+{}
 
 bool MainWindow::defaultCustomerView()
 {
@@ -78,6 +104,21 @@ bool MainWindow::interestAndKeyCustomerView(int i)
 
 void MainWindow::on_customer_testimonial_slider_sliderMoved(int position)
 {
-    ui->customer_testimonials_text->setText(db->getTestimonialAtIndex(position));
-    ui->customer_testimonials_picture->setPixmap(QPixmap(db->getImageAtIndex(position)));
+  SetTestimonialView(position);
+}
+
+void MainWindow::on_customer_testimonial_slider_valueChanged(int value)
+{
+  SetTestimonialView(value);
+}
+
+void MainWindow::on_toolBox_currentChanged(int index)
+{
+    switch(index){
+      case CUST_PRODUCTS : break;
+      case CUST_TESTIMONIALS : UpdateTestimonialList();
+                               break;
+      case CUST_PURCHASE : break;
+      default : break;
+      }
 }

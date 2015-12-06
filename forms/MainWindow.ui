@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="login_page">
      <property name="cursor">
@@ -552,14 +552,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="key_customers_checkBox">
+           <widget class="QCheckBox" name="customer_key_customers_checkBox">
             <property name="text">
              <string>Key Customers</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QComboBox" name="comboBox">
+           <widget class="QComboBox" name="customer_interest_comboBox">
             <item>
              <property name="text">
               <string>all interest levels</string>

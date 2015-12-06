@@ -43,7 +43,7 @@ private slots:
 
   void on_password_line_returnPressed();
 
-  void on_key_customers_checkBox_toggled(bool checked);
+  void on_customer_key_customers_checkBox_toggled(bool checked);
 
   void on_administrator_toolBox_currentChanged(int index);
 
@@ -54,6 +54,8 @@ private slots:
   void on_testimonial_approve_button_clicked();
 
   void on_customer_remove_button_clicked();
+
+  void on_customer_interest_comboBox_currentIndexChanged(int index);
 
 private:
   Ui::MainWindow *ui;

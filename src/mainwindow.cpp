@@ -61,15 +61,55 @@ void MainWindow::on_password_line_returnPressed()
   ui->login_buttonBox->accepted();
 }
 
-void MainWindow::on_key_customers_checkBox_toggled(bool checked)
+void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
 {
+  enum Interest
+  {
+    ALL,
+    NOT,
+    SOMEWHAT,
+    VERY
+  };
   if(checked)
   {
-    cTableModel->IsKeyToggle();
+    qDebug() << ui->customer_interest_comboBox->currentText();
+    switch(ui->customer_interest_comboBox->currentIndex())
+    {
+    case ALL:
+      cTableModel->setFilter("key = 1");
+      break;
+    case NOT:
+      cTableModel->setFilter("key = 1 and interest = 0");
+      break;
+    case SOMEWHAT:
+      cTableModel->setFilter("key = 1 and interest = 1");
+      break;
+    case VERY:
+      cTableModel->setFilter("key = 1 and interest = 2");
+      break;
+    default:
+      cTableModel->setFilter("key = 1");
+    }
   }
   else
   {
-    cTableModel->setFilter("");
+    switch(ui->customer_interest_comboBox->currentIndex())
+    {
+    case ALL:
+      cTableModel->setFilter("");
+      break;
+    case NOT:
+      cTableModel->setFilter("interest = 0");
+      break;
+    case SOMEWHAT:
+      cTableModel->setFilter("interest = 1");
+      break;
+    case VERY:
+      cTableModel->setFilter("interest = 2");
+      break;
+    default:
+      cTableModel->setFilter("");
+    }
   }
 }
 
@@ -180,4 +220,54 @@ void MainWindow::on_customer_remove_button_clicked()
   {
     qDebug() << "SELECT A ROW YA DINGUS!!";
   }
+}
+
+
+void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
+{
+  enum Interest
+  {
+    ALL,
+    NOT,
+    SOMEWHAT,
+    VERY
+  };
+
+  if(!ui->customer_key_customers_checkBox->isChecked())
+  {
+    switch(index)
+    {
+    case ALL:
+      cTableModel->setFilter("");
+      break;
+    case NOT:
+      cTableModel->setFilter("interest = 0");
+      break;
+    case SOMEWHAT:
+      cTableModel->setFilter("interest = 1");
+      break;
+    case VERY:
+      cTableModel->setFilter("interest = 2");
+      break;
+    }
+  }
+  else
+  {
+    switch(index)
+    {
+    case ALL:
+      cTableModel->setFilter("key = 1");
+      break;
+    case NOT:
+      cTableModel->setFilter("key = 1 and interest = 0");
+      break;
+    case SOMEWHAT:
+      cTableModel->setFilter("key = 1 and interest = 1");
+      break;
+    case VERY:
+      cTableModel->setFilter("key = 1 and interest = 2");
+      break;
+    }
+  }
+  cTableModel->select();
 }

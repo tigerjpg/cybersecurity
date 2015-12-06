@@ -9,11 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
   this->setFixedSize(800,600);
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
-
-  //ui->stacked_pages->setCurrentIndex(INFORMATION);
-
-
-
 }
 
 MainWindow::~MainWindow()
@@ -47,116 +42,6 @@ void MainWindow::on_finished_intro()
 
 void MainWindow::on_welcomeBtn_clicked()
 {
-}
-
-bool MainWindow::defaultCustomerView()
-{
-  sql_table_model->setTable("customers");
-  return sql_table_model->select();
-}
-
-bool MainWindow::keyCustomerView()
-{
-  sql_table_model->setTable("customers");
-  sql_table_model->setFilter("key = \"1\"");
-  return sql_table_model->select();
-}
-
-bool MainWindow::interestCustomerView(int i)
-{
-  QString interest = QString::number(i);
-  sql_table_model->setTable("customers");
-  sql_table_model->setFilter("interest = \"" + interest + "\";");
-  return sql_table_model->select();
-}
-
-bool MainWindow::interestAndKeyCustomerView(int i)
-{
-  QString interest = QString::number(i);
-  sql_table_model->setTable("customers");
-  sql_table_model->setFilter("key = \"1\" and interest = \"" + interest + "\";");
-  return sql_table_model->select();
-}
-
-
-void MainWindow::on_checkBox_stateChanged(int arg1)
-{
-  switch(arg1)
-  {
-  case 0:
-    switch(ui->interest_level_box->currentIndex())
-    {
-    case 0:
-      defaultCustomerView();
-      break;
-    case 1:
-    case 2:
-    case 3:
-      interestCustomerView(ui->interest_level_box->currentIndex() - 1);
-    }
-    break;
-  case 2:
-    switch(ui->interest_level_box->currentIndex())
-    {
-    case 0:
-      keyCustomerView();
-      break;
-    case 1:
-    case 2:
-    case 3:
-      interestAndKeyCustomerView(ui->interest_level_box->currentIndex() - 1);
-    }
-    break;
-  }
-}
-
-void MainWindow::initializeCustomerView()
-{
-  ui->stackedWidget->setCurrentIndex(3);
-  sql_table_model = new QSqlTableModel(this, *db);
-  defaultCustomerView();
-  ui->customer_view->setModel(sql_table_model);
-  ui->customer_view->hideColumn(0);
-  ui->customer_view->hideColumn(3);
-  ui->customer_view->hideColumn(4);
-  ui->customer_view->resizeColumnsToContents();
-  ui->customer_view->horizontalHeader()->setStretchLastSection(true);
-}
-
-void MainWindow::on_interest_level_box_activated(int index)
-{
-  if(ui->checkBox->isChecked())
-  {
-    switch(index)
-    {
-    case 0:
-      keyCustomerView();
-      break;
-    case 1:
-    case 2:
-    case 3:
-      interestAndKeyCustomerView(index - 1);
-    }
-  }
-  else
-  {
-    switch(index)
-    {
-    case 0:
-      defaultCustomerView();
-      break;
-    case 1:
-    case 2:
-    case 3:
-      interestCustomerView(index - 1);
-    }
-  }
-}
-
-void MainWindow::on_testimonial_slider_valueChanged(int value)
-{
-  ui->testimonial_text->setText(db->getTestimonialAtIndex(value));
-  ui->testimonial_image->setPixmap(QPixmap::fromImage(QImage(":/images/" + db->getImageAtIndex(value)).scaled(ui->testimonial_image->size())));
 }
 
 void MainWindow::on_GeneralInfoButton_clicked()
@@ -234,12 +119,6 @@ void MainWindow::on_SupportedPlattaforms_clicked()
     ui->InformationSpace->setText(plattaforms);
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-
-   ui->stacked_pages->setCurrentIndex(INFORMATION);
-}
-
 void MainWindow::on_RegisterButton_clicked()
 {
     ui->stacked_pages->setCurrentIndex(REGISTER);
@@ -248,4 +127,9 @@ void MainWindow::on_RegisterButton_clicked()
 void MainWindow::on_OKgoBackLogIn_clicked()
 {
     ui->stacked_pages->setCurrentIndex(LOGIN);
+}
+
+void MainWindow::on_InformationButton_clicked()
+{
+    ui->stacked_pages->setCurrentIndex(INFORMATION);
 }

@@ -48,6 +48,8 @@ private slots:
 
   void on_register_okay_button_clicked();
 
+  void on_register_cancel_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->stacked_pages->setCurrentIndex(LOGIN);
   ui->stacked_pages->setCurrentIndex(REGISTER);
   ui->register_okay_button->setEnabled(false);
+  ui->username_line_2->setValidator(new QRegExpValidator(QRegExp("[\\w]*")));
+  ui->company_line->setValidator(new QRegExpValidator(QRegExp("[\\w\\s]*")));
 
 
 
@@ -132,7 +134,6 @@ void MainWindow::on_company_line_editingFinished()
 void MainWindow::on_address_line_editingFinished()
 {
   RegistrationCompleted();
-
 }
 
 void MainWindow::on_interest_box_currentIndexChanged(int index)
@@ -148,5 +149,11 @@ void MainWindow::on_terms_box_toggled(bool checked)
 void MainWindow::on_register_okay_button_clicked()
 {
   Register();
+  ui->stacked_pages->setCurrentIndex(LOGIN);
+}
+
+void MainWindow::on_register_cancel_button_clicked()
+{
+  // Maybe forms need to be cleared.
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }

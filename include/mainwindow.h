@@ -91,6 +91,8 @@ private slots:
 
   void on_customer_send_pamphlet_button_clicked();
 
+  void on_admin_logout_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

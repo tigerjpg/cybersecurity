@@ -29,6 +29,8 @@ public:
   bool Authenticate(QString username, QString password);
   ///Add a customer to the database
   bool AddCustomer(QString name, QString address, QString interest, QString key);
+  ///Add a user to the database
+  bool AddUser(QString username, QString password, QString admin);
   ///Remove a customer from the database
   bool RemoveCustomer(QString name);
   ///Set a query

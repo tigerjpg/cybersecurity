@@ -34,6 +34,12 @@ public:
     CUST_PURCHASE
   };
 
+  struct ProductInfo {
+    QString productName;
+    QString html;
+    double  price;
+  };
+
   explicit MainWindow(QWidget *parent = 0);
   ~MainWindow();
 
@@ -50,6 +56,8 @@ private slots:
 
   void on_customer_testimonial_slider_valueChanged(int value);
 
+  void on_customer_products_slider_valueChanged(int value);
+
 private:
   void initializeCustomerView();
   bool defaultCustomerView();
@@ -62,11 +70,14 @@ private:
   void WelcomeAnimation();
   void SetTestimonialView(int index);
   void UpdateTestimonialList();
+  void LoadProductList();
+
   Ui::MainWindow *ui;
   Database *db;
   QSqlTableModel *sql_table_model;
   QVector<QPixmap> mainBackground;
   QList<QSqlRecord> *testimonials;
+  QList<ProductInfo> ProductInfoList;
 };
 
 #endif // MAINWINDOW_H

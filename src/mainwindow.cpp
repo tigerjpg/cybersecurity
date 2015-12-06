@@ -10,8 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->stacked_pages->setCurrentIndex(CUSTOMER);
 
+  testimonials = NULL;
   UpdateTestimonialList();
-
+  LoadProductList();
 }
 
 MainWindow::~MainWindow()
@@ -50,12 +51,39 @@ void MainWindow::SetTestimonialView(int index)
 
 void MainWindow::UpdateTestimonialList()
 {
-  delete testimonials;
+  if(testimonials != NULL){
+      delete testimonials;
+    }
   testimonials = db->GetData("testimonials");
   qDebug() << "TESTIMONIALS LIST SIZE: " << testimonials->size();
   ui->customer_testimonial_slider->setMinimum(0);
   ui->customer_testimonial_slider->setMaximum(testimonials->size()-1);
   SetTestimonialView(ui->customer_testimonial_slider->value());
+}
+
+void MainWindow::LoadProductList()
+{
+  ProductInfo temp;
+  temp.productName = "Tiger© Threat Protection";
+  temp.html        = "qrc:/html/TIGERThreat.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Insider Threat";
+  temp.html        = "qrc:/html/TIGERInsider.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Analytics";
+  temp.html        = "qrc:/html/TIGERAnalytics.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Memory Integrity";
+  temp.html        = "qrc:/html/TIGERMemoryIntegrity.html";
+  ProductInfoList.push_back(temp);
+  temp.productName = "Tiger© Email Security";
+  temp.html        = "qrc:/html/TIGEREmail.html";
+  ProductInfoList.push_back(temp);
+
+  ui->customer_products_slider->setMinimum(0);
+  ui->customer_products_slider->setMaximum(ProductInfoList.size()-1);
+  ui->customer_products_title->setText(ProductInfoList.at(ui->customer_products_slider->value()).productName);
+  ui->customer_products_webview->setUrl(ProductInfoList.at(ui->customer_products_slider->value()).html);
 }
 
 void MainWindow::on_finished_intro()
@@ -121,4 +149,10 @@ void MainWindow::on_toolBox_currentChanged(int index)
       case CUST_PURCHASE : break;
       default : break;
       }
+}
+
+void MainWindow::on_customer_products_slider_valueChanged(int value)
+{
+  ui->customer_products_title->setText(ProductInfoList.at(value).productName);
+  ui->customer_products_webview->setUrl(ProductInfoList.at(value).html);
 }

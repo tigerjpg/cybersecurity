@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql multimedia
+QT       += core gui sql multimedia webkit webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -28,5 +28,4 @@ HEADERS  += include/mainwindow.h \
 
 FORMS    += forms/MainWindow.ui
 
-RESOURCES += \
-    cyberresources.qrc
+RESOURCES += cyberresources.qrc

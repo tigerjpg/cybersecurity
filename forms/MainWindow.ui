@@ -946,7 +946,7 @@ background-color: rgb(255, 255, 255);</string>
         </rect>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="customer_products">
         <property name="geometry">
@@ -1291,6 +1291,19 @@ border: 3px solid gray;</string>
         <zorder>verticalLayoutWidget_5</zorder>
         <zorder>customer_purchase_product_label</zorder>
        </widget>
+      </widget>
+      <widget class="QPushButton" name="customer_logout_button">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>480</y>
+         <width>99</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Logout</string>
+       </property>
       </widget>
      </widget>
     </widget>

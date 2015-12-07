@@ -118,6 +118,10 @@ private slots:
 
   void on_customer_purchase_purchaseButton_clicked();
 
+  void on_pushButton_2_clicked();
+
+  void on_customer_logout_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

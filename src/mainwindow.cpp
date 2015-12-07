@@ -43,11 +43,15 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->stacked_pages->setCurrentIndex(ADMINISTRATOR);
       ui->customer_tableView->setModel(cTableModel);
       InitCustomerTableView();
+      ui->username_line->setCursorPosition(0);
     }
     else if(db->AuthenticateUser(ui->username_line->text(), ui->password_line->text()))
     {
       SetActiveUser(db->GetUserIdByName(ui->username_line->text()));
       ui->stacked_pages->setCurrentIndex(CUSTOMER);
+      ui->username_line->clear();
+      ui->password_line->clear();
+      ui->username_line->setCursorPosition(0);
     }
     else
     {
@@ -64,7 +68,8 @@ void MainWindow::on_login_buttonBox_rejected()
 {
   ui->username_line->clear();
   ui->password_line->clear();
-  ui->stacked_pages->setCurrentIndex(0 /*make this WELCOME later*/);
+  ui->username_line->setCursorPosition(0);
+  ui->stacked_pages->setCurrentIndex(INTRO);
 }
 
 void MainWindow::on_customer_tableView_activated(const QModelIndex &index)
@@ -751,22 +756,37 @@ void MainWindow::on_customer_purchase_purchaseButton_clicked()
   if(ui->customer_purchase_product_checkBox->isChecked())
   {
     db->Purchase(activeUserId, "1");
+    ui->customer_purchase_product_checkBox->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_2->isChecked())
   {
     db->Purchase(activeUserId, "2");
+    ui->customer_purchase_product_checkBox_2->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_3->isChecked())
   {
     db->Purchase(activeUserId, "3");
+    ui->customer_purchase_product_checkBox_3->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_4->isChecked())
   {
     db->Purchase(activeUserId, "4");
+    ui->customer_purchase_product_checkBox_4->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_5->isChecked())
   {
     db->Purchase(activeUserId, "5");
+    ui->customer_purchase_product_checkBox_5->setChecked(0);
   }
 
+}
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->toolBox->setCurrentIndex(0);
+}
+
+void MainWindow::on_customer_logout_button_clicked()
+{
+    ui->stacked_pages->setCurrentIndex(LOGIN);
 }

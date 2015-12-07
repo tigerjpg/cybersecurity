@@ -126,6 +126,8 @@ private slots:
 
   void on_add_testimonial_text_textChanged();
 
+  void on_add_testimonial_buttonBox_rejected();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

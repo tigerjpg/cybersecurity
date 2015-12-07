@@ -704,6 +704,7 @@ void MainWindow::on_OKgoBackLogIn_clicked()
 void MainWindow::on_InformationButton_clicked()
 {
   ui->stacked_pages->setCurrentIndex(INFORMATION);
+  ui->GeneralInfoButton->click();
 }
 
 void MainWindow::on_admin_logout_button_clicked()
@@ -784,4 +785,10 @@ void MainWindow::on_add_testimonial_text_textChanged()
   {
     ui->add_testimonial_text->textCursor().deletePreviousChar();
   }
+}
+
+void MainWindow::on_add_testimonial_buttonBox_rejected()
+{
+  ui->toolBox->setCurrentIndex(0);
+  ui->add_testimonial_text->clear();
 }

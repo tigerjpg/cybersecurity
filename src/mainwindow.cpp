@@ -744,3 +744,29 @@ void MainWindow::on_admin_logout_button_clicked()
 //  delete tTableModel;
 //  delete pTableModel;
 }
+
+void MainWindow::on_customer_purchase_purchaseButton_clicked()
+{
+    //Go to page that says thanks for your purchase?
+  if(ui->customer_purchase_product_checkBox->isChecked())
+  {
+    db->Purchase(activeUserId, "1");
+  }
+  if(ui->customer_purchase_product_checkBox_2->isChecked())
+  {
+    db->Purchase(activeUserId, "2");
+  }
+  if(ui->customer_purchase_product_checkBox_3->isChecked())
+  {
+    db->Purchase(activeUserId, "3");
+  }
+  if(ui->customer_purchase_product_checkBox_4->isChecked())
+  {
+    db->Purchase(activeUserId, "4");
+  }
+  if(ui->customer_purchase_product_checkBox_5->isChecked())
+  {
+    db->Purchase(activeUserId, "5");
+  }
+
+}

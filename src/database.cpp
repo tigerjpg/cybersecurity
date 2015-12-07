@@ -69,6 +69,12 @@ bool Database::AuthenticateUser(QString username, QString password)
   }
 }
 
+bool Database::Purchase(QString custId, QString prodId)
+{
+  return query.exec("insert into purchases values(\"" + custId
+                    + "\", \"" + prodId + "\");");
+}
+
 /*!
  * \brief Database::AddCustomer Add a customer to the database
  * \param name Customer's name

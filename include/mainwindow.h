@@ -116,6 +116,8 @@ private slots:
 
   void on_customer_products_slider_valueChanged(int value);
 
+  void on_customer_purchase_purchaseButton_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

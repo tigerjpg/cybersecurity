@@ -1175,6 +1175,13 @@ border: 3px solid gray;</string>
               </property>
              </widget>
             </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_6">
+              <property name="text">
+               <string>Price      : $1,000,000.00</string>
+              </property>
+             </widget>
+            </item>
             <item row="3" column="0">
              <widget class="QCheckBox" name="customer_purchase_product_checkBox_2">
               <property name="text">
@@ -1186,6 +1193,13 @@ border: 3px solid gray;</string>
              <widget class="QLabel" name="customer_purchase_product_label_2">
               <property name="text">
                <string>Product : TIGER Insider Threat</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_7">
+              <property name="text">
+               <string>Price      : $750,000.00</string>
               </property>
              </widget>
             </item>
@@ -1203,6 +1217,13 @@ border: 3px solid gray;</string>
               </property>
              </widget>
             </item>
+            <item row="6" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_8">
+              <property name="text">
+               <string>Price      : $500,000.00</string>
+              </property>
+             </widget>
+            </item>
             <item row="7" column="0">
              <widget class="QCheckBox" name="customer_purchase_product_checkBox_4">
               <property name="text">
@@ -1213,7 +1234,28 @@ border: 3px solid gray;</string>
             <item row="7" column="1">
              <widget class="QLabel" name="customer_purchase_product_label_4">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Product : TIGER Memory Integrity</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_9">
+              <property name="text">
+               <string>Price      : $250,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_10">
+              <property name="text">
+               <string>Product : TIGER Email Security</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_5">
+              <property name="text">
+               <string>Price      : $100,000.00</string>
               </property>
              </widget>
             </item>
@@ -1221,41 +1263,6 @@ border: 3px solid gray;</string>
              <widget class="QCheckBox" name="customer_purchase_product_checkBox_5">
               <property name="text">
                <string/>
-              </property>
-             </widget>
-            </item>
-            <item row="9" column="1">
-             <widget class="QLabel" name="customer_purchase_product_label_5">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <widget class="QLabel" name="customer_purchase_product_label_6">
-              <property name="text">
-               <string>Price      : $1,000,000.00</string>
-              </property>
-             </widget>
-            </item>
-            <item row="4" column="1">
-             <widget class="QLabel" name="customer_purchase_product_label_7">
-              <property name="text">
-               <string>Price      :</string>
-              </property>
-             </widget>
-            </item>
-            <item row="6" column="1">
-             <widget class="QLabel" name="customer_purchase_product_label_8">
-              <property name="text">
-               <string>TextLabel</string>
-              </property>
-             </widget>
-            </item>
-            <item row="8" column="1">
-             <widget class="QLabel" name="customer_purchase_product_label_9">
-              <property name="text">
-               <string>TextLabel</string>
               </property>
              </widget>
             </item>

@@ -25,5 +25,8 @@
         <file>html/TIGERInsider.html</file>
         <file>html/TIGERMemoryIntegrity.html</file>
         <file>html/TIGEREmail.html</file>
+        <file>html/INFOCop.html</file>
+        <file>html/INFOGeneral.html</file>
+        <file>html/INFOPlatforms.html</file>
     </qresource>
 </RCC>

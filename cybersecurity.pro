@@ -45,3 +45,5 @@ FORMS    += \
     forms/AddCustomerPopup.ui
 
 RESOURCES += cyberresources.qrc
+
+DISTFILES +=

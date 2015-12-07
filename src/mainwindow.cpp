@@ -313,6 +313,7 @@ void MainWindow::InitializeMaintenance()
 {
  ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
  ui->contact_us_button->SetButtonImage(":/tiger-fast.png",":/tiger-fast-h.png",":/tiger-fast-c.png");
+ ui
 }
 
 void MainWindow::setBackground(QMovie *movie, int speed)

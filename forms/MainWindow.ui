@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -613,15 +613,15 @@ p, li { white-space: pre-wrap; }
         </rect>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="admin_customer_page">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>761</width>
+          <height>405</height>
          </rect>
         </property>
         <attribute name="label">
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>389</height>
+          <height>405</height>
          </rect>
         </property>
         <attribute name="label">
@@ -928,7 +928,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </widget>
     <widget class="QWidget" name="customer_page">
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="customer_frame">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -936,6 +936,9 @@ p, li { white-space: pre-wrap; }
         <width>741</width>
         <height>511</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -961,7 +964,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>380</height>
+          <height>377</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1056,7 +1059,7 @@ border: 3px solid gray;</string>
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>380</height>
+          <height>377</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1150,7 +1153,7 @@ border: 3px solid gray;</string>
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>380</height>
+          <height>377</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1295,8 +1298,6 @@ border: 3px solid gray;</string>
           </item>
          </layout>
         </widget>
-        <zorder>verticalLayoutWidget_5</zorder>
-        <zorder>customer_purchase_product_label</zorder>
        </widget>
       </widget>
       <widget class="QPushButton" name="customer_logout_button">
@@ -1322,7 +1323,7 @@ border: 3px solid gray;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>

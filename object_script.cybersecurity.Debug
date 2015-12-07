@@ -11,7 +11,10 @@ INPUT(
 ./debug\purchasestablemodel.o
 ./debug\addcustomerpopup.o
 ./debug\contactus.o
-./debug\qrc_cyberresources.o
+./debug\errorpopup.o
+./debug\qrc_cybersounds.o
+./debug\qrc_cyberhtml.o
+./debug\qrc_cyberimages.o
 ./debug\moc_mainwindow.o
 ./debug\moc_customertablemodel.o
 ./debug\moc_testimonialtablemodel.o
@@ -20,4 +23,5 @@ INPUT(
 ./debug\moc_purchasestablemodel.o
 ./debug\moc_addcustomerpopup.o
 ./debug\moc_contactus.o
+./debug\moc_errorpopup.o
 );

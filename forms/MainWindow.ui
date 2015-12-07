@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -53,7 +53,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../cyberresources.qrc">:/images/TIGERtitle.png</pixmap>
+       <pixmap resource="../cyberimages.qrc">:/images/TIGERtitle.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -620,8 +620,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>761</width>
+          <height>407</height>
          </rect>
         </property>
         <attribute name="label">
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>405</height>
+          <height>407</height>
          </rect>
         </property>
         <attribute name="label">
@@ -963,8 +963,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>380</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1058,7 +1058,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <height>380</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1152,7 +1153,7 @@ border: 3px solid gray;</string>
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>380</height>
+          <height>343</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1303,8 +1304,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>307</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1352,8 +1353,6 @@ border: 3px solid gray;</string>
           </item>
          </layout>
         </widget>
-        <zorder>verticalLayoutWidget_5</zorder>
-        <zorder>customer_purchase_product_label</zorder>
        </widget>
       </widget>
       <widget class="QPushButton" name="customer_logout_button">
@@ -1379,7 +1378,7 @@ border: 3px solid gray;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
@@ -1397,7 +1396,7 @@ border: 3px solid gray;</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../cyberresources.qrc"/>
+  <include location="../cyberimages.qrc"/>
  </resources>
  <connections/>
 </ui>

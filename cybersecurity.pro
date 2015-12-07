@@ -45,7 +45,7 @@ HEADERS  += include/mainwindow.h \
 
 FORMS    += forms/MainWindow.ui \
     forms/contactus.ui \
-    form/helpoption.ui \
+    forms/helpoption.ui \
     forms/AddTestimonialPopup.ui \
     forms/ViewPurchasesPopup.ui \
     forms/AddCustomerPopup.ui \

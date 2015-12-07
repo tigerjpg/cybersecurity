@@ -107,7 +107,7 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 bool Database::AddTestimonial(QString name, QString testimonial)
 {
   if(query.exec("insert into testimonials values(NULL, \"" + name
-                + "\", \"" + testimonial + "\", NULL, 0);"))
+                + "\", \"" + testimonial + "\", 'tiger_default.png', 0);"))
   {
     return true;
   }

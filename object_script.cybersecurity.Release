@@ -10,6 +10,7 @@ INPUT(
 ./release\viewpurchasespopup.o
 ./release\purchasestablemodel.o
 ./release\addcustomerpopup.o
+./release\contactus.o
 ./release\qrc_cyberresources.o
 ./release\moc_mainwindow.o
 ./release\moc_customertablemodel.o
@@ -18,4 +19,5 @@ INPUT(
 ./release\moc_viewpurchasespopup.o
 ./release\moc_purchasestablemodel.o
 ./release\moc_addcustomerpopup.o
+./release\moc_contactus.o
 );

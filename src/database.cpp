@@ -69,6 +69,12 @@ bool Database::AuthenticateUser(QString username, QString password)
   }
 }
 
+bool Database::Purchase(QString custId, QString prodId)
+{
+  return query.exec("insert into purchases values(\"" + custId
+                    + "\", \"" + prodId + "\");");
+}
+
 /*!
  * \brief Database::AddCustomer Add a customer to the database
  * \param name Customer's name
@@ -246,6 +252,27 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
 QString Database::GetCustomerIdByName(QString name)
 {
   if(query.exec("select id from customers where name = \"" + name + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("id").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
+QString Database::GetUserIdByName(QString username)
+{
+  if(query.exec("select id from users where username = \"" + username + "\";"))
   {
     if(query.next())
     {

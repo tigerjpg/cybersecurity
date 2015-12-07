@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>405</height>
+          <height>389</height>
          </rect>
         </property>
         <attribute name="label">
@@ -961,7 +961,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>377</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -973,7 +973,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>10</y>
            <width>691</width>
-           <height>362</height>
+           <height>321</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,10,0">
@@ -1055,8 +1055,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1068,7 +1068,7 @@ border: 3px solid gray;</string>
            <x>13</x>
            <y>9</y>
            <width>691</width>
-           <height>361</height>
+           <height>341</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1149,14 +1149,168 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
          <string>Make A Purchase</string>
         </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>0</y>
+           <width>671</width>
+           <height>351</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <layout class="QFormLayout" name="customer_purchase_form_layout">
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="customer_purchase_product_checkBox">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label">
+              <property name="text">
+               <string>Product : TIGER Threat Protection</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_6">
+              <property name="text">
+               <string>Price      : $1,000,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QCheckBox" name="customer_purchase_product_checkBox_2">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_2">
+              <property name="text">
+               <string>Product : TIGER Insider Threat</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_7">
+              <property name="text">
+               <string>Price      : $750,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="0">
+             <widget class="QCheckBox" name="customer_purchase_product_checkBox_3">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_3">
+              <property name="text">
+               <string>Product : TIGER Analytics</string>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_8">
+              <property name="text">
+               <string>Price      : $500,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="0">
+             <widget class="QCheckBox" name="customer_purchase_product_checkBox_4">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="7" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_4">
+              <property name="text">
+               <string>Product : TIGER Memory Integrity</string>
+              </property>
+             </widget>
+            </item>
+            <item row="8" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_9">
+              <property name="text">
+               <string>Price      : $250,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_10">
+              <property name="text">
+               <string>Product : TIGER Email Security</string>
+              </property>
+             </widget>
+            </item>
+            <item row="10" column="1">
+             <widget class="QLabel" name="customer_purchase_product_label_5">
+              <property name="text">
+               <string>Price      : $100,000.00</string>
+              </property>
+             </widget>
+            </item>
+            <item row="9" column="0">
+             <widget class="QCheckBox" name="customer_purchase_product_checkBox_5">
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <item>
+             <widget class="QPushButton" name="pushButton_2">
+              <property name="text">
+               <string>Cancel</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="customer_purchase_purchaseButton">
+              <property name="text">
+               <string>Purchase</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+        <zorder>verticalLayoutWidget_5</zorder>
+        <zorder>customer_purchase_product_label</zorder>
        </widget>
+      </widget>
+      <widget class="QPushButton" name="customer_logout_button">
+       <property name="geometry">
+        <rect>
+         <x>630</x>
+         <y>480</y>
+         <width>99</width>
+         <height>30</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>Logout</string>
+       </property>
       </widget>
      </widget>
     </widget>
@@ -1168,7 +1322,7 @@ border: 3px solid gray;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>19</height>
+     <height>30</height>
     </rect>
    </property>
   </widget>

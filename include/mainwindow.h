@@ -78,6 +78,8 @@ private slots:
   void on_customer_submit_changes_button_clicked();
 
 private slots:
+  void Welcome();
+  void Click();
   void on_finished_intro();
   void on_welcomeBtn_clicked();
 

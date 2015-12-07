@@ -25,7 +25,8 @@ SOURCES += src/main.cpp \
     src/viewpurchasespopup.cpp \
     src/purchasestablemodel.cpp \
     src/addcustomerpopup.cpp \
-    src/contactus.cpp
+    src/contactus.cpp \
+    src/errorpopup.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
@@ -38,14 +39,16 @@ HEADERS  += include/mainwindow.h \
     include/viewpurchasespopup.h \
     include/purchasestablemodel.h \
     include/addcustomerpopup.h \
-    include/contactus.h
+    include/contactus.h \
+    include/errorpopup.h
 
 FORMS    += \
     forms/MainWindow.ui \
     forms/AddTestimonialPopup.ui \
     forms/ViewPurchasesPopup.ui \
     forms/AddCustomerPopup.ui \
-    forms/contactus.ui
+    forms/contactus.ui \
+    forms/errorpopup.ui
 
 RESOURCES += \
     cybersounds.qrc \

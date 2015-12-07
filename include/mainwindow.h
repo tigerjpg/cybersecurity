@@ -135,7 +135,7 @@ private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
   // function to create db entries for user
-  void Register();
+  bool Register();
 
   void changeBackground(int index);
   void setBackground(QPixmap picture);

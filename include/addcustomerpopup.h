@@ -2,6 +2,7 @@
 #define ADDCUSTOMERPOPUP_H
 #include "database.h"
 #include "customertablemodel.h"
+#include "errorpopup.h"
 #include <QWidget>
 
 namespace Ui {

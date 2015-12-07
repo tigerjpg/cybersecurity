@@ -54,9 +54,10 @@ public:
   QString GetCustomerIdByName(QString name);
   /// Returns the id of the user with the matching name
   QString GetUserIdByName(QString username);
-
+  /// Retrieve customer name with the matching id
   QString GetCustomerNameById(QString id);
-
+  /// Retrieve customer sent status with with matching id
+  QString GetCustomerSentStatus(QString id);
   /// Retrieve all data from a given table
   QList<QSqlRecord>* GetData(QString tableName);
 

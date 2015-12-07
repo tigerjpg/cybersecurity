@@ -27,7 +27,6 @@ SOURCES += src/main.cpp \
     src/viewpurchasespopup.cpp \
     src/purchasestablemodel.cpp \
     src/addcustomerpopup.cpp \
-    src/contactus.cpp \
     src/errorpopup.cpp
 
 

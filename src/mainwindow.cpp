@@ -309,6 +309,12 @@ void MainWindow::Register()
   }
 }
 
+void MainWindow::InitializeMaintenance()
+{
+ ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
+ ui->contact_us_button->SetButtonImage(":/tiger-fast.png",":/tiger-fast-h.png",":/tiger-fast-c.png");
+}
+
 void MainWindow::setBackground(QMovie *movie, int speed)
 {
   // loads the background movie into a label
@@ -641,6 +647,7 @@ void MainWindow::on_toolBox_currentChanged(int index)
 {
   switch(index){
   case CUST_PRODUCTS : break;
+  case CUST_MAINTENANCE : InitializeMaintenance();
   case CUST_TESTIMONIALS : UpdateTestimonialList();
     break;
   case CUST_PURCHASE : break;

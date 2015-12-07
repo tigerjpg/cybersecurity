@@ -36,6 +36,7 @@ public:
 
   enum CustomerPage {
     CUST_PRODUCTS,
+    CUST_MAINTENANCE,
     CUST_TESTIMONIALS,
     CUST_PURCHASE
   };
@@ -136,6 +137,8 @@ private:
   bool RegistrationCompleted();
   // function to create db entries for user
   void Register();
+  // function to initialize the maintenance plane page
+  void InitializeMaintenance();
 
   void changeBackground(int index);
   void setBackground(QPixmap picture);

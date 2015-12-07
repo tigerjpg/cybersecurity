@@ -53,7 +53,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="../cyberresources.qrc">:/images/TIGERtitle.png</pixmap>
+       <pixmap resource="../cyberimages.qrc">:/images/TIGERtitle.png</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -472,7 +472,7 @@ p, li { white-space: pre-wrap; }
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>361</width>
+         <width>367</width>
          <height>431</height>
         </rect>
        </property>
@@ -1327,8 +1327,8 @@ border: 3px solid gray;</string>
       <widget class="QPushButton" name="customer_logout_button">
        <property name="geometry">
         <rect>
-         <x>630</x>
-         <y>480</y>
+         <x>590</x>
+         <y>470</y>
          <width>99</width>
          <height>30</height>
         </rect>
@@ -1365,7 +1365,7 @@ border: 3px solid gray;</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="../cyberresources.qrc"/>
+  <include location="../cyberimages.qrc"/>
  </resources>
  <connections/>
 </ui>

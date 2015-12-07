@@ -43,6 +43,7 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->customer_tableView->setModel(cTableModel);
       InitCustomerTableView();
       ui->username_line->setCursorPosition(0);
+      ui->administrator_toolBox->setCurrentIndex(0);
     }
     else if(db->AuthenticateUser(ui->username_line->text(), ui->password_line->text()))
     {
@@ -52,6 +53,9 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->username_line->clear();
       ui->password_line->clear();
       ui->username_line->setCursorPosition(0);
+      ui->customer_products_slider->setSliderPosition(0);
+      ui->customer_testimonial_slider->setSliderPosition(0);
+      ui->toolBox->setCurrentIndex(0);
     }
     else
     {
@@ -726,9 +730,9 @@ void MainWindow::on_InformationButton_clicked()
 void MainWindow::on_admin_logout_button_clicked()
 {
   ui->stacked_pages->setCurrentIndex(LOGIN);
-  //  delete cTableModel;
-  //  delete tTableModel;
-  //  delete pTableModel;
+  ui->administrator_toolBox->setCurrentIndex(0);
+  delete cTableModel;
+  delete tTableModel;
 }
 
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
@@ -769,6 +773,8 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_customer_logout_button_clicked()
 {
+  ui->customer_products_slider->setSliderPosition(0);
+  ui->customer_testimonial_slider->setSliderPosition(0);
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 

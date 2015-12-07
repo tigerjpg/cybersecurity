@@ -7,7 +7,8 @@ ViewPurchasesPopup::ViewPurchasesPopup(QWidget *parent, Database *db, PurchasesT
   ui->setupUi(this);
   this->setWindowTitle("View Purchases");
   data = db;
-  ui->purchases_popup_tableView->setModel(model);
+  _model = model;
+  ui->purchases_popup_tableView->setModel(_model);
   ui->purchases_popup_tableView->hideColumn(PurchasesTableModel::ID);
   ui->purchases_popup_tableView->verticalHeader()->hide();
   ui->purchases_popup_tableView->resizeColumnsToContents();
@@ -18,6 +19,7 @@ ViewPurchasesPopup::~ViewPurchasesPopup()
 {
   delete ui;
   delete data;
+  delete _model;
 }
 
 void ViewPurchasesPopup::on_purchases_popup_buttonBox_accepted()

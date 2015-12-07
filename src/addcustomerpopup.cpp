@@ -1,4 +1,4 @@
-#include "include/addcustomerpopup.h"
+#include "addcustomerpopup.h"
 #include "ui_AddCustomerPopup.h"
 
 AddCustomerPopup::AddCustomerPopup(QWidget *parent, Database *db, CustomerTableModel *cTableModel) :
@@ -18,10 +18,14 @@ AddCustomerPopup::~AddCustomerPopup()
 
 void AddCustomerPopup::on_add_customer_buttonBox_accepted()
 {
-  if(!ui->add_customer_name_box->text().isEmpty() &&
+  QString password = ui->add_customer_password_box->text();
+
+  if(!ui->add_customer_username_box->text().isEmpty() &&
+     !ui->add_customer_name_box->text().isEmpty() &&
      !ui->add_customer_address_box->text().isEmpty())
   {
-    if(ui->add_customer_name_box->hasAcceptableInput() &&
+    if(ui->add_customer_username_box->hasAcceptableInput() &&
+       ui->add_customer_name_box->hasAcceptableInput() &&
        ui->add_customer_address_box->hasAcceptableInput())
     {
       if(data->AddCustomer(ui->add_customer_name_box->text(),
@@ -31,6 +35,9 @@ void AddCustomerPopup::on_add_customer_buttonBox_accepted()
                            QString::number(ui->add_customer_sent_checkBox->isChecked())))
       {
         qDebug() << "CUSTOMER ACCEPTED!";
+        data->AddUser(data->GetCustomerIdByName(ui->add_customer_name_box->text()),
+                                                ui->add_customer_username_box->text(),
+                                                password);
         ui->add_customer_name_box->clear();
         ui->add_customer_address_box->clear();
         ui->add_customer_interest_comboBox->clear();

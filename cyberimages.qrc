@@ -18,5 +18,11 @@
         <file>images/welcome-click.png</file>
         <file>images/welcome-hover.png</file>
         <file>images/TIGERtitle.png</file>
+        <file>images/analytics.png</file>
+        <file>images/email.png</file>
+        <file>images/InsiderThreat.png</file>
+        <file>images/memory.png</file>
+        <file>images/ThreatProtection.png</file>
+        <file>images/tiger_default.png</file>
     </qresource>
 </RCC>

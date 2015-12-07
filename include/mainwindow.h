@@ -124,6 +124,10 @@ private slots:
 
   void on_customer_logout_button_clicked();
 
+  void on_add_testimonial_buttonBox_accepted();
+
+  void on_add_testimonial_text_textChanged();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();

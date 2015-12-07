@@ -48,6 +48,7 @@ void MainWindow::on_login_buttonBox_accepted()
     {
       SetActiveUser(db->GetUserIdByName(ui->username_line->text()));
       ui->stacked_pages->setCurrentIndex(CUSTOMER);
+      ui->toolBox->setCurrentIndex(0);
       ui->username_line->clear();
       ui->password_line->clear();
       ui->username_line->setCursorPosition(0);
@@ -241,6 +242,7 @@ void MainWindow::on_testimonial_approve_button_clicked()
         {
           tTableModel->select();
           qDebug() << "TESTIMONIAL APPROVED!";
+          testimonials = db->GetApprovedTestimonials();
         }
         else
         {
@@ -292,7 +294,7 @@ void MainWindow::Register()
   {
     qDebug() << ui->company_line->text() << " added to the customer table.\n";
 
-    if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text(), "false"))
+    if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text()))
     {
       qDebug() << ui->username_line_2->text() << " added the the users table.\n";
     }
@@ -381,8 +383,8 @@ void MainWindow::SetTestimonialView(int index)
 
     ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
     ui->customer_testimonials_picture->setPixmap(image);
-//    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
-//    qDebug() << "TESTIMONIAL IMAGE PATH: " << testimonials->at(position).field("image").value().toString();
+    //    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
+    //    qDebug() << "TESTIMONIAL IMAGE PATH: " << testimonials->at(position).field("image").value().toString();
   }
   else
   {
@@ -393,9 +395,9 @@ void MainWindow::SetTestimonialView(int index)
 void MainWindow::UpdateTestimonialList()
 {
   if(testimonials != NULL){
-      delete testimonials;
-    }
-  testimonials = db->GetData("testimonials");
+    delete testimonials;
+  }
+  testimonials = db->GetApprovedTestimonials();
   qDebug() << "TESTIMONIALS LIST SIZE: " << testimonials->size();
   ui->customer_testimonial_slider->setMinimum(0);
   ui->customer_testimonial_slider->setMaximum(testimonials->size()-1);
@@ -628,13 +630,13 @@ void MainWindow::on_customer_testimonial_slider_valueChanged(int value)
 
 void MainWindow::on_toolBox_currentChanged(int index)
 {
-    switch(index){
-      case CUST_PRODUCTS : break;
-      case CUST_TESTIMONIALS : UpdateTestimonialList();
-                               break;
-      case CUST_PURCHASE : break;
-      default : break;
-      }
+  switch(index){
+  case CUST_PRODUCTS : break;
+  case CUST_TESTIMONIALS : UpdateTestimonialList();
+    break;
+  case CUST_PURCHASE : break;
+  default : break;
+  }
 }
 
 void MainWindow::on_customer_products_slider_valueChanged(int value)
@@ -645,7 +647,7 @@ void MainWindow::on_customer_products_slider_valueChanged(int value)
 
 void MainWindow::on_GeneralInfoButton_clicked()
 {
-    ui->InformationSpace->setSource(QUrl("qrc:/html/INFOGeneral.html"));
+  ui->InformationSpace->setSource(QUrl("qrc:/html/INFOGeneral.html"));
 }
 
 void MainWindow::on_ConceptOfOperations_clicked()
@@ -723,14 +725,14 @@ void MainWindow::on_InformationButton_clicked()
 void MainWindow::on_admin_logout_button_clicked()
 {
   ui->stacked_pages->setCurrentIndex(LOGIN);
-//  delete cTableModel;
-//  delete tTableModel;
-//  delete pTableModel;
+  //  delete cTableModel;
+  //  delete tTableModel;
+  //  delete pTableModel;
 }
 
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
 {
-    //Go to page that says thanks for your purchase?
+  //Go to page that says thanks for your purchase?
   if(ui->customer_purchase_product_checkBox->isChecked())
   {
     db->Purchase(activeUserId, "1");
@@ -761,10 +763,41 @@ void MainWindow::on_customer_purchase_purchaseButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
-    ui->toolBox->setCurrentIndex(0);
+  ui->toolBox->setCurrentIndex(0);
 }
 
 void MainWindow::on_customer_logout_button_clicked()
 {
-    ui->stacked_pages->setCurrentIndex(LOGIN);
+  ui->stacked_pages->setCurrentIndex(LOGIN);
+}
+
+void MainWindow::on_add_testimonial_buttonBox_accepted()
+{
+  QString name = db->GetCustomerNameById(activeUserId);
+
+  if(!ui->add_testimonial_text->toPlainText().isEmpty())
+  {
+    if(db->AddTestimonial(name, ui->add_testimonial_text->toPlainText()))
+    {
+      qDebug() << "TESTIMONIAL ADDED";
+      ui->toolBox->setCurrentIndex(0);
+    }
+    else
+    {
+      qDebug() << "USERS GET ONE TESTIMONIAL. ONLY ONE!";
+    }
+  }
+  else
+  {
+    qDebug() << "TESTIMONIAL IS EMPTY!";
+  }
+  ui->add_testimonial_text->clear();
+}
+
+void MainWindow::on_add_testimonial_text_textChanged()
+{
+  if(ui->add_testimonial_text->toPlainText().length() >= 500)
+  {
+    ui->add_testimonial_text->textCursor().deletePreviousChar();
+  }
 }

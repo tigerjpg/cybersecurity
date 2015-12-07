@@ -30,7 +30,9 @@ void MainWindow::on_login_buttonBox_accepted()
 {
   if(!ui->username_line->text().isEmpty() && !ui->password_line->text().isEmpty())
   {
-    if(db->AuthenticateAdmin(ui->username_line->text(), ui->password_line->text()))
+    QString username = ui->username_line->text();
+    QString password = ui->password_line->text();
+    if(db->AuthenticateAdmin(username, password))
     {
       cTableModel = new CustomerTableModel(this, db);
       tTableModel = new TestimonialTableModel(this, db);
@@ -45,29 +47,40 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->username_line->setCursorPosition(0);
       ui->administrator_toolBox->setCurrentIndex(0);
     }
-    else if(db->AuthenticateUser(ui->username_line->text(), ui->password_line->text()))
+    else if(db->AuthenticateUser(username, password))
     {
-      SetActiveUser(db->GetUserIdByName(ui->username_line->text()));
-      ui->stacked_pages->setCurrentIndex(CUSTOMER);
-      ui->toolBox->setCurrentIndex(0);
-      ui->username_line->clear();
-      ui->password_line->clear();
-      ui->username_line->setCursorPosition(0);
-      ui->customer_products_slider->setSliderPosition(0);
-      ui->customer_testimonial_slider->setSliderPosition(0);
-      ui->toolBox->setCurrentIndex(0);
+      QString id = db->GetUserIdByName(username);
+      qDebug() << id;
+      qDebug() << db->GetCustomerSentStatus(id);
+      if(db->GetCustomerSentStatus(id) == "1")
+      {
+        SetActiveUser(db->GetUserIdByName(ui->username_line->text()));
+        ui->stacked_pages->setCurrentIndex(CUSTOMER);
+        ui->toolBox->setCurrentIndex(0);
+        ui->username_line->clear();
+        ui->password_line->clear();
+        ui->username_line->setCursorPosition(0);
+        ui->customer_products_slider->setSliderPosition(0);
+        ui->customer_testimonial_slider->setSliderPosition(1);
+        ui->toolBox->setCurrentIndex(0);
+      }
+      else
+      {
+        ErrorPopup *p = new ErrorPopup("ACCESS TO PAMPHLET PENDING:\n Please wait until "
+                                       "an administrator authorizes your account.");
+        p->show();
+      }
     }
     else
     {
-      qDebug() <<"UNACCEPTABLE!!!!";
-      ErrorPopup *p = new ErrorPopup("Invalid User Name or Password. Please Try Again!!!");
+      ErrorPopup *p = new ErrorPopup("INVALID USERNAME OR PASSWORD.\n Please try again.");
       p->show();
     }
   }
   else
   {
     qDebug() << "EMPTY!!!";
-    ErrorPopup *p = new ErrorPopup("The User Name or Password fields are blank.\n Please Try Again!!!");
+    ErrorPopup *p = new ErrorPopup("FIELDS CANNOT BE BLANK.\n Please try again.");
     p->show();
   }
 }
@@ -168,9 +181,9 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
 }
 
 /*!
- * \brief MainWindow::on_testimonial_add_button_clicked
- * Add a testimonial. Creates a popup window.
- */
+             * \brief MainWindow::on_testimonial_add_button_clicked
+             * Add a testimonial. Creates a popup window.
+             */
 void MainWindow::on_testimonial_add_button_clicked()
 {
   AddTestimonialPopup *p;
@@ -184,9 +197,9 @@ void MainWindow::on_testimonial_add_button_clicked()
 }
 
 /*!
- * \brief MainWindow::InitTestimonialTableView
- * Initialize the Testimonial TableView
- */
+             * \brief MainWindow::InitTestimonialTableView
+             * Initialize the Testimonial TableView
+             */
 void MainWindow::InitTestimonialTableView()
 {
   ui->testimonial_tableView->setEditTriggers(QTableView::NoEditTriggers);
@@ -202,9 +215,9 @@ void MainWindow::InitTestimonialTableView()
 }
 
 /*!
- * \brief MainWindow::InitCustomerTableView
- * Initialize the customer tableView
- */
+             * \brief MainWindow::InitCustomerTableView
+             * Initialize the customer tableView
+             */
 void MainWindow::InitCustomerTableView()
 {
   ui->customer_tableView->hideColumn(CustomerTableModel::ID);
@@ -214,9 +227,9 @@ void MainWindow::InitCustomerTableView()
 }
 
 /*!
- * \brief MainWindow::on_testimonial_remove_button_clicked
- * Remove a testimonial
- */
+             * \brief MainWindow::on_testimonial_remove_button_clicked
+             * Remove a testimonial
+             */
 void MainWindow::on_testimonial_remove_button_clicked()
 {
   if(tTableModel->removeRow(ui->testimonial_tableView->currentIndex().row()))
@@ -227,15 +240,16 @@ void MainWindow::on_testimonial_remove_button_clicked()
   }
   else
   {
-    qDebug() << "SELECT A ROW YA DINGUS!!";
+    ErrorPopup *p = new ErrorPopup("NO ROWS SELECTED.\n Please select a row first.");
+    p->show();
   }
 
 }
 
 /*!
- * \brief MainWindow::on_testimonial_approve_button_clicked
- * Approve a testimonial
- */
+             * \brief MainWindow::on_testimonial_approve_button_clicked
+             * Approve a testimonial
+             */
 void MainWindow::on_testimonial_approve_button_clicked()
 {
   int row = ui->testimonial_tableView->currentIndex().row();
@@ -251,6 +265,9 @@ void MainWindow::on_testimonial_approve_button_clicked()
           tTableModel->select();
           qDebug() << "TESTIMONIAL APPROVED!";
           testimonials = db->GetApprovedTestimonials();
+          ErrorPopup *p = new ErrorPopup("TESTIMONIAL HAS BEEN APPROVED.",
+                                         "images/tiger_default.png", "OK!", 0);
+          p->show();
         }
         else
         {
@@ -264,12 +281,14 @@ void MainWindow::on_testimonial_approve_button_clicked()
     }
     else
     {
-      qDebug() << "TESTIMONIAL ALREADY APPROVED!";
+      ErrorPopup *p = new ErrorPopup("TESTIMONIAL IS ALREADY APPROVED.");
+      p->show();
     }
   }
   else
   {
-    qDebug() << "SELECT A ROW YA DINGUS!!";
+    ErrorPopup *p = new ErrorPopup("NO ROWS SELECTED.\n Please select a row first.");
+    p->show();
   }
 }
 
@@ -294,7 +313,7 @@ bool MainWindow::RegistrationCompleted()
   }
 }
 
-void MainWindow::Register()
+bool MainWindow::Register()
 {
 
   if(db->AddCustomer(ui->company_line->text(), ui->address_line->text(),
@@ -305,7 +324,12 @@ void MainWindow::Register()
     if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text()))
     {
       qDebug() << ui->username_line_2->text() << " added the the users table.\n";
+      return true;
     }
+  }
+  else
+  {
+    return false;
   }
 }
 
@@ -335,9 +359,9 @@ void MainWindow::setBackground(QMovie *movie, int speed)
 }
 
 /*!
- * \brief MainWindow::WelcomeAnimation
- *  Initiates teh welcome animation
- */
+             * \brief MainWindow::WelcomeAnimation
+             *  Initiates teh welcome animation
+             */
 void MainWindow::WelcomeAnimation()
 {
   ui->welcomeBtn->SetButtonImage("images/welcome.png","images/welcome-hover.png","images/welcome-click.png");
@@ -358,9 +382,9 @@ void MainWindow::WelcomeAnimation()
 }
 
 /*!
- * \brief MainWindow::on_finished_intro()
- * Once the intro animation is over it brings in the TIGER and enables the welcome button
- */
+             * \brief MainWindow::on_finished_intro()
+             * Once the intro animation is over it brings in the TIGER and enables the welcome button
+             */
 void MainWindow::on_finished_intro()
 {
   // Create an animation, with a target object and specified duration
@@ -378,9 +402,9 @@ void MainWindow::on_finished_intro()
 }
 
 /*!
- * \brief MainWindow::on_welcomeBtn_clicked
- * Changes the page to the login page
- */
+             * \brief MainWindow::on_welcomeBtn_clicked
+             * Changes the page to the login page
+             */
 void MainWindow::on_welcomeBtn_clicked()
 {
   Click();
@@ -470,16 +494,17 @@ void MainWindow::on_customer_remove_button_clicked()
   }
   else
   {
-    qDebug() << "SELECT A ROW YA DINGUS!!";
+    ErrorPopup *p = new ErrorPopup("NO ROWS SELECTED.\n Please select a row first.");
+    p->show();
   }
 }
 
 
 /*!
- * \brief MainWindow::on_customer_interest_comboBox_currentIndexChanged
- * View only customers of a certain interest level.
- * \param index
- */
+             * \brief MainWindow::on_customer_interest_comboBox_currentIndexChanged
+             * View only customers of a certain interest level.
+             * \param index
+             */
 void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
 {
   enum Interest
@@ -537,38 +562,48 @@ void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
 }
 
 /*!
- * \brief MainWindow::on_customer_purchase_button_clicked
- * Create a popup window with a table with the purchases
- * of the specific customer you have selected.
- */
+             * \brief MainWindow::on_customer_purchase_button_clicked
+             * Create a popup window with a table with the purchases
+             * of the specific customer you have selected.
+             */
 void MainWindow::on_customer_purchase_button_clicked()
 {
   int row = ui->customer_tableView->currentIndex().row();
   if(row != -1)
   {
     int id = cTableModel->record(row).field("id").value().toInt();
-    qDebug() << id;
-    pTableModel = new PurchasesTableModel(this, db, id);
-    ViewPurchasesPopup *p;
-    p = new ViewPurchasesPopup(0, db, pTableModel);
-    p->setWindowModality(Qt::ApplicationModal);
-    p->show();
+    if(db->HasPurchased(QString::number(id)))
+    {
+      pTableModel = new PurchasesTableModel(this, db, id);
+      ViewPurchasesPopup *p;
+      p = new ViewPurchasesPopup(0, db, pTableModel);
+      p->setWindowModality(Qt::ApplicationModal);
+      p->show();
+    }
+    else
+    {
+      ErrorPopup *p = new ErrorPopup("Customer has not purchased anything!",
+                                     "images/tiger_default.png", "OK!", 0);
+      p->show();
+    }
   }
   else
   {
-    qDebug() << "SELECT A ROW YA DINGUS!!";
+    ErrorPopup *p = new ErrorPopup("NO ROWS SELECTED.\n Please select a row first.");
+    p->show();
   }
 }
 
 /*!
- * \brief MainWindow::on_customer_submit_changes_button_clicked
- * Finalize changes made to the customer table
- */
+             * \brief MainWindow::on_customer_submit_changes_button_clicked
+             * Finalize changes made to the customer table
+             */
 void MainWindow::on_customer_submit_changes_button_clicked()
 {
   if(cTableModel->submitAll())
   {
-    qDebug() << "CHANGES APPLIED TO CUSTOMER TABLE";
+    ErrorPopup *p = new ErrorPopup("Changes have been applied!", "images/tiger_default.png", "OK!", 0);
+    p->show();
   }
   else
   {
@@ -585,18 +620,18 @@ void MainWindow::Welcome()
 }
 
 /*!
- * \brief MainWindow::Click
- * Plays a classic button click sound
- */
+             * \brief MainWindow::Click
+             * Plays a classic button click sound
+             */
 void MainWindow::Click()
 {
   QSound::play(":/sounds/click.wav");
 }
 
 /*!
- * \brief MainWindow::on_customer_add_pushButton_clicked
- * Creates a popup window with a form to add Customers
- */
+             * \brief MainWindow::on_customer_add_pushButton_clicked
+             * Creates a popup window with a form to add Customers
+             */
 void MainWindow::on_customer_add_pushButton_clicked()
 {
   AddCustomerPopup *p = new AddCustomerPopup(0, db, cTableModel);
@@ -605,9 +640,9 @@ void MainWindow::on_customer_add_pushButton_clicked()
 }
 
 /*!
- * \brief MainWindow::on_customer_send_pamphlet_button_clicked
- * Alter customers table "sent" value
- */
+             * \brief MainWindow::on_customer_send_pamphlet_button_clicked
+             * Alter customers table "sent" value
+             */
 void MainWindow::on_customer_send_pamphlet_button_clicked()
 {
   //Check if row is selected
@@ -633,12 +668,15 @@ void MainWindow::on_customer_send_pamphlet_button_clicked()
     }
     else
     {
-      qDebug() << "CUSTOMER HAS ALREADY BEEN SENT A PAMPHLET! GOSH";
+      ErrorPopup *p = new ErrorPopup("CUSTOMER HAS ALREADY BEEN SENT A PAMPLHET.\n"
+                                     "Changes not applied.");
+      p->show();
     }
   }
   else
   {
-    qDebug() << "SELECT A ROW YA DINGUS!";
+    ErrorPopup *p = new ErrorPopup("NO ROWS SELECTED.\n Please select a row first.");
+    p->show();
   }
 }
 
@@ -726,9 +764,17 @@ void MainWindow::on_terms_box_toggled(bool checked)
 
 void MainWindow::on_register_okay_button_clicked()
 {
-  Register();
-  Register_ClearForms();
-  ui->stacked_pages->setCurrentIndex(LOGIN);
+  if(Register())
+  {
+    Register_ClearForms();
+    ui->stacked_pages->setCurrentIndex(LOGIN);
+  }
+  else
+  {
+    ErrorPopup *p = new ErrorPopup("CUSTOMER WITH SAME NAME ALREADY EXISTS.\n "
+                                   "Did you forget about your account with us?");
+    p->show();
+  }
 }
 
 void MainWindow::on_register_cancel_button_clicked()
@@ -758,33 +804,47 @@ void MainWindow::on_admin_logout_button_clicked()
 
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
 {
+  bool madePurchase = false;
   //Go to page that says thanks for your purchase?
   if(ui->customer_purchase_product_checkBox->isChecked())
   {
-    db->Purchase(activeUserId, "1");
+    madePurchase = db->Purchase(activeUserId, "1");
     ui->customer_purchase_product_checkBox->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_2->isChecked())
   {
-    db->Purchase(activeUserId, "2");
+    madePurchase = db->Purchase(activeUserId, "2");
     ui->customer_purchase_product_checkBox_2->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_3->isChecked())
   {
-    db->Purchase(activeUserId, "3");
+    madePurchase = db->Purchase(activeUserId, "3");
     ui->customer_purchase_product_checkBox_3->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_4->isChecked())
   {
-    db->Purchase(activeUserId, "4");
+    madePurchase = db->Purchase(activeUserId, "4");
     ui->customer_purchase_product_checkBox_4->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_5->isChecked())
   {
-    db->Purchase(activeUserId, "5");
+    madePurchase = db->Purchase(activeUserId, "5");
     ui->customer_purchase_product_checkBox_5->setChecked(0);
   }
-
+  if(madePurchase)
+  {
+    ErrorPopup *p = new ErrorPopup("Thank you for your purchase!\n"
+                                   "Our representatives will contact you in"
+                                   " 2 business days. Exactly.",
+                                   "images/tiger.png", "ROAR!", 0);
+    p->show();
+  }
+  else
+  {
+    ErrorPopup *p = new ErrorPopup("NO PRODUCTS SELECTED.\n Please select "
+                                   "a product to purchase.");
+    p->show();
+  }
 }
 
 void MainWindow::on_pushButton_2_clicked()
@@ -795,7 +855,7 @@ void MainWindow::on_pushButton_2_clicked()
 void MainWindow::on_customer_logout_button_clicked()
 {
   ui->customer_products_slider->setSliderPosition(0);
-  ui->customer_testimonial_slider->setSliderPosition(0);
+  ui->customer_testimonial_slider->setSliderPosition(1);
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
@@ -807,17 +867,24 @@ void MainWindow::on_add_testimonial_buttonBox_accepted()
   {
     if(db->AddTestimonial(name, ui->add_testimonial_text->toPlainText()))
     {
-      qDebug() << "TESTIMONIAL ADDED";
+      ErrorPopup *p = new ErrorPopup("THANK YOU FOR LEAVING A TESTIMONIAL!\n"
+                                     "We hope to do good business with you in the future.");
+      p->show();
       ui->toolBox->setCurrentIndex(0);
     }
     else
     {
-      qDebug() << "USERS GET ONE TESTIMONIAL. ONLY ONE!";
+      ErrorPopup *p = new ErrorPopup("YOU'VE ALREADY LEFT A TESTIMONIAL.\n"
+                                     "Thank you!", "images/tiger_default.png", "OK!", 0);
+      p->show();
     }
   }
   else
   {
-    qDebug() << "TESTIMONIAL IS EMPTY!";
+    ErrorPopup *p = new ErrorPopup("THERE IS NO TESTIMONIAL.\n"
+                                   "We're onto you. Enter a testimonial.",
+                                   "images/tiger.png", "FINE.", 0);
+    p->show();
   }
   ui->add_testimonial_text->clear();
 }

@@ -136,9 +136,10 @@ private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
   // function to create db entries for user
-  void Register();
+  bool Register();
   // function to initialize the maintenance plane page
   void InitializeMaintenance();
+
 
   void changeBackground(int index);
   void setBackground(QPixmap picture);

@@ -6,7 +6,7 @@ ErrorPopup::ErrorPopup(QString message, QString image, QString button, QWidget *
   ui(new Ui::ErrorPopup)
 {
   ui->setupUi(this);
-
+  this->setWindowTitle("ROAR!");
   QPixmap errorImage(image);
   errorImage = errorImage.scaled(118,129, Qt::KeepAspectRatio);
   ui->error_popup_message->setText(message);

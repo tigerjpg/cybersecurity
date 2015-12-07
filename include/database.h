@@ -48,15 +48,18 @@ public:
   bool IsKey(QString name);
   /// Check if a table is empty
   bool IsEmpty(QString tableName);
+  /// Check if a customer has purchased anything.
+  bool HasPurchased(QString id);
   /// Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
   /// Returns the id of the customer with the matching name
   QString GetCustomerIdByName(QString name);
   /// Returns the id of the user with the matching name
   QString GetUserIdByName(QString username);
-
+  /// Retrieve customer name with the matching id
   QString GetCustomerNameById(QString id);
-
+  /// Retrieve customer sent status with with matching id
+  QString GetCustomerSentStatus(QString id);
   /// Retrieve all data from a given table
   QList<QSqlRecord>* GetData(QString tableName);
 

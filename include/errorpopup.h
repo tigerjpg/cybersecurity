@@ -15,7 +15,7 @@ class ErrorPopup : public QDialog
 public:
   explicit ErrorPopup(QString message,
                       QString image  = "images/tiger.png",
-                      QString button = "TRY HARDER!",
+                      QString button = "OK!",
                       QWidget *parent = 0);
   ~ErrorPopup();
 

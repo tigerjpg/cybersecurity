@@ -385,6 +385,7 @@ void MainWindow::SetTestimonialView(int index)
     QPixmap image( "images/" + testimonials->at(index).field("image").value().toString() );
     image = image.scaled(ui->customer_testimonials_picture->width(), ui->customer_testimonials_picture->height(), Qt::KeepAspectRatio);
 
+    ui->customer_testimonials_name->setText(testimonials->at(index).field("name").value().toString());
     ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
     ui->customer_testimonials_picture->setPixmap(image);
     //    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();

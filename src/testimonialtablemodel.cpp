@@ -5,6 +5,7 @@ TestimonialTableModel::TestimonialTableModel(QObject *parent, QSqlDatabase *db)
 {
   this->setEditStrategy(QSqlTableModel::OnManualSubmit);
   this->setTable("testimonials");
+  this->setHeaderData(APPROVED, Qt::Horizontal, tr("Approved"), 0);
   this->select();
 }
 

@@ -19,12 +19,12 @@
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>801</width>
-      <height>561</height>
+      <width>800</width>
+      <height>600</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -414,7 +414,7 @@
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Cantarell'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:8pt; font-weight:600;&quot;&gt;The next policy is in accordance with U.S and international laws. &lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;&gt;  We do not negotiate any of the following terms. Our company has the professionalism necessary to compensate in case that any of our products cause severe damage to a company's data. In such a case, the compensations necessary will be made. We are not responsible for any damage done to an individual or done to a user (excluding mental damages). In case the software causes damage to the company system an investigation will be conducted to corroborate the cause of the damage.&lt;/span&gt;&lt;/p&gt;
 &lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-family:'Sans Serif'; font-size:9pt;&quot;&gt;  There is a 3 time limit corresponding to technical support visits in a single day. There are no reimbursements for technical services provided. No exceptions. Any hardware that we replace has a 1 year warranty with Tiger. If there is any damage to that hardware it will be replaced without cost for up to 2 replacements.&lt;/span&gt;&lt;/p&gt;
@@ -613,15 +613,15 @@ p, li { white-space: pre-wrap; }
         </rect>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="admin_customer_page">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>761</width>
-          <height>389</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -788,7 +788,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>761</width>
-          <height>389</height>
+          <height>405</height>
          </rect>
         </property>
         <attribute name="label">
@@ -928,7 +928,7 @@ p, li { white-space: pre-wrap; }
      </widget>
     </widget>
     <widget class="QWidget" name="customer_page">
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="customer_frame">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -936,6 +936,9 @@ p, li { white-space: pre-wrap; }
         <width>741</width>
         <height>511</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(238, 238, 238);</string>
       </property>
       <property name="frameShape">
        <enum>QFrame::StyledPanel</enum>
@@ -961,7 +964,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>307</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1055,8 +1058,7 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>307</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1150,7 +1152,7 @@ border: 3px solid gray;</string>
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>307</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1350,6 +1352,8 @@ border: 3px solid gray;</string>
           </item>
          </layout>
         </widget>
+        <zorder>verticalLayoutWidget_5</zorder>
+        <zorder>customer_purchase_product_label</zorder>
        </widget>
       </widget>
       <widget class="QPushButton" name="customer_logout_button">
@@ -1375,11 +1379,10 @@ border: 3px solid gray;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>30</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
  <customwidgets>
   <customwidget>

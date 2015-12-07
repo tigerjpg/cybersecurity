@@ -18,9 +18,9 @@ MainWindow::MainWindow(QWidget *parent) :
   UpdateTestimonialList();
   LoadProductList();
 
-
   // TEMP sets the default page to login screen
-  ui->stacked_pages->setCurrentIndex(LOGIN);
+  ui->stacked_pages->setCurrentIndex(INTRO);
+  WelcomeAnimation();
 }
 MainWindow::~MainWindow()
 {
@@ -300,9 +300,6 @@ void MainWindow::Register()
       qDebug() << ui->username_line_2->text() << " added the the users table.\n";
     }
   }
-
-
-
 }
 
 void MainWindow::setBackground(QMovie *movie, int speed)
@@ -315,18 +312,57 @@ void MainWindow::setBackground(QMovie *movie, int speed)
   movie->start();
 }
 
-
+/*!
+ * \brief MainWindow::WelcomeAnimation
+ *  Initiates teh welcome animation
+ */
 void MainWindow::WelcomeAnimation()
 {
+  ui->welcomeBtn->SetButtonImage("images/welcome.png","images/welcome-hover.png","images/welcome-click.png");
   ui->welcomeBtn->setEnabled(false);
+  ui->welcomeTitle->hide();
+
+  int winW  = this->width();
+  int winH  = this->height();
+  int start = 1200;
+  int end   = 400;
+
   QPropertyAnimation *tigershield = new QPropertyAnimation(ui->welcomeBtn, "geometry");
   connect(tigershield, SIGNAL(finished()), this, SLOT(on_finished_intro() ));
   tigershield->setDuration(1500);
-  tigershield->setStartValue(QRect(-25, -216, 1200, 1200));
-  tigershield->setEndValue(QRect((1024/2)-178, (768/2)-200, 400, 400));
+  tigershield->setStartValue(QRect( 75-((start-winW)/2), -((start-winH)/2), start, start));
+  tigershield->setEndValue(QRect((800/2)-175, (600/2)-175, end, end));
   tigershield->start();
 }
 
+/*!
+ * \brief MainWindow::on_finished_intro()
+ * Once the intro animation is over it brings in the TIGER and enables the welcome button
+ */
+void MainWindow::on_finished_intro()
+{
+  // Create an animation, with a target object and specified duration
+  QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
+  titlein->setDuration(200);
+
+  //enable the title off screen and set the end points
+  ui->welcomeTitle->show();
+  titlein->setStartValue(QRect(200,-120,400,96));
+  titlein->setEndValue(QRect(200,25,400,96));
+  titlein->start();
+
+  // enable the button once done
+  ui->welcomeBtn->setEnabled(true);
+}
+
+/*!
+ * \brief MainWindow::on_welcomeBtn_clicked
+ * Changes the page to the login page
+ */
+void MainWindow::on_welcomeBtn_clicked()
+{
+  ui->stacked_pages->setCurrentIndex(LOGIN);
+}
 
 void MainWindow::Register_ClearForms()
 {
@@ -397,21 +433,6 @@ void MainWindow::SetActiveUser(QString id)
 {
   activeUserId = id;
 }
-
-void MainWindow::on_finished_intro()
-{
-  QPropertyAnimation *titlein = new QPropertyAnimation(ui->welcomeTitle, "geometry");
-  titlein->setDuration(200);
-  ui->welcomeTitle->show();
-  titlein->setStartValue(QRect(262,-120,500,120));
-  titlein->setEndValue(QRect(262,57,500,120));
-  titlein->start();
-  ui->welcomeBtn->setEnabled(true);
-}
-
-
-void MainWindow::on_welcomeBtn_clicked()
-{}
 
 void MainWindow::on_customer_remove_button_clicked()
 {

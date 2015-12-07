@@ -43,6 +43,7 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->customer_tableView->setModel(cTableModel);
       InitCustomerTableView();
       ui->username_line->setCursorPosition(0);
+      ui->administrator_toolBox->setCurrentIndex(0);
     }
     else if(db->AuthenticateUser(ui->username_line->text(), ui->password_line->text()))
     {
@@ -52,6 +53,9 @@ void MainWindow::on_login_buttonBox_accepted()
       ui->username_line->clear();
       ui->password_line->clear();
       ui->username_line->setCursorPosition(0);
+      ui->customer_products_slider->setSliderPosition(0);
+      ui->customer_testimonial_slider->setSliderPosition(0);
+      ui->toolBox->setCurrentIndex(0);
     }
     else
     {
@@ -381,6 +385,7 @@ void MainWindow::SetTestimonialView(int index)
     QPixmap image( "images/" + testimonials->at(index).field("image").value().toString() );
     image = image.scaled(ui->customer_testimonials_picture->width(), ui->customer_testimonials_picture->height(), Qt::KeepAspectRatio);
 
+    ui->customer_testimonials_name->setText(testimonials->at(index).field("name").value().toString());
     ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
     ui->customer_testimonials_picture->setPixmap(image);
     //    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
@@ -720,14 +725,15 @@ void MainWindow::on_OKgoBackLogIn_clicked()
 void MainWindow::on_InformationButton_clicked()
 {
   ui->stacked_pages->setCurrentIndex(INFORMATION);
+  ui->GeneralInfoButton->click();
 }
 
 void MainWindow::on_admin_logout_button_clicked()
 {
   ui->stacked_pages->setCurrentIndex(LOGIN);
-  //  delete cTableModel;
-  //  delete tTableModel;
-  //  delete pTableModel;
+  ui->administrator_toolBox->setCurrentIndex(0);
+  delete cTableModel;
+  delete tTableModel;
 }
 
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
@@ -768,6 +774,8 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_customer_logout_button_clicked()
 {
+  ui->customer_products_slider->setSliderPosition(0);
+  ui->customer_testimonial_slider->setSliderPosition(0);
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
@@ -800,4 +808,10 @@ void MainWindow::on_add_testimonial_text_textChanged()
   {
     ui->add_testimonial_text->textCursor().deletePreviousChar();
   }
+}
+
+void MainWindow::on_add_testimonial_buttonBox_rejected()
+{
+  ui->toolBox->setCurrentIndex(0);
+  ui->add_testimonial_text->clear();
 }

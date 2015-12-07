@@ -48,6 +48,8 @@ public:
   bool IsKey(QString name);
   /// Check if a table is empty
   bool IsEmpty(QString tableName);
+  /// Check if a customer has purchased anything.
+  bool HasPurchased(QString id);
   /// Check if a table contains a certain value in a certain field
   bool Contains(QString tableName, QString fieldName, QString value);
   /// Returns the id of the customer with the matching name

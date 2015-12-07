@@ -554,12 +554,20 @@ void MainWindow::on_customer_purchase_button_clicked()
   if(row != -1)
   {
     int id = cTableModel->record(row).field("id").value().toInt();
-    qDebug() << id;
-    pTableModel = new PurchasesTableModel(this, db, id);
-    ViewPurchasesPopup *p;
-    p = new ViewPurchasesPopup(0, db, pTableModel);
-    p->setWindowModality(Qt::ApplicationModal);
-    p->show();
+    if(db->HasPurchased(QString::number(id)))
+    {
+      pTableModel = new PurchasesTableModel(this, db, id);
+      ViewPurchasesPopup *p;
+      p = new ViewPurchasesPopup(0, db, pTableModel);
+      p->setWindowModality(Qt::ApplicationModal);
+      p->show();
+    }
+    else
+    {
+      ErrorPopup *p = new ErrorPopup("Customer has not purchased anything!",
+                                     "images/tiger_default.png", "OK!", 0);
+      p->show();
+    }
   }
   else
   {

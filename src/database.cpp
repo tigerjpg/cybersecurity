@@ -194,6 +194,12 @@ bool Database::IsEmpty(QString tableName)
   }
 }
 
+bool Database::HasPurchased(QString id)
+{
+  query.exec("select * from purchases where custID = \"" + id + "\";");
+  return query.next();
+}
+
 /*!
  * \brief Database::Contains
  * Check if a certain value exists in a certain field in a table

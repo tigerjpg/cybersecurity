@@ -311,9 +311,17 @@ void MainWindow::Register()
 
 void MainWindow::InitializeMaintenance()
 {
- ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
- ui->contact_us_button->SetButtonImage(":/tiger-fast.png",":/tiger-fast-h.png",":/tiger-fast-c.png");
- ui
+  qDebug() << "initializing maintenance paige\n";
+// ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
+ ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
+ if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
+                                        "images/tiger-fast-h.png",
+                                        "images/tiger-fast-c.png"))
+//   ui->contact_button->setParent(ui->cont);
+   qDebug() << "contact button not set\n";
+// ui->contact_button->setEnabled(true);
+ ui->contact_button->show();
+
 }
 
 void MainWindow::setBackground(QMovie *movie, int speed)

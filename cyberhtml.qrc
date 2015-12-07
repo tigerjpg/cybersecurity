@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>html/INFOCop.html</file>
+        <file>html/INFOGeneral.html</file>
+        <file>html/INFOPlatforms.html</file>
+        <file>html/TIGERAnalytics.html</file>
+        <file>html/TIGEREmail.html</file>
+        <file>html/TIGERInsider.html</file>
+        <file>html/TIGERMemoryIntegrity.html</file>
+        <file>html/TIGERThreat.html</file>
+    </qresource>
+</RCC>

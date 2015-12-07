@@ -47,5 +47,7 @@ FORMS    += \
     forms/AddCustomerPopup.ui \
     forms/contactus.ui
 
-RESOURCES += cyberresources.qrc
+RESOURCES += cyberresources.qrc \
+    cybersounds.qrc \
+    cyberhtml.qrc
 

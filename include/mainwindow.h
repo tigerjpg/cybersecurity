@@ -14,6 +14,7 @@
 #include "addtestimonialpopup.h"
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -104,6 +105,9 @@ private slots:
 
   void on_customer_send_pamphlet_button_clicked();
 
+
+  void on_admin_logout_button_clicked();
+
   void on_toolBox_currentChanged(int index);
 
   void on_customer_testimonial_slider_sliderMoved(int position);
@@ -122,6 +126,7 @@ private:
   void setBackground(QPixmap picture);
   void setBackground(QMovie *movie, int speed);
   void WelcomeAnimation();
+  void Register_ClearForms();
   void SetTestimonialView(int index);
   void UpdateTestimonialList();
   void LoadProductList();

@@ -267,6 +267,7 @@ void MainWindow::on_testimonial_approve_button_clicked()
           testimonials = db->GetApprovedTestimonials();
           ErrorPopup *p = new ErrorPopup("TESTIMONIAL HAS BEEN APPROVED.",
                                          "images/tiger_default.png", "OK!", 0);
+          p->show();
         }
         else
         {

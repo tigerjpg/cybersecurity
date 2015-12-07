@@ -12,8 +12,9 @@ Database::Database(QString path, QString driver) : QSqlDatabase(addDatabase(driv
 {
   setHostName("localhost");
   setDatabaseName(path);
-  Q_ASSERT(open());
+  open();
   query = QSqlQuery(*this);
+  query.exec("PRAGMA foreign_keys = ON;");
 }
 
 /*!
@@ -23,10 +24,10 @@ Database::~Database()
 {
 
   if(query.isActive())
-  {
-    query.finish();
-    query.clear();
-  }
+    {
+      query.finish();
+      query.clear();
+    }
   close();
 }
 
@@ -37,16 +38,41 @@ Database::~Database()
  * \param password
  * \return true if admin exists with these credentials
  */
-bool Database::Authenticate(QString username, QString password)
+bool Database::AuthenticateAdmin(QString username, QString password)
 {
   QBlowfish bf(QByteArray::fromHex(KEY_HEX));
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
-  query.exec("select * from users where username = \""
+
+  query.exec("select * from admins where username = \""
                     + username + "\" and password = \""
-                    + encryptedStr + "\" and admin = 1;");
+                    + encryptedStr + "\";");
   return query.next();
+}
+
+bool Database::AuthenticateUser(QString username, QString password)
+{
+  QBlowfish bf(QByteArray::fromHex(KEY_HEX));
+  bf.setPaddingEnabled(true);
+  QByteArray encryptedAr = bf.encrypted(password.toUtf8());
+  QString encryptedStr = encryptedAr.toHex();
+  if(query.exec("select name from users, customers where customers.id = users.id and username = \""
+                + username + "\" and password = \""
+                + encryptedStr + "\" and sent = 1;"))
+  {
+    return query.next();
+  }
+  else
+  {
+    return false;
+  }
+}
+
+bool Database::Purchase(QString custId, QString prodId)
+{
+  return query.exec("insert into purchases values(\"" + custId
+                    + "\", \"" + prodId + "\");");
 }
 
 /*!
@@ -57,18 +83,70 @@ bool Database::Authenticate(QString username, QString password)
  * \param key true if is key customer
  * \return true if successful
  */
-bool Database::AddCustomer(QString name, QString address, QString interest, QString key)
+bool Database::AddCustomer(QString name, QString address, QString interest, QString key, QString sent)
 {
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
   if(query.exec("insert into customers values(NULL, \"" + name +
-                "\", \"" + address + "\", " + interest + ", " + key +");"))
+                "\", \"" + address + "\", " + interest + ", "
+                + key + ", " + sent + ");"))
     return true;
   else
   {
     qDebug() << query.lastError().text();
     throw InvalidQuery();
   }
+}
+
+/*!
+ * \brief Database::AddTestimonial
+ * \param name
+ * \param testimonial
+ * \return
+ */
+bool Database::AddTestimonial(QString name, QString testimonial)
+{
+  if(query.exec("insert into testimonials values(NULL, \"" + name
+                + "\", \"" + testimonial + "\", NULL, 0);"))
+  {
+    return true;
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+/*!
+ * \brief Database::AddUser Add a user to the database
+ * \param username user's username
+ * \param password user's password
+ * \param key true if is administrator
+ * \return true if successful
+ */
+bool Database::AddUser(QString id, QString username, QString password, QString admin)
+{
+  QBlowfish bf(QByteArray::fromHex(KEY_HEX));
+  bf.setPaddingEnabled(true);
+  QByteArray encryptedAr = bf.encrypted(password.toUtf8());
+  QString encryptedStr = encryptedAr.toHex();
+
+  if(admin == "true")
+  {
+    admin = "1";
+  }
+  else if(admin == "false")
+  {
+    admin = "0";
+  }
+  if(query.exec("insert into users values(\"" + id +
+                "\", \"" + username + "\", \"" + encryptedStr + "\",\"" + admin + "\");"))
+    return true;
+  else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
 }
 
 /*!
@@ -109,23 +187,23 @@ bool Database::IsKey(QString name)
 {
   //execute query
   if(this->query.exec("select * from customers where name = \""
-                + name + "\";"))
+                      + name + "\";"))
     //if there is data in the query
     if(query.next())
-    {
-      //get info from "key" field in this record
-      return (query.record().field("key").value().toBool());
-    }
+      {
+        //get info from "key" field in this record
+        return (query.record().field("key").value().toBool());
+      }
     else
+      {
+        qDebug() << query.lastError().text();
+        throw EmptyQuery();
+      }
+  else
     {
       qDebug() << query.lastError().text();
-      throw EmptyQuery();
+      throw InvalidQuery();
     }
-  else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidQuery();
-  }
 }
 
 /*!
@@ -138,10 +216,10 @@ bool Database::IsEmpty(QString tableName)
   if(query.exec("select * from " + tableName + ";"))
     return !query.next();
   else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidTableName();
-  }
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidTableName();
+    }
 }
 
 /*!
@@ -156,8 +234,34 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
 {
   if(query.exec("select * from \"" + tableName +
                 "\" where \"" + fieldName + "\" = \"" + value + "\";"))
+    {
+      return query.next();
+    }
+  else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+}
+
+/*!
+ * \brief Database::GetCustomerIdByName
+ * \param name
+ * \return the id of the customer
+ */
+QString Database::GetCustomerIdByName(QString name)
+{
+  if(query.exec("select id from customers where name = \"" + name + "\";"))
   {
-    return query.next();
+    if(query.next())
+    {
+      return query.record().field("id").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
   }
   else
   {
@@ -166,41 +270,82 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
   }
 }
 
-QList<QSqlRecord> Database::GetData(QString tableName)
+QString Database::GetUserIdByName(QString username)
+{
+  if(query.exec("select id from users where username = \"" + username + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("id").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
+/*!
+ * \brief Database::GetData
+ * Get a QList of all records in a specified table.
+ * \param tableName The name of the table to retrieve data from
+ * \return QList<QSqlRecord> containing all records in table
+ */
+QList<QSqlRecord> * Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
   if(query.exec("select * from \"" + tableName +"\";"))
-  {
-    while(query.next())
     {
-      list->push_back(query.record());
+      while(query.next())
+        {
+          list->push_back(query.record());
+        }
     }
-  }
-  return *list;
+  else
+    {
+      qDebug() << "INVALID QUERY!";
+    }
+  return list;
 }
 
+/*!
+ * \brief Database::getTestimonialAtIndex
+ * \param i index
+ * \return The testimonial at a specific index
+ */
 QString Database::getTestimonialAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select testimonial from testimonials where id = \"" + id + "\";"))
-  {
-    if(query.next())
     {
-      return query.record().field("testimonial").value().toString();
+      if(query.next())
+        {
+          return query.record().field("testimonial").value().toString();
+        }
     }
-  }
   return "Woops!";
 }
 
+/*!
+ * \brief Database::getImageAtIndex
+ * \param i
+ * \return image name at a specified index
+ */
 QString Database::getImageAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select image from testimonials where id = \"" + id + "\";"))
-  {
-    if(query.next())
     {
-      return query.record().field("image").value().toString();
+      if(query.next())
+        {
+          return query.record().field("image").value().toString();
+        }
     }
-  }
   return "Woops!";
 }

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql multimedia
+QT       += core gui sql multimedia webkit webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,12 +15,18 @@ DEPENDPATH += src
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
-           src/mainwindow.cpp \
        src/imagebutton.cpp \
        src/database.cpp \
     src/qblowfish.cpp \
     src/contactus.cpp \
-    src/helpoption.cpp
+    src/helpoption.cpp \
+    src/customertablemodel.cpp \
+    src/mainwindow.cpp \
+    src/testimonialtablemodel.cpp \
+    src/addtestimonialpopup.cpp \
+    src/viewpurchasespopup.cpp \
+    src/purchasestablemodel.cpp \
+    src/addcustomerpopup.cpp
 
 HEADERS  += include/mainwindow.h \
       include/imagebutton.h \
@@ -28,11 +34,21 @@ HEADERS  += include/mainwindow.h \
     include/qblowfish_p.h \
     include/qblowfish.h \
     include/contactus.h \
-    include/helpoption.h
+    include/helpoption.h \
+    include/customertablemodel.h \
+    include/testimonialtablemodel.h \
+    include/addtestimonialpopup.h \
+    include/viewpurchasespopup.h \
+    include/purchasestablemodel.h \
+    include/addcustomerpopup.h \
+    include/contactus.h
 
 FORMS    += forms/MainWindow.ui \
     forms/contactus.ui \
-    form/helpoption.ui
+    form/helpoption.ui \
+    forms/AddTestimonialPopup.ui \
+    forms/ViewPurchasesPopup.ui \
+    forms/AddCustomerPopup.ui \
 
-RESOURCES += \
-    cyberresources.qrc
+RESOURCES += cyberresources.qrc
+

@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui sql multimedia
+QT       += core gui sql multimedia webkit webkitwidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,10 +15,16 @@ DEPENDPATH += src
 INCLUDEPATH += include
 
 SOURCES += src/main.cpp \
-           src/mainwindow.cpp \
        src/imagebutton.cpp \
        src/database.cpp \
     src/qblowfish.cpp \
+    src/customertablemodel.cpp \
+    src/mainwindow.cpp \
+    src/testimonialtablemodel.cpp \
+    src/addtestimonialpopup.cpp \
+    src/viewpurchasespopup.cpp \
+    src/purchasestablemodel.cpp \
+    src/addcustomerpopup.cpp \
     src/contactus.cpp
 
 HEADERS  += include/mainwindow.h \
@@ -26,10 +32,20 @@ HEADERS  += include/mainwindow.h \
       include/database.h \
     include/qblowfish_p.h \
     include/qblowfish.h \
+    include/customertablemodel.h \
+    include/testimonialtablemodel.h \
+    include/addtestimonialpopup.h \
+    include/viewpurchasespopup.h \
+    include/purchasestablemodel.h \
+    include/addcustomerpopup.h \
     include/contactus.h
 
-FORMS    += forms/MainWindow.ui \
+FORMS    += \
+    forms/MainWindow.ui \
+    forms/AddTestimonialPopup.ui \
+    forms/ViewPurchasesPopup.ui \
+    forms/AddCustomerPopup.ui \
     forms/contactus.ui
 
-RESOURCES += \
-    cyberresources.qrc
+RESOURCES += cyberresources.qrc
+

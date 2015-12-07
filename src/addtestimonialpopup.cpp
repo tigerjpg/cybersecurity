@@ -33,13 +33,18 @@ void AddTestimonialPopup::on_testimonial_popup_buttonBox_accepted()
       }
       else
       {
-        qDebug() << "TESTIMONIAL REJECTED!";
+        ErrorPopup *p = new ErrorPopup("CUSTOMER HAS ALREADY LEFT A TESTIMONIAL.\n"
+                                       "They only get one. You know the rules.",
+                                       "images/tiger_default.png", "Alright.", 0);
+        p->show();
       }
     }
   }
   else
   {
-    qDebug() << "TEXT BOXES CANNOT BE EMPTY!!";
+    ErrorPopup *p = new ErrorPopup("FIELDS CANNOT BE BLANK.",
+                                   "images/tiger_default.png", "OK!", 0);
+    p->show();
   }
 }
 

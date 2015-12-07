@@ -15,6 +15,8 @@
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
 #include "helpoption.h"
+#include "errorpopup.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -129,11 +131,17 @@ private slots:
 
   void on_add_testimonial_text_textChanged();
 
+  void on_add_testimonial_buttonBox_rejected();
+
+  void on_customer_submit_changes_help_button_clicked();
+
+  void on_testimonial_add_help_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
   // function to create db entries for user
-  void Register();
+  bool Register();
 
   void changeBackground(int index);
   void setBackground(QPixmap picture);

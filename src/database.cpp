@@ -24,10 +24,10 @@ Database::~Database()
 {
 
   if(query.isActive())
-    {
-      query.finish();
-      query.clear();
-    }
+  {
+    query.finish();
+    query.clear();
+  }
   close();
 }
 
@@ -46,8 +46,8 @@ bool Database::AuthenticateAdmin(QString username, QString password)
   QString encryptedStr = encryptedAr.toHex();
 
   query.exec("select * from admins where username = \""
-                    + username + "\" and password = \""
-                    + encryptedStr + "\";");
+             + username + "\" and password = \""
+             + encryptedStr + "\";");
   return query.next();
 }
 
@@ -59,7 +59,7 @@ bool Database::AuthenticateUser(QString username, QString password)
   QString encryptedStr = encryptedAr.toHex();
   if(query.exec("select name from users, customers where customers.id = users.id and username = \""
                 + username + "\" and password = \""
-                + encryptedStr + "\" and sent = 1;"))
+                + encryptedStr + "\";"))
   {
     return query.next();
   }
@@ -87,15 +87,9 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 {
   if(key == "true") { key = "1"; }
   else if(key == "false") { key = "0"; }
-  if(query.exec("insert into customers values(NULL, \"" + name +
+  return query.exec("insert into customers values(NULL, \"" + name +
                 "\", \"" + address + "\", " + interest + ", "
-                + key + ", " + sent + ");"))
-    return true;
-  else
-  {
-    qDebug() << query.lastError().text();
-    throw InvalidQuery();
-  }
+                + key + ", " + sent + ");");
 }
 
 /*!
@@ -106,16 +100,8 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
  */
 bool Database::AddTestimonial(QString name, QString testimonial)
 {
-  if(query.exec("insert into testimonials values(NULL, \"" + name
-                + "\", \"" + testimonial + "\", 'tiger_default.png', 0);"))
-  {
-    return true;
-  }
-  else
-  {
-    qDebug() << query.lastError().text();
-    return false;
-  }
+  return query.exec("insert into testimonials values(NULL, \"" + name
+                    + "\", \"" + testimonial + "\", 'tiger_default.png', 0);");
 }
 /*!
  * \brief Database::AddUser Add a user to the database
@@ -131,14 +117,8 @@ bool Database::AddUser(QString id, QString username, QString password)
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
 
-  if(query.exec("insert into users values(\"" + id +
-                "\", \"" + username + "\", \"" + encryptedStr + "\");"))
-    return true;
-  else
-    {
-      qDebug() << query.lastError().text();
-      throw InvalidQuery();
-    }
+  return query.exec("insert into users values(\"" + id +
+                    "\", \"" + username + "\", \"" + encryptedStr + "\");");
 }
 
 /*!
@@ -182,20 +162,20 @@ bool Database::IsKey(QString name)
                       + name + "\";"))
     //if there is data in the query
     if(query.next())
-      {
-        //get info from "key" field in this record
-        return (query.record().field("key").value().toBool());
-      }
+    {
+      //get info from "key" field in this record
+      return (query.record().field("key").value().toBool());
+    }
     else
-      {
-        qDebug() << query.lastError().text();
-        throw EmptyQuery();
-      }
-  else
     {
       qDebug() << query.lastError().text();
-      throw InvalidQuery();
+      throw EmptyQuery();
     }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
 }
 
 /*!
@@ -208,10 +188,16 @@ bool Database::IsEmpty(QString tableName)
   if(query.exec("select * from " + tableName + ";"))
     return !query.next();
   else
-    {
-      qDebug() << query.lastError().text();
-      throw InvalidTableName();
-    }
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidTableName();
+  }
+}
+
+bool Database::HasPurchased(QString id)
+{
+  query.exec("select * from purchases where custID = \"" + id + "\";");
+  return query.next();
 }
 
 /*!
@@ -226,14 +212,14 @@ bool Database::Contains(QString tableName, QString fieldName, QString value)
 {
   if(query.exec("select * from \"" + tableName +
                 "\" where \"" + fieldName + "\" = \"" + value + "\";"))
-    {
-      return query.next();
-    }
+  {
+    return query.next();
+  }
   else
-    {
-      qDebug() << query.lastError().text();
-      throw InvalidQuery();
-    }
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
 }
 
 /*!
@@ -304,6 +290,27 @@ QString Database::GetCustomerNameById(QString id)
   }
 }
 
+QString Database::GetCustomerSentStatus(QString id)
+{
+  if(query.exec("select sent from customers where id =\"" + id +"\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("sent").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
 /*!
  * \brief Database::GetData
  * Get a QList of all records in a specified table.
@@ -314,16 +321,16 @@ QList<QSqlRecord> * Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
   if(query.exec("select * from \"" + tableName +"\";"))
+  {
+    while(query.next())
     {
-      while(query.next())
-        {
-          list->push_back(query.record());
-        }
+      list->push_back(query.record());
     }
+  }
   else
-    {
-      qDebug() << "INVALID QUERY!";
-    }
+  {
+    qDebug() << "INVALID QUERY!";
+  }
   return list;
 }
 
@@ -331,16 +338,16 @@ QList<QSqlRecord> *Database::GetApprovedTestimonials()
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
   if(query.exec("select * from \"testimonials\" where approved = 1;"))
+  {
+    while(query.next())
     {
-      while(query.next())
-        {
-          list->push_back(query.record());
-        }
+      list->push_back(query.record());
     }
+  }
   else
-    {
-      qDebug() << "INVALID QUERY!";
-    }
+  {
+    qDebug() << "INVALID QUERY!";
+  }
   return list;
 }
 
@@ -353,12 +360,12 @@ QString Database::getTestimonialAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select testimonial from testimonials where id = \"" + id + "\";"))
+  {
+    if(query.next())
     {
-      if(query.next())
-        {
-          return query.record().field("testimonial").value().toString();
-        }
+      return query.record().field("testimonial").value().toString();
     }
+  }
   return "Woops!";
 }
 
@@ -371,11 +378,11 @@ QString Database::getImageAtIndex(int i)
 {
   QString id = QString::number(i);
   if(this->query.exec("select image from testimonials where id = \"" + id + "\";"))
+  {
+    if(query.next())
     {
-      if(query.next())
-        {
-          return query.record().field("image").value().toString();
-        }
+      return query.record().field("image").value().toString();
     }
+  }
   return "Woops!";
 }

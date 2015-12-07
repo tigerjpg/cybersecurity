@@ -46,13 +46,18 @@ void AddCustomerPopup::on_add_customer_buttonBox_accepted()
       }
       else
       {
-        qDebug() << "TESTIMONIAL REJECTED!";
+        ErrorPopup *p = new ErrorPopup("CUSTOMER WITH THE SAME NAME ALREADY EXISTS.",
+                                       "images/tiger_default.png", "OK!", 0);
+        p->show();
       }
     }
   }
   else
   {
-    qDebug() << "TEXT BOXES CANNOT BE EMPTY!!";
+    ErrorPopup *p = new ErrorPopup("FIELDS CANNOT BE LEFT BLANK.\n"
+                                   "Enter some data.", "images/tiger_default.png",
+                                   "Thanks", 0);
+    p->show();
   }
 }
 

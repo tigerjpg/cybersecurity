@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent) :
   // TEMP sets the default page to login screen
   WelcomeAnimation();
   Welcome();
+  HelpOption *help = new HelpOption(this);
+  help->show();
 }
 MainWindow::~MainWindow()
 {

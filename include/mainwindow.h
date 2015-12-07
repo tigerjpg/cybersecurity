@@ -14,6 +14,7 @@
 #include "addtestimonialpopup.h"
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
+#include "helpoption.h"
 
 namespace Ui {
 class MainWindow;

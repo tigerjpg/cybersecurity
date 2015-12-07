@@ -8,5 +8,13 @@
         <file>html/TIGERInsider.html</file>
         <file>html/TIGERMemoryIntegrity.html</file>
         <file>html/TIGERThreat.html</file>
+        <file>html/help1.html</file>
+        <file>html/help2.html</file>
+        <file>html/help3.html</file>
+        <file>html/help4.html</file>
+        <file>html/help5.html</file>
+        <file>html/help6.html</file>
+        <file>html/help7.html</file>
+        <file>html/styles.css</file>
     </qresource>
 </RCC>

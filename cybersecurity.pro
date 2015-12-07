@@ -55,3 +55,5 @@ RESOURCES += \
     cyberhtml.qrc \
     cyberimages.qrc
 
+DISTFILES +=
+

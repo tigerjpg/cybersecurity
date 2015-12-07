@@ -6,6 +6,8 @@ HelpOption::HelpOption(QWidget *parent) :
     ui(new Ui::HelpOption)
 {
     ui->setupUi(this);
+    ui->HelpDisplayBox->setSource(QUrl("qrc:/html/help1.html"));
+//    ui->HelpDisplayBox->setStyleSheet(":/html/styles.css");
 }
 
 HelpOption::~HelpOption()

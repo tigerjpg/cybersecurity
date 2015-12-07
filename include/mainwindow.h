@@ -14,6 +14,7 @@
 #include "addtestimonialpopup.h"
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -115,6 +116,12 @@ private slots:
 
   void on_customer_products_slider_valueChanged(int value);
 
+  void on_customer_purchase_purchaseButton_clicked();
+
+  void on_pushButton_2_clicked();
+
+  void on_customer_logout_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
@@ -129,6 +136,7 @@ private:
   void SetTestimonialView(int index);
   void UpdateTestimonialList();
   void LoadProductList();
+  void SetActiveUser(QString id);
 
   Ui::MainWindow *ui;
   Database *db;
@@ -139,6 +147,7 @@ private:
   QList<QSqlRecord> *testimonials;
   QList<ProductInfo> ProductInfoList;
   QLabel *background;
+  QString activeUserId;
   void InitTestimonialTableView();
   void InitCustomerTableView();
 };

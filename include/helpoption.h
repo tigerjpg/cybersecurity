@@ -18,6 +18,18 @@ public:
 private slots:
     void on_OKExitHelpB_clicked();
 
+    void on_LogInInstructions_clicked();
+
+    void on_RequestPamInstructions_clicked();
+
+    void on_ReadTestimonialsInstructions_clicked();
+
+    void on_PurchaseInstructions_clicked();
+
+    void on_LogOffInstructions_clicked();
+
+    void on_AboutUsInstructions_clicked();
+
 private:
     Ui::HelpOption *ui;
 };

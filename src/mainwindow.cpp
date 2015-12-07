@@ -10,8 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
   ui->stacked_pages->setCurrentIndex(LOGIN);
 
-
-
 }
 
 MainWindow::~MainWindow()

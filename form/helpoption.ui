@@ -59,7 +59,7 @@
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="LogInInstructions">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -72,7 +72,7 @@
       <string>Log In</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_2">
+    <widget class="QPushButton" name="RequestPamInstructions">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -85,7 +85,7 @@
       <string>Request Pamphlet</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_3">
+    <widget class="QPushButton" name="ReadTestimonialsInstructions">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -98,7 +98,7 @@
       <string>Read Testimonials</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_4">
+    <widget class="QPushButton" name="PurchaseInstructions">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -111,7 +111,20 @@
       <string>Navigate and Purchase</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_5">
+    <widget class="QPushButton" name="LogOffInstructions">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>320</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Log Off</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="AboutUsInstructions">
      <property name="geometry">
       <rect>
        <x>400</x>
@@ -121,7 +134,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Log Off</string>
+      <string>About Us</string>
      </property>
     </widget>
    </widget>

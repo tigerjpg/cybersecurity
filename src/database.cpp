@@ -124,23 +124,15 @@ bool Database::AddTestimonial(QString name, QString testimonial)
  * \param key true if is administrator
  * \return true if successful
  */
-bool Database::AddUser(QString id, QString username, QString password, QString admin)
+bool Database::AddUser(QString id, QString username, QString password)
 {
   QBlowfish bf(QByteArray::fromHex(KEY_HEX));
   bf.setPaddingEnabled(true);
   QByteArray encryptedAr = bf.encrypted(password.toUtf8());
   QString encryptedStr = encryptedAr.toHex();
 
-  if(admin == "true")
-  {
-    admin = "1";
-  }
-  else if(admin == "false")
-  {
-    admin = "0";
-  }
   if(query.exec("insert into users values(\"" + id +
-                "\", \"" + username + "\", \"" + encryptedStr + "\",\"" + admin + "\");"))
+                "\", \"" + username + "\", \"" + encryptedStr + "\");"))
     return true;
   else
     {

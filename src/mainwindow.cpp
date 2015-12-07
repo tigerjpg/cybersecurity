@@ -49,6 +49,7 @@ void MainWindow::on_login_buttonBox_accepted()
     {
       SetActiveUser(db->GetUserIdByName(ui->username_line->text()));
       ui->stacked_pages->setCurrentIndex(CUSTOMER);
+      ui->toolBox->setCurrentIndex(0);
       ui->username_line->clear();
       ui->password_line->clear();
       ui->username_line->setCursorPosition(0);
@@ -242,6 +243,7 @@ void MainWindow::on_testimonial_approve_button_clicked()
         {
           tTableModel->select();
           qDebug() << "TESTIMONIAL APPROVED!";
+          testimonials = db->GetApprovedTestimonials();
         }
         else
         {
@@ -293,7 +295,7 @@ void MainWindow::Register()
   {
     qDebug() << ui->company_line->text() << " added to the customer table.\n";
 
-    if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text(), "false"))
+    if(db->AddUser(db->GetCustomerIdByName(ui->company_line->text()), ui->username_line_2->text(), ui->password_line_2->text()))
     {
       qDebug() << ui->username_line_2->text() << " added the the users table.\n";
     }
@@ -741,6 +743,7 @@ void MainWindow::on_add_testimonial_buttonBox_accepted()
     if(db->AddTestimonial(name, ui->add_testimonial_text->toPlainText()))
     {
       qDebug() << "TESTIMONIAL ADDED";
+      ui->toolBox->setCurrentIndex(0);
     }
     else
     {

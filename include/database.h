@@ -37,7 +37,7 @@ public:
   /// Add a testimonial to the database
   bool AddTestimonial(QString name, QString testimonial);
   /// Add a user to the database
-  bool AddUser(QString id, QString username, QString password, QString admin);
+  bool AddUser(QString id, QString username, QString password);
   /// Remove a customer from the database
   bool RemoveCustomer(QString name);
   /// Set a query

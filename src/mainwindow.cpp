@@ -19,9 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
   LoadProductList();
 
   // TEMP sets the default page to login screen
-  ui->stacked_pages->setCurrentIndex(INTRO);
   WelcomeAnimation();
-
+  Welcome();
 }
 MainWindow::~MainWindow()
 {
@@ -71,7 +70,7 @@ void MainWindow::on_login_buttonBox_rejected()
   ui->username_line->clear();
   ui->password_line->clear();
   ui->username_line->setCursorPosition(0);
-  ui->stacked_pages->setCurrentIndex(INTRO);
+  Welcome();
 }
 
 void MainWindow::on_customer_tableView_activated(const QModelIndex &index)
@@ -362,6 +361,7 @@ void MainWindow::on_finished_intro()
  */
 void MainWindow::on_welcomeBtn_clicked()
 {
+  Click();
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
@@ -552,6 +552,22 @@ void MainWindow::on_customer_submit_changes_button_clicked()
     qDebug() << "CHANGES NOT APPLIED TO CUSTOMER TABLE";
   }
 
+}
+
+void MainWindow::Welcome()
+{
+  ui->stacked_pages->setCurrentIndex(INTRO);
+  WelcomeAnimation();
+  QSound::play(":/sounds/tiger.wav");
+}
+
+/*!
+ * \brief MainWindow::Click
+ * Plays a classic button click sound
+ */
+void MainWindow::Click()
+{
+  QSound::play(":/sounds/click.wav");
 }
 
 /*!

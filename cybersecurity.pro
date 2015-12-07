@@ -50,5 +50,8 @@ FORMS    += forms/MainWindow.ui \
     forms/ViewPurchasesPopup.ui \
     forms/AddCustomerPopup.ui \
 
-RESOURCES += cyberresources.qrc
+RESOURCES += \
+    cybersounds.qrc \
+    cyberhtml.qrc \
+    cyberimages.qrc
 

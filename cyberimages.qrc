@@ -18,16 +18,11 @@
         <file>images/welcome-click.png</file>
         <file>images/welcome-hover.png</file>
         <file>images/TIGERtitle.png</file>
-        <file>sounds/tiger.wav</file>
-        <file>sounds/laser.wav</file>
-        <file>html/TIGERThreat.html</file>
-        <file>html/TIGERAnalytics.html</file>
-        <file>html/TIGERInsider.html</file>
-        <file>html/TIGERMemoryIntegrity.html</file>
-        <file>html/TIGEREmail.html</file>
-        <file>html/INFOCop.html</file>
-        <file>html/INFOGeneral.html</file>
-        <file>html/INFOPlatforms.html</file>
+        <file>images/analytics.png</file>
+        <file>images/email.png</file>
+        <file>images/InsiderThreat.png</file>
+        <file>images/memory.png</file>
+        <file>images/ThreatProtection.png</file>
         <file>images/tiger_default.png</file>
     </qresource>
 </RCC>

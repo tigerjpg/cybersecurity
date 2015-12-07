@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "testimonialtablemodel.h"
 #include "database.h"
+#include "errorpopup.h"
+
 namespace Ui {
 class AddTestimonialPopup;
 }

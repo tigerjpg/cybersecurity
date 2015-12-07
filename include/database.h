@@ -37,7 +37,7 @@ public:
   /// Add a testimonial to the database
   bool AddTestimonial(QString name, QString testimonial);
   /// Add a user to the database
-  bool AddUser(QString id, QString username, QString password, QString admin);
+  bool AddUser(QString id, QString username, QString password);
   /// Remove a customer from the database
   bool RemoveCustomer(QString name);
   /// Set a query
@@ -55,7 +55,13 @@ public:
   /// Returns the id of the user with the matching name
   QString GetUserIdByName(QString username);
 
-  QList<QSqlRecord> * GetData(QString tableName);
+  QString GetCustomerNameById(QString id);
+
+  /// Retrieve all data from a given table
+  QList<QSqlRecord>* GetData(QString tableName);
+
+  /// Retrieve all approved testimonials
+  QList<QSqlRecord>* GetApprovedTestimonials();
 
 
   QString getTestimonialAtIndex(int i);

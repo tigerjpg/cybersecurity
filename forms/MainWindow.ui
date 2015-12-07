@@ -537,7 +537,7 @@ p, li { white-space: pre-wrap; }
         <rect>
          <x>20</x>
          <y>10</y>
-         <width>341</width>
+         <width>365</width>
          <height>111</height>
         </rect>
        </property>
@@ -620,8 +620,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>761</width>
-          <height>405</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -952,11 +952,11 @@ p, li { white-space: pre-wrap; }
          <x>8</x>
          <y>12</y>
          <width>721</width>
-         <height>461</height>
+         <height>451</height>
         </rect>
        </property>
        <property name="currentIndex">
-        <number>0</number>
+        <number>2</number>
        </property>
        <widget class="QWidget" name="customer_products">
         <property name="geometry">
@@ -964,7 +964,7 @@ p, li { white-space: pre-wrap; }
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>377</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -976,7 +976,7 @@ p, li { white-space: pre-wrap; }
            <x>10</x>
            <y>10</y>
            <width>691</width>
-           <height>321</height>
+           <height>301</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_6" stretch="1,10,0">
@@ -1058,8 +1058,7 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>377</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1071,7 +1070,7 @@ border: 3px solid gray;</string>
            <x>13</x>
            <y>9</y>
            <width>691</width>
-           <height>341</height>
+           <height>291</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -1153,7 +1152,7 @@ border: 3px solid gray;</string>
           <x>0</x>
           <y>0</y>
           <width>721</width>
-          <height>377</height>
+          <height>380</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1165,7 +1164,7 @@ border: 3px solid gray;</string>
            <x>0</x>
            <y>0</y>
            <width>671</width>
-           <height>351</height>
+           <height>301</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1298,6 +1297,63 @@ border: 3px solid gray;</string>
           </item>
          </layout>
         </widget>
+       </widget>
+       <widget class="QWidget" name="add_testimonial_page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>721</width>
+          <height>307</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Add a Testimonial</string>
+        </attribute>
+        <widget class="QWidget" name="formLayoutWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>9</x>
+           <y>9</y>
+           <width>691</width>
+           <height>301</height>
+          </rect>
+         </property>
+         <layout class="QFormLayout" name="add_testimonial_formLayout">
+          <item row="0" column="0">
+           <widget class="QLabel" name="add_testimonial_label">
+            <property name="text">
+             <string>Testimonial</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QPlainTextEdit" name="add_testimonial_text"/>
+          </item>
+          <item row="1" column="1">
+           <spacer name="verticalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Vertical</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>20</width>
+              <height>40</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item row="2" column="1">
+           <widget class="QDialogButtonBox" name="add_testimonial_buttonBox">
+            <property name="standardButtons">
+             <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <zorder>verticalLayoutWidget_5</zorder>
+        <zorder>customer_purchase_product_label</zorder>
        </widget>
       </widget>
       <widget class="QPushButton" name="customer_logout_button">

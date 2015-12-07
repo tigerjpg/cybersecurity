@@ -28,5 +28,6 @@
         <file>html/INFOCop.html</file>
         <file>html/INFOGeneral.html</file>
         <file>html/INFOPlatforms.html</file>
+        <file>images/tiger_default.png</file>
     </qresource>
 </RCC>

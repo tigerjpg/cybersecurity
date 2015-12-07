@@ -33,5 +33,6 @@
         <file>images/InsiderThreat.png</file>
         <file>images/memory.png</file>
         <file>images/ThreatProtection.png</file>
+        <file>images/tiger_default.png</file>
     </qresource>
 </RCC>

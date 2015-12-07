@@ -372,11 +372,21 @@ void MainWindow::Register_ClearForms()
   ui->company_line->clear();
 }
 
+/*!
+ * \brief MainWindow::SetTestimonialView
+ * Changes the testimonial displayed in the customer view
+ * \param [in] index the index of the testimonial to display
+ */
 void MainWindow::SetTestimonialView(int index)
 {
   if(index >= 0 && index < testimonials->size())
   {
-    QPixmap image( "images/" + testimonials->at(index).field("image").value().toString() );
+    QString imagePath = testimonials->at(index).field("image").value().toString();
+    if(imagePath == ""){
+      imagePath = "tiger.png";
+    }
+
+    QPixmap image( "images/" + imagePath );
     image = image.scaled(ui->customer_testimonials_picture->width(), ui->customer_testimonials_picture->height(), Qt::KeepAspectRatio);
 
     ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );

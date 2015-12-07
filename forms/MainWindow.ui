@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -589,8 +589,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>761</width>
-          <height>405</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1039,7 +1039,7 @@ border: 3px solid gray;</string>
           <rect>
            <x>10</x>
            <y>0</y>
-           <width>331</width>
+           <width>401</width>
            <height>291</height>
           </rect>
          </property>
@@ -1050,9 +1050,9 @@ border: 3px solid gray;</string>
         <widget class="imagebutton" name="contact_button">
          <property name="geometry">
           <rect>
-           <x>340</x>
+           <x>410</x>
            <y>30</y>
-           <width>381</width>
+           <width>311</width>
            <height>221</height>
           </rect>
          </property>
@@ -1066,8 +1066,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>311</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1176,8 +1176,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>311</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1328,8 +1328,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>311</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">

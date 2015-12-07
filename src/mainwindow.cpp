@@ -57,7 +57,6 @@ void MainWindow::on_login_buttonBox_accepted()
     {
       qDebug() <<"UNACCEPTABLE!!!!";
       ErrorPopup *p = new ErrorPopup("Invalid User Name or Password. Please Try Again!!!");
-      p->setWindowModality(Qt::ApplicationModal);
       p->show();
     }
   }
@@ -65,7 +64,6 @@ void MainWindow::on_login_buttonBox_accepted()
   {
     qDebug() << "EMPTY!!!";
     ErrorPopup *p = new ErrorPopup("The User Name or Password fields are blank.\n Please Try Again!!!");
-    p->setWindowModality(Qt::ApplicationModal);
     p->show();
   }
 }

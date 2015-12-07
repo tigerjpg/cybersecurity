@@ -114,7 +114,7 @@ bool Database::AddTestimonial(QString name, QString testimonial)
   else
   {
     qDebug() << query.lastError().text();
-    throw InvalidQuery();
+    return false;
   }
 }
 /*!
@@ -291,6 +291,27 @@ QString Database::GetUserIdByName(QString username)
   }
 }
 
+QString Database::GetCustomerNameById(QString id)
+{
+  if(query.exec("select name from customers where id = \"" + id + "\";"))
+  {
+    if(query.next())
+    {
+      return query.record().field("name").value().toString();
+    }
+    else
+    {
+      qDebug() << query.lastError().text();
+      throw InvalidQuery();
+    }
+  }
+  else
+  {
+    qDebug() << query.lastError().text();
+    throw InvalidQuery();
+  }
+}
+
 /*!
  * \brief Database::GetData
  * Get a QList of all records in a specified table.
@@ -301,6 +322,23 @@ QList<QSqlRecord> * Database::GetData(QString tableName)
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;
   if(query.exec("select * from \"" + tableName +"\";"))
+    {
+      while(query.next())
+        {
+          list->push_back(query.record());
+        }
+    }
+  else
+    {
+      qDebug() << "INVALID QUERY!";
+    }
+  return list;
+}
+
+QList<QSqlRecord> *Database::GetApprovedTestimonials()
+{
+  QList<QSqlRecord> *list = new QList<QSqlRecord>;
+  if(query.exec("select * from \"testimonials\" where approved = 1;"))
     {
       while(query.next())
         {

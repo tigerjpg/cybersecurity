@@ -55,7 +55,13 @@ public:
   /// Returns the id of the user with the matching name
   QString GetUserIdByName(QString username);
 
-  QList<QSqlRecord> * GetData(QString tableName);
+  QString GetCustomerNameById(QString id);
+
+  /// Retrieve all data from a given table
+  QList<QSqlRecord>* GetData(QString tableName);
+
+  /// Retrieve all approved testimonials
+  QList<QSqlRecord>* GetApprovedTestimonials();
 
 
   QString getTestimonialAtIndex(int i);

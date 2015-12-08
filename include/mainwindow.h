@@ -15,6 +15,7 @@
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
 #include "errorpopup.h"
+#include "contactus.h"
 
 namespace Ui {
 class MainWindow;
@@ -131,6 +132,8 @@ private slots:
   void on_add_testimonial_text_textChanged();
 
   void on_add_testimonial_buttonBox_rejected();
+
+  void on_contact_button_clicked();
 
 private:
   // Function to check if all fields in the registration table are filled

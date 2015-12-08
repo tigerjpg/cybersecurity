@@ -338,10 +338,10 @@ void MainWindow::InitializeMaintenance()
   qDebug() << "initializing maintenance paige\n";
 // ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
  ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
+ ui->contact_button->setParent(this);
  if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
                                         "images/tiger-fast-h.png",
                                         "images/tiger-fast-c.png"))
-//   ui->contact_button->setParent(ui->cont);
    qDebug() << "contact button not set\n";
 // ui->contact_button->setEnabled(true);
  ui->contact_button->show();
@@ -692,6 +692,7 @@ void MainWindow::on_customer_testimonial_slider_valueChanged(int value)
 
 void MainWindow::on_toolBox_currentChanged(int index)
 {
+  ui->contact_button->hide();
   switch(index){
   case CUST_PRODUCTS : break;
   case CUST_MAINTENANCE : InitializeMaintenance();
@@ -854,6 +855,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_customer_logout_button_clicked()
 {
+  ui->contact_button->hide();
   ui->customer_products_slider->setSliderPosition(0);
   ui->customer_testimonial_slider->setSliderPosition(1);
   ui->stacked_pages->setCurrentIndex(LOGIN);
@@ -901,4 +903,11 @@ void MainWindow::on_add_testimonial_buttonBox_rejected()
 {
   ui->toolBox->setCurrentIndex(0);
   ui->add_testimonial_text->clear();
+}
+
+void MainWindow::on_contact_button_clicked()
+{
+    ContactUs *contact = new ContactUs();
+    //ui->contact_button->hide();
+    contact->show();
 }

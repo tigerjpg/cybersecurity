@@ -6,155 +6,38 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>578</width>
+    <width>381</width>
     <height>447</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QStackedWidget" name="EverythingHelpstackedWidget">
+  <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>20</y>
-     <width>551</width>
-     <height>391</height>
+     <width>341</width>
+     <height>411</height>
     </rect>
    </property>
-   <widget class="QWidget" name="page">
-    <widget class="QLabel" name="HelpLabel">
-     <property name="geometry">
-      <rect>
-       <x>120</x>
-       <y>0</y>
-       <width>331</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;Help&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QTextBrowser" name="HelpDisplayBox">
-     <property name="geometry">
-      <rect>
-       <x>10</x>
-       <y>60</y>
-       <width>331</width>
-       <height>311</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-    </widget>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>300</x>
-       <y>10</y>
-       <width>81</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt; font-weight:600;&quot;&gt;?&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="LogInInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>60</y>
-       <width>141</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Log In</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="RequestPamInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>110</y>
-       <width>141</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Request Pamphlet</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="ReadTestimonialsInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>160</y>
-       <width>141</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Read Testimonials</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="PurchaseInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>210</y>
-       <width>141</width>
-       <height>51</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Navigate and Purchase</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="LogOffInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>320</y>
-       <width>141</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Log Off</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="AboutUsInstructions">
-     <property name="geometry">
-      <rect>
-       <x>400</x>
-       <y>270</y>
-       <width>141</width>
-       <height>41</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>About Us</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QWidget" name="page_2"/>
-  </widget>
-  <widget class="QPushButton" name="OKExitHelpB">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>410</y>
-     <width>181</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>OK</string>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QTextBrowser" name="HelpDisplayBox">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="OKExitHelpB">
+      <property name="text">
+       <string>Done</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>

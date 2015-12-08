@@ -21,8 +21,18 @@ MainWindow::MainWindow(QWidget *parent) :
   // TEMP sets the default page to login screen
   WelcomeAnimation();
   Welcome();
-  HelpOption *help = new HelpOption(this);
-  help->show();
+
+  // initialize welcome buttons
+  ui->help_label->setPixmap(QPixmap(":/images/click4help.png"));
+  ui->help_button->SetButtonImage(":/images/tiger.png",
+                                  ":/images/tiger-hover.png",
+                                  ":/images/tiger-click.png");
+  ui->logo_button->SetButtonImage(":/images/welcome.png",
+                                  ":/images/welcome-hover.png",
+                                  ":/images/welcome-click.png");
+  ui->logo_button->hide();
+  ui->logo_button->setVisible(true);
+  ui->logo_button->show();
 }
 MainWindow::~MainWindow()
 {
@@ -911,4 +921,10 @@ void MainWindow::on_testimonial_add_help_button_clicked()
                                  "Click \"Add Testimonial\" to add a "
                                  "testimonial yourself!");
   p->show();
+}
+
+void MainWindow::on_help_button_clicked()
+{
+  HelpOption *help = new HelpOption();
+  help->show();
 }

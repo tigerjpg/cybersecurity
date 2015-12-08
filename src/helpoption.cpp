@@ -17,7 +17,7 @@ HelpOption::~HelpOption()
 
 void HelpOption::on_OKExitHelpB_clicked()
 {
-    ui->EverythingHelpstackedWidget->close();
+    this->close();
 }
 
 void HelpOption::on_LogInInstructions_clicked()

@@ -58,7 +58,8 @@ FORMS    += forms/MainWindow.ui \
 RESOURCES += \
     cybersounds.qrc \
     cyberhtml.qrc \
-    cyberimages.qrc
+    cyberimages.qrc \
+    cyberbuttonigmages.qrc
 
 DISTFILES +=
 

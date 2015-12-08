@@ -74,6 +74,11 @@ void MainWindow::on_login_buttonBox_accepted()
         ui->customer_products_slider->setSliderPosition(0);
         ui->customer_testimonial_slider->setSliderPosition(1);
         ui->toolBox->setCurrentIndex(0);
+        pTableModel = new PurchasesTableModel(0, db, activeUserId.toInt());
+        ui->customer_purchase_tableView->setModel(pTableModel);
+        InitCustomerPurchaseTableView();
+        pTableModel->Initialize();
+        pTableModel->select();
       }
       else
       {
@@ -348,15 +353,15 @@ bool MainWindow::Register()
 void MainWindow::InitializeMaintenance()
 {
   qDebug() << "initializing maintenance paige\n";
-// ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
- ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
- ui->contact_button->setParent(this);
- if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
-                                        "images/tiger-fast-h.png",
-                                        "images/tiger-fast-c.png"))
-   qDebug() << "contact button not set\n";
-// ui->contact_button->setEnabled(true);
- ui->contact_button->show();
+  // ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
+  ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
+  ui->contact_button->setParent(this);
+  if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
+                                         "images/tiger-fast-h.png",
+                                         "images/tiger-fast-c.png"))
+    qDebug() << "contact button not set\n";
+  // ui->contact_button->setEnabled(true);
+  ui->contact_button->show();
 
 }
 
@@ -494,6 +499,25 @@ void MainWindow::SetActiveUser(QString id)
   activeUserId = id;
 }
 
+void MainWindow::ClearAllPurchaseCheckboxes()
+{
+  ui->customer_purchase_product_checkBox->setChecked(0);
+  ui->customer_purchase_product_checkBox_2->setChecked(0);
+  ui->customer_purchase_product_checkBox_3->setChecked(0);
+  ui->customer_purchase_product_checkBox_4->setChecked(0);
+  ui->customer_purchase_product_checkBox_5->setChecked(0);
+}
+
+void MainWindow::InitCustomerPurchaseTableView()
+{
+  ui->customer_purchase_tableView->setAlternatingRowColors(true);
+  ui->customer_purchase_tableView->verticalHeader()->hide();
+  ui->customer_purchase_tableView->hideColumn(PurchasesTableModel::ID);
+  ui->customer_purchase_tableView->hideColumn(PurchasesTableModel::CUSTNAME);
+  ui->customer_purchase_tableView->resizeColumnsToContents();
+  ui->customer_purchase_tableView->horizontalHeader()->setStretchLastSection(true);
+}
+
 void MainWindow::on_customer_remove_button_clicked()
 {
   int row =ui->customer_tableView->currentIndex().row();
@@ -575,10 +599,10 @@ void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
 }
 
 /*!
-             * \brief MainWindow::on_customer_purchase_button_clicked
-             * Create a popup window with a table with the purchases
-             * of the specific customer you have selected.
-             */
+* \brief MainWindow::on_customer_purchase_button_clicked
+* Create a popup window with a table with the purchases
+* of the specific customer you have selected.
+*/
 void MainWindow::on_customer_purchase_button_clicked()
 {
   int row = ui->customer_tableView->currentIndex().row();
@@ -635,18 +659,18 @@ void MainWindow::Welcome()
 }
 
 /*!
-             * \brief MainWindow::Click
-             * Plays a classic button click sound
-             */
+* \brief MainWindow::Click
+* Plays a classic button click sound
+*/
 void MainWindow::Click()
 {
   QSound::play(":/sounds/click.wav");
 }
 
 /*!
-             * \brief MainWindow::on_customer_add_pushButton_clicked
-             * Creates a popup window with a form to add Customers
-             */
+* \brief MainWindow::on_customer_add_pushButton_clicked
+* Creates a popup window with a form to add Customers
+*/
 void MainWindow::on_customer_add_pushButton_clicked()
 {
   AddCustomerPopup *p = new AddCustomerPopup(0, db, cTableModel);
@@ -822,39 +846,36 @@ void MainWindow::on_admin_logout_button_clicked()
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
 {
   bool madePurchase = false;
-  //Go to page that says thanks for your purchase?
+
   if(ui->customer_purchase_product_checkBox->isChecked())
   {
     madePurchase = db->Purchase(activeUserId, "1");
-    ui->customer_purchase_product_checkBox->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_2->isChecked())
   {
     madePurchase = db->Purchase(activeUserId, "2");
-    ui->customer_purchase_product_checkBox_2->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_3->isChecked())
   {
     madePurchase = db->Purchase(activeUserId, "3");
-    ui->customer_purchase_product_checkBox_3->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_4->isChecked())
   {
     madePurchase = db->Purchase(activeUserId, "4");
-    ui->customer_purchase_product_checkBox_4->setChecked(0);
   }
   if(ui->customer_purchase_product_checkBox_5->isChecked())
   {
     madePurchase = db->Purchase(activeUserId, "5");
-    ui->customer_purchase_product_checkBox_5->setChecked(0);
   }
   if(madePurchase)
   {
+    ClearAllPurchaseCheckboxes();
     ErrorPopup *p = new ErrorPopup("Thank you for your purchase!\n"
                                    "Our representatives will contact you in"
                                    " 2 business days. Exactly.",
                                    "images/tiger.png", "ROAR!", 0);
     p->show();
+    pTableModel->select();
   }
   else
   {
@@ -866,6 +887,7 @@ void MainWindow::on_customer_purchase_purchaseButton_clicked()
 
 void MainWindow::on_pushButton_2_clicked()
 {
+  ClearAllPurchaseCheckboxes();
   ui->toolBox->setCurrentIndex(0);
 }
 
@@ -875,6 +897,8 @@ void MainWindow::on_customer_logout_button_clicked()
   ui->customer_products_slider->setSliderPosition(0);
   ui->customer_testimonial_slider->setSliderPosition(1);
   ui->stacked_pages->setCurrentIndex(LOGIN);
+  ClearAllPurchaseCheckboxes();
+  delete pTableModel;
 }
 
 void MainWindow::on_add_testimonial_buttonBox_accepted()
@@ -923,18 +947,21 @@ void MainWindow::on_add_testimonial_buttonBox_rejected()
 
 void MainWindow::on_contact_button_clicked()
 {
-    ContactUs *contact = new ContactUs();
-    //ui->contact_button->hide();
-    contact->show();
+  ContactUs *contact = new ContactUs();
+  //ui->contact_button->hide();
+  contact->setWindowModality(Qt::ApplicationModal);
+  contact->show();
+  contact->setWindowTitle("Contact us!");
+
 }
 
 void MainWindow::on_customer_submit_changes_help_button_clicked()
 {
-    ErrorPopup *p = new ErrorPopup("All fields are editable. "
-                                   "Double-click the fields on the right "
-                                   "and edit away. When you're done, hit "
-                                   "\"submit changes\"!");
-    p->show();
+  ErrorPopup *p = new ErrorPopup("All fields are editable. "
+                                 "Double-click the fields on the right "
+                                 "and edit away. When you're done, hit "
+                                 "\"submit changes\"!");
+  p->show();
 }
 
 void MainWindow::on_testimonial_add_help_button_clicked()
@@ -949,5 +976,7 @@ void MainWindow::on_testimonial_add_help_button_clicked()
 void MainWindow::on_help_button_clicked()
 {
   HelpOption *help = new HelpOption();
+  help->setWindowModality(Qt::ApplicationModal);
   help->show();
+  help->setWindowTitle("Help!");
 }

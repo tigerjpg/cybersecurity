@@ -161,6 +161,8 @@ private:
   void UpdateTestimonialList();
   void LoadProductList();
   void SetActiveUser(QString id);
+  void ClearAllPurchaseCheckboxes();
+  void InitCustomerPurchaseTableView();
 
   Ui::MainWindow *ui;
   Database *db;

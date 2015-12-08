@@ -27,12 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->help_button->SetButtonImage(":/images/tiger.png",
                                   ":/images/tiger-hover.png",
                                   ":/images/tiger-click.png");
-  ui->logo_button->SetButtonImage(":/images/welcome.png",
-                                  ":/images/welcome-hover.png",
-                                  ":/images/welcome-click.png");
-  ui->logo_button->setVisible(true);
-  ui->logo_button->setFocusProxy(ui->login_frame);
-  ui->logo_button->show();
+  QPixmap logo(":/images/welcome.png");
+  logo = logo.scaled(ui->logo_label->width(),ui->logo_label->height(),Qt::KeepAspectRatioByExpanding);
+  ui->logo_label->setPixmap(logo);
+
 }
 MainWindow::~MainWindow()
 {

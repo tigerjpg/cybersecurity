@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -106,36 +106,18 @@
          </widget>
         </item>
         <item>
-         <widget class="imagebutton" name="logo_button">
+         <widget class="QLabel" name="logo_label">
           <property name="minimumSize">
            <size>
             <width>0</width>
             <height>256</height>
            </size>
           </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
           <property name="text">
-           <string>PushButton</string>
+           <string/>
           </property>
-          <property name="iconSize">
-           <size>
-            <width>16</width>
-            <height>64</height>
-           </size>
-          </property>
-          <property name="autoDefault">
-           <bool>false</bool>
-          </property>
-          <property name="default">
-           <bool>true</bool>
-          </property>
-          <property name="flat">
-           <bool>true</bool>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -254,10 +236,6 @@
        <string>Click me</string>
       </property>
      </widget>
-     <zorder>login_frame</zorder>
-     <zorder>help_button</zorder>
-     <zorder>help_label</zorder>
-     <zorder>logo_button</zorder>
     </widget>
     <widget class="QWidget" name="register_page">
      <widget class="QFrame" name="register_frame">
@@ -817,8 +795,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>761</width>
-          <height>395</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1013,8 +991,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>339</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1108,8 +1086,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>339</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1218,8 +1196,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>339</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1370,8 +1348,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>721</width>
-          <height>339</height>
+          <width>100</width>
+          <height>30</height>
          </rect>
         </property>
         <attribute name="label">

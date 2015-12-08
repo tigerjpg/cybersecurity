@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -608,8 +608,8 @@ p, li { white-space: pre-wrap; }
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>761</width>
+          <height>395</height>
          </rect>
         </property>
         <attribute name="label">
@@ -984,15 +984,15 @@ p, li { white-space: pre-wrap; }
         </rect>
        </property>
        <property name="currentIndex">
-        <number>2</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="customer_products">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>311</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1081,13 +1081,52 @@ border: 3px solid gray;</string>
          </layout>
         </widget>
        </widget>
+       <widget class="QWidget" name="maintenance_page">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>721</width>
+          <height>311</height>
+         </rect>
+        </property>
+        <attribute name="label">
+         <string>Maintenance Plan</string>
+        </attribute>
+        <widget class="QTextBrowser" name="maintenance_textBrowser">
+         <property name="geometry">
+          <rect>
+           <x>10</x>
+           <y>0</y>
+           <width>401</width>
+           <height>291</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
+         </property>
+        </widget>
+        <widget class="imagebutton" name="contact_button">
+         <property name="geometry">
+          <rect>
+           <x>450</x>
+           <y>150</y>
+           <width>481</width>
+           <height>221</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string>contact</string>
+         </property>
+        </widget>
+       </widget>
        <widget class="QWidget" name="customer_testimonials">
         <property name="geometry">
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>311</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1196,8 +1235,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>311</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1348,8 +1387,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>311</height>
          </rect>
         </property>
         <attribute name="label">

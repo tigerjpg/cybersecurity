@@ -16,5 +16,6 @@
         <file>html/help6.html</file>
         <file>html/help7.html</file>
         <file>html/styles.css</file>
+        <file>html/maintenance.html</file>
     </qresource>
 </RCC>

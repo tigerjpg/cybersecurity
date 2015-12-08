@@ -15,5 +15,5 @@ ContactUs::~ContactUs()
 
 void ContactUs::on_OKEscapeContactUs_clicked()
 {
-ui->stackedWidget->close();
+  this->close();
 }

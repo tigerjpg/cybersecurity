@@ -61,5 +61,4 @@ RESOURCES += \
     cyberimages.qrc \
     cyberbuttonigmages.qrc
 
-DISTFILES +=
 

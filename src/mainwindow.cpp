@@ -348,15 +348,15 @@ bool MainWindow::Register()
 void MainWindow::InitializeMaintenance()
 {
   qDebug() << "initializing maintenance paige\n";
-// ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
- ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
- ui->contact_button->setParent(this);
- if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
-                                        "images/tiger-fast-h.png",
-                                        "images/tiger-fast-c.png"))
-   qDebug() << "contact button not set\n";
-// ui->contact_button->setEnabled(true);
- ui->contact_button->show();
+  // ui->toolBox->setCurrentIndex(CUST_MAINTENANCE);
+  ui->maintenance_textBrowser->setSource(QUrl("qrc:/html/maintenance.html"));
+  ui->contact_button->setParent(this);
+  if(!ui->contact_button->SetButtonImage("images/tiger-fast.png",
+                                         "images/tiger-fast-h.png",
+                                         "images/tiger-fast-c.png"))
+    qDebug() << "contact button not set\n";
+  // ui->contact_button->setEnabled(true);
+  ui->contact_button->show();
 
 }
 
@@ -923,18 +923,21 @@ void MainWindow::on_add_testimonial_buttonBox_rejected()
 
 void MainWindow::on_contact_button_clicked()
 {
-    ContactUs *contact = new ContactUs();
-    //ui->contact_button->hide();
-    contact->show();
+  ContactUs *contact = new ContactUs();
+  //ui->contact_button->hide();
+  contact->setWindowModality(Qt::ApplicationModal);
+  contact->show();
+  contact->setWindowTitle("Contact us!");
+
 }
 
 void MainWindow::on_customer_submit_changes_help_button_clicked()
 {
-    ErrorPopup *p = new ErrorPopup("All fields are editable. "
-                                   "Double-click the fields on the right "
-                                   "and edit away. When you're done, hit "
-                                   "\"submit changes\"!");
-    p->show();
+  ErrorPopup *p = new ErrorPopup("All fields are editable. "
+                                 "Double-click the fields on the right "
+                                 "and edit away. When you're done, hit "
+                                 "\"submit changes\"!");
+  p->show();
 }
 
 void MainWindow::on_testimonial_add_help_button_clicked()
@@ -950,4 +953,5 @@ void MainWindow::on_help_button_clicked()
 {
   HelpOption *help = new HelpOption();
   help->show();
+  help->setWindowTitle("Help!");
 }

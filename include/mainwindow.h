@@ -15,6 +15,7 @@
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
 #include "errorpopup.h"
+#include "contactus.h"
 
 namespace Ui {
 class MainWindow;
@@ -36,6 +37,7 @@ public:
 
   enum CustomerPage {
     CUST_PRODUCTS,
+    CUST_MAINTENANCE,
     CUST_TESTIMONIALS,
     CUST_PURCHASE
   };
@@ -131,6 +133,8 @@ private slots:
 
   void on_add_testimonial_buttonBox_rejected();
 
+  void on_contact_button_clicked();
+
   void on_customer_submit_changes_help_button_clicked();
 
   void on_testimonial_add_help_button_clicked();
@@ -140,6 +144,9 @@ private:
   bool RegistrationCompleted();
   // function to create db entries for user
   bool Register();
+  // function to initialize the maintenance plane page
+  void InitializeMaintenance();
+
 
   void changeBackground(int index);
   void setBackground(QPixmap picture);

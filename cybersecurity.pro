@@ -53,5 +53,6 @@ FORMS    += \
 RESOURCES += \
     cybersounds.qrc \
     cyberhtml.qrc \
-    cyberimages.qrc
+    cyberimages.qrc \
+    cyberbuttonimages.qrc
 

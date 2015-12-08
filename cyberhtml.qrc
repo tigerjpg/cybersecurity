@@ -8,5 +8,6 @@
         <file>html/TIGERInsider.html</file>
         <file>html/TIGERMemoryIntegrity.html</file>
         <file>html/TIGERThreat.html</file>
+        <file>html/maintenance.html</file>
     </qresource>
 </RCC>

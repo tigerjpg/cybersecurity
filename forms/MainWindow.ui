@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>5</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="intro_page">
      <widget class="imagebutton" name="welcomeBtn">
@@ -1125,8 +1125,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>271</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1235,8 +1235,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>271</height>
          </rect>
         </property>
         <attribute name="label">
@@ -1404,8 +1404,8 @@ border: 3px solid gray;</string>
          <rect>
           <x>0</x>
           <y>0</y>
-          <width>100</width>
-          <height>30</height>
+          <width>721</width>
+          <height>271</height>
          </rect>
         </property>
         <attribute name="label">

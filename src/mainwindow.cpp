@@ -6,7 +6,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
   db = new Database("./data/data.db", "QSQLITE");
   this->setFixedSize(800,600);
-
   // setup the background
   background = new QLabel(this);
   QMovie *movie = new QMovie(":/images/slowmatrix.gif");
@@ -14,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
   // setups the rest of the ui on top of the background
   ui->setupUi(this);
+  this->setWindowTitle("T.I.G.E.R. Cybersecurity");
   testimonials = NULL;
   UpdateTestimonialList();
   LoadProductList();
@@ -181,9 +181,9 @@ void MainWindow::on_administrator_toolBox_currentChanged(int index)
 }
 
 /*!
-             * \brief MainWindow::on_testimonial_add_button_clicked
-             * Add a testimonial. Creates a popup window.
-             */
+ * \brief MainWindow::on_testimonial_add_button_clicked
+ * Add a testimonial. Creates a popup window.
+ */
 void MainWindow::on_testimonial_add_button_clicked()
 {
   AddTestimonialPopup *p;
@@ -197,9 +197,9 @@ void MainWindow::on_testimonial_add_button_clicked()
 }
 
 /*!
-             * \brief MainWindow::InitTestimonialTableView
-             * Initialize the Testimonial TableView
-             */
+* \brief MainWindow::InitTestimonialTableView
+* Initialize the Testimonial TableView
+*/
 void MainWindow::InitTestimonialTableView()
 {
   ui->testimonial_tableView->setEditTriggers(QTableView::NoEditTriggers);
@@ -215,9 +215,9 @@ void MainWindow::InitTestimonialTableView()
 }
 
 /*!
-             * \brief MainWindow::InitCustomerTableView
-             * Initialize the customer tableView
-             */
+* \brief MainWindow::InitCustomerTableView
+* Initialize the customer tableView
+*/
 void MainWindow::InitCustomerTableView()
 {
   ui->customer_tableView->hideColumn(CustomerTableModel::ID);
@@ -236,7 +236,8 @@ void MainWindow::on_testimonial_remove_button_clicked()
   {
     tTableModel->submitAll();
     tTableModel->select();
-    qDebug() << "TESTIMONIAL REMOVED!";
+    ErrorPopup *p = new ErrorPopup("TESTIMONIAL HAS BEEN REMOVED!");
+    p->show();
   }
   else
   {
@@ -247,9 +248,9 @@ void MainWindow::on_testimonial_remove_button_clicked()
 }
 
 /*!
-             * \brief MainWindow::on_testimonial_approve_button_clicked
-             * Approve a testimonial
-             */
+* \brief MainWindow::on_testimonial_approve_button_clicked
+* Approve a testimonial
+*/
 void MainWindow::on_testimonial_approve_button_clicked()
 {
   int row = ui->testimonial_tableView->currentIndex().row();
@@ -359,9 +360,9 @@ void MainWindow::setBackground(QMovie *movie, int speed)
 }
 
 /*!
-             * \brief MainWindow::WelcomeAnimation
-             *  Initiates teh welcome animation
-             */
+* \brief MainWindow::WelcomeAnimation
+*  Initiates teh welcome animation
+*/
 void MainWindow::WelcomeAnimation()
 {
   ui->welcomeBtn->SetButtonImage("images/welcome.png","images/welcome-hover.png","images/welcome-click.png");
@@ -382,9 +383,9 @@ void MainWindow::WelcomeAnimation()
 }
 
 /*!
-             * \brief MainWindow::on_finished_intro()
-             * Once the intro animation is over it brings in the TIGER and enables the welcome button
-             */
+* \brief MainWindow::on_finished_intro()
+* Once the intro animation is over it brings in the TIGER and enables the welcome button
+*/
 void MainWindow::on_finished_intro()
 {
   // Create an animation, with a target object and specified duration
@@ -402,9 +403,9 @@ void MainWindow::on_finished_intro()
 }
 
 /*!
-             * \brief MainWindow::on_welcomeBtn_clicked
-             * Changes the page to the login page
-             */
+* \brief MainWindow::on_welcomeBtn_clicked
+* Changes the page to the login page
+*/
 void MainWindow::on_welcomeBtn_clicked()
 {
   Click();
@@ -490,7 +491,8 @@ void MainWindow::on_customer_remove_button_clicked()
   {
     cTableModel->submitAll();
     cTableModel->select();
-    qDebug() << "CUSTOMER REMOVED!";
+    ErrorPopup *p = new ErrorPopup("CUSTOMER HAS BEEN REMOVED!");
+    p->show();
   }
   else
   {
@@ -501,10 +503,10 @@ void MainWindow::on_customer_remove_button_clicked()
 
 
 /*!
-             * \brief MainWindow::on_customer_interest_comboBox_currentIndexChanged
-             * View only customers of a certain interest level.
-             * \param index
-             */
+* \brief MainWindow::on_customer_interest_comboBox_currentIndexChanged
+* View only customers of a certain interest level.
+* \param index
+*/
 void MainWindow::on_customer_interest_comboBox_currentIndexChanged(int index)
 {
   enum Interest
@@ -595,9 +597,9 @@ void MainWindow::on_customer_purchase_button_clicked()
 }
 
 /*!
-             * \brief MainWindow::on_customer_submit_changes_button_clicked
-             * Finalize changes made to the customer table
-             */
+* \brief MainWindow::on_customer_submit_changes_button_clicked
+* Finalize changes made to the customer table
+*/
 void MainWindow::on_customer_submit_changes_button_clicked()
 {
   if(cTableModel->submitAll())
@@ -607,7 +609,9 @@ void MainWindow::on_customer_submit_changes_button_clicked()
   }
   else
   {
-    qDebug() << "CHANGES NOT APPLIED TO CUSTOMER TABLE";
+    ErrorPopup *p = new ErrorPopup("INVALID VALUES.\n Changes have not been applied!", "images/tiger_default.png", "OK!", 0);
+    p->show();
+    cTableModel->select();
   }
 
 }
@@ -640,9 +644,9 @@ void MainWindow::on_customer_add_pushButton_clicked()
 }
 
 /*!
-             * \brief MainWindow::on_customer_send_pamphlet_button_clicked
-             * Alter customers table "sent" value
-             */
+* \brief MainWindow::on_customer_send_pamphlet_button_clicked
+* Alter customers table "sent" value
+*/
 void MainWindow::on_customer_send_pamphlet_button_clicked()
 {
   //Check if row is selected
@@ -658,7 +662,8 @@ void MainWindow::on_customer_send_pamphlet_button_clicked()
         if(db->Exec())
         {
           cTableModel->select();
-          qDebug() << "CUSTOMER HAS BEEN SENT A PAMPHLET! HOO-AHH!";
+          ErrorPopup *p = new ErrorPopup("CUSTOMER HAS BEEN GRANTED ACCESS TO THE PAMPHLET.");
+          p->show();
         }
       }
       else
@@ -910,4 +915,22 @@ void MainWindow::on_contact_button_clicked()
     ContactUs *contact = new ContactUs();
     //ui->contact_button->hide();
     contact->show();
+}
+
+void MainWindow::on_customer_submit_changes_help_button_clicked()
+{
+    ErrorPopup *p = new ErrorPopup("All fields are editable. "
+                                   "Double-click the fields on the right "
+                                   "and edit away. When you're done, hit "
+                                   "\"submit changes\"!");
+    p->show();
+}
+
+void MainWindow::on_testimonial_add_help_button_clicked()
+{
+  ErrorPopup *p = new ErrorPopup("Click on a testimonial and then use the "
+                                 "buttons to remove or approve one."
+                                 "Click \"Add Testimonial\" to add a "
+                                 "testimonial yourself!");
+  p->show();
 }

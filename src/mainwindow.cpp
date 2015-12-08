@@ -30,8 +30,8 @@ MainWindow::MainWindow(QWidget *parent) :
   ui->logo_button->SetButtonImage(":/images/welcome.png",
                                   ":/images/welcome-hover.png",
                                   ":/images/welcome-click.png");
-  ui->logo_button->hide();
   ui->logo_button->setVisible(true);
+  ui->logo_button->setFocusProxy(ui->login_frame);
   ui->logo_button->show();
 }
 MainWindow::~MainWindow()

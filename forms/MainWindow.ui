@@ -72,8 +72,8 @@
        <rect>
         <x>240</x>
         <y>110</y>
-        <width>281</width>
-        <height>321</height>
+        <width>311</width>
+        <height>411</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -90,8 +90,8 @@
         <rect>
          <x>10</x>
          <y>10</y>
-         <width>261</width>
-         <height>301</height>
+         <width>291</width>
+         <height>396</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -110,8 +110,11 @@
           <property name="minimumSize">
            <size>
             <width>0</width>
-            <height>128</height>
+            <height>256</height>
            </size>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
           </property>
           <property name="styleSheet">
            <string notr="true"/>

@@ -13,6 +13,10 @@ ContactUs::~ContactUs()
     delete ui;
 }
 
+/*!
+ * \brief ContactUs::on_OKEscapeContactUs_clicked
+ * Close the window.
+ */
 void ContactUs::on_OKEscapeContactUs_clicked()
 {
   this->close();

@@ -19,6 +19,10 @@ ErrorPopup::~ErrorPopup()
   delete ui;
 }
 
+/*!
+ * \brief ErrorPopup::on_error_popup_button_clicked
+ * Play a fun click sound! (Sometimes :| )
+ */
 void ErrorPopup::on_error_popup_button_clicked()
 {
   QSound::play(":/sounds/click.wav");

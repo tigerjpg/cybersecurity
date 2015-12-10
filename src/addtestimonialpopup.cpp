@@ -15,6 +15,11 @@ AddTestimonialPopup::~AddTestimonialPopup()
   delete ui;
 }
 
+/*!
+ * \brief AddTestimonialPopup::on_testimonial_popup_buttonBox_accepted
+ * Make sure all fields have data, and attempt to add testimonial
+ * to the Database.
+ */
 void AddTestimonialPopup::on_testimonial_popup_buttonBox_accepted()
 {
   if(!ui->testimonial_popup_nameLineEdit->text().isEmpty() &&
@@ -48,13 +53,20 @@ void AddTestimonialPopup::on_testimonial_popup_buttonBox_accepted()
   }
 }
 
-
+/*!
+ * \brief AddTestimonialPopup::on_testimonial_popup_buttonBox_rejected
+ * Refresh the model and close the window.
+ */
 void AddTestimonialPopup::on_testimonial_popup_buttonBox_rejected()
 {
   model->select();
   close();
 }
 
+/*!
+ * \brief AddTestimonialPopup::on_testimonial_popup_textEdit_textChanged
+ * Make sure that testimonial text does not exceed 500 characters.
+ */
 void AddTestimonialPopup::on_testimonial_popup_textEdit_textChanged()
 {
     if(ui->testimonial_popup_textEdit->toPlainText().length() >= 500)

@@ -78,7 +78,9 @@ protected:
 
 private:
   /* Private Methods */
+  /// Helper method to resize the picture
   void resizePicture(int w, int h);
+  /// Helper Method to change the picture assigned to a button
   void ChangePicture(QPixmap);
 
   /* Private Data Members */

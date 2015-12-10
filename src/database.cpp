@@ -51,6 +51,14 @@ bool Database::AuthenticateAdmin(QString username, QString password)
   return query.next();
 }
 
+/*!
+ * \brief Database::AuthenticateUser
+ * Attempt to authenticate a user's credentials. If they have not been
+ * sent a pamphlet, popup an error message telling them.
+ * \param username user's username
+ * \param password user's password
+ * \return
+ */
 bool Database::AuthenticateUser(QString username, QString password)
 {
   QBlowfish bf(QByteArray::fromHex(KEY_HEX));
@@ -94,9 +102,10 @@ bool Database::AddCustomer(QString name, QString address, QString interest, QStr
 
 /*!
  * \brief Database::AddTestimonial
- * \param name
- * \param testimonial
- * \return
+ * Attempt to add a testimonial to the Database
+ * \param name of person leaving testimonial
+ * \param testimonial text
+ * \return true if successful
  */
 bool Database::AddTestimonial(QString name, QString testimonial)
 {
@@ -248,6 +257,12 @@ QString Database::GetCustomerIdByName(QString name)
   }
 }
 
+/*!
+ * \brief Database::GetUserIdByName
+ * Attempt to retrieve a userId given a user's username
+ * \param username user's username
+ * \return id as a QString
+ */
 QString Database::GetUserIdByName(QString username)
 {
   if(query.exec("select id from users where username = \"" + username + "\";"))
@@ -269,6 +284,12 @@ QString Database::GetUserIdByName(QString username)
   }
 }
 
+/*!
+ * \brief Database::GetCustomerNameById
+ * Attempt to retrieve a customer's name given their Id
+ * \param id customer's ID
+ * \return Customer's name as a QString
+ */
 QString Database::GetCustomerNameById(QString id)
 {
   if(query.exec("select name from customers where id = \"" + id + "\";"))
@@ -290,6 +311,12 @@ QString Database::GetCustomerNameById(QString id)
   }
 }
 
+/*!
+ * \brief Database::GetCustomerSentStatus
+ * Attempt to retrieve a customer's sent status given their id.
+ * \param id customer's id
+ * \return customer's sent status as a QString
+ */
 QString Database::GetCustomerSentStatus(QString id)
 {
   if(query.exec("select sent from customers where id =\"" + id +"\";"))
@@ -334,6 +361,11 @@ QList<QSqlRecord> * Database::GetData(QString tableName)
   return list;
 }
 
+/*!
+ * \brief Database::GetApprovedTestimonials
+ * Retrieve a QList<QSqlRecord> of all approved Testimonials
+ * \return QList<QSqlRecord> of all approved testimonials.
+ */
 QList<QSqlRecord> *Database::GetApprovedTestimonials()
 {
   QList<QSqlRecord> *list = new QList<QSqlRecord>;

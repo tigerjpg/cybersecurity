@@ -16,6 +16,11 @@ AddCustomerPopup::~AddCustomerPopup()
   delete ui;
 }
 
+/*!
+ * \brief AddCustomerPopup::on_add_customer_buttonBox_accepted
+ * Verify that fields have values, and attempt to add a user to the
+ * Database.
+ */
 void AddCustomerPopup::on_add_customer_buttonBox_accepted()
 {
   QString password = ui->add_customer_password_box->text();
@@ -62,7 +67,10 @@ void AddCustomerPopup::on_add_customer_buttonBox_accepted()
 }
 
 
-
+/*!
+ * \brief AddCustomerPopup::on_add_customer_buttonBox_rejected
+ * Close the window.
+ */
 void AddCustomerPopup::on_add_customer_buttonBox_rejected()
 {
     close();

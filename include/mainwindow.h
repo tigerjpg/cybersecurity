@@ -14,8 +14,10 @@
 #include "addtestimonialpopup.h"
 #include "viewpurchasespopup.h"
 #include "addcustomerpopup.h"
+#include "helpoption.h"
 #include "errorpopup.h"
 #include "contactus.h"
+
 
 namespace Ui {
 class MainWindow;
@@ -139,6 +141,8 @@ private slots:
 
   void on_testimonial_add_help_button_clicked();
 
+  void on_help_button_clicked();
+
 private:
   // Function to check if all fields in the registration table are filled
   bool RegistrationCompleted();
@@ -157,6 +161,8 @@ private:
   void UpdateTestimonialList();
   void LoadProductList();
   void SetActiveUser(QString id);
+  void ClearAllPurchaseCheckboxes();
+  void InitCustomerPurchaseTableView();
 
   Ui::MainWindow *ui;
   Database *db;

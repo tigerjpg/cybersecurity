@@ -8,6 +8,7 @@ CustomerTableModel::CustomerTableModel(QObject *parent, QSqlDatabase *db)
 
 /*!
  * \brief CustomerTableModel::Initialize
+ * Set the table to display and all column labels.
  */
 void CustomerTableModel::Initialize()
 {

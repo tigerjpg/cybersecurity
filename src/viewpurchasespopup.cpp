@@ -22,11 +22,19 @@ ViewPurchasesPopup::~ViewPurchasesPopup()
   delete _model;
 }
 
+/*!
+ * \brief ViewPurchasesPopup::on_purchases_popup_buttonBox_accepted
+ * close the popup
+ */
 void ViewPurchasesPopup::on_purchases_popup_buttonBox_accepted()
 {
     close();
 }
 
+/*!
+ * \brief ViewPurchasesPopup::on_purchases_popup_buttonBox_rejected
+ * close the popup
+ */
 void ViewPurchasesPopup::on_purchases_popup_buttonBox_rejected()
 {
     close();

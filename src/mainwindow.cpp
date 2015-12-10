@@ -37,6 +37,10 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
+/*!
+ * \brief MainWindow::on_login_buttonBox_accepted
+ * Attempt to log a user or admin into the pamphlet/admin window
+ */
 void MainWindow::on_login_buttonBox_accepted()
 {
   if(!ui->username_line->text().isEmpty() && !ui->password_line->text().isEmpty())
@@ -101,6 +105,10 @@ void MainWindow::on_login_buttonBox_accepted()
   }
 }
 
+/*!
+ * \brief MainWindow::on_login_buttonBox_rejected
+ * Clear all fields and return to Welcome page.
+ */
 void MainWindow::on_login_buttonBox_rejected()
 {
   ui->username_line->clear();
@@ -109,17 +117,32 @@ void MainWindow::on_login_buttonBox_rejected()
   Welcome();
 }
 
+/*!
+ * \brief MainWindow::on_customer_tableView_activated
+ * Create CustomerTableModel and set customer_tableView to it.
+ * \param index
+ */
 void MainWindow::on_customer_tableView_activated(const QModelIndex &index)
 {
   cTableModel = new CustomerTableModel(this, db);
   ui->customer_tableView->setModel(cTableModel);
 }
 
+/*!
+ * \brief MainWindow::on_password_line_returnPressed
+ * Click accept button when return is pressed.
+ */
 void MainWindow::on_password_line_returnPressed()
 {
   ui->login_buttonBox->accepted();
 }
 
+/*!
+ * \brief MainWindow::on_customer_key_customers_checkBox_toggled
+ * check if keyCustomerCheckbox is checked. If it is, set the model
+ * Filter accordingly.
+ * \param checked the check status of key customer checkBox
+ */
 void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
 {
   enum Interest
@@ -178,6 +201,11 @@ void MainWindow::on_customer_key_customers_checkBox_toggled(bool checked)
   }
 }
 
+/*!
+ * \brief MainWindow::on_administrator_toolBox_currentChanged
+ * Display the correct table when an admin switches the page.
+ * \param index
+ */
 void MainWindow::on_administrator_toolBox_currentChanged(int index)
 {
   enum toolboxPage
@@ -243,9 +271,9 @@ void MainWindow::InitCustomerTableView()
 }
 
 /*!
-             * \brief MainWindow::on_testimonial_remove_button_clicked
-             * Remove a testimonial
-             */
+* \brief MainWindow::on_testimonial_remove_button_clicked
+* Remove a testimonial
+*/
 void MainWindow::on_testimonial_remove_button_clicked()
 {
   if(tTableModel->removeRow(ui->testimonial_tableView->currentIndex().row()))
@@ -309,6 +337,10 @@ void MainWindow::on_testimonial_approve_button_clicked()
   }
 }
 
+/*!
+ * \brief MainWindow::RegistrationCompleted
+ * \return true if registration is complete
+ */
 bool MainWindow::RegistrationCompleted()
 {
   if(!ui->username_label_2->text().isEmpty() &&
@@ -330,6 +362,12 @@ bool MainWindow::RegistrationCompleted()
   }
 }
 
+/*!
+ * \brief MainWindow::Register
+ * Attempt to add a customer to the table of Customers.
+ * If successful, add their username and password to the table of Users.
+ * \return
+ */
 bool MainWindow::Register()
 {
 
@@ -350,6 +388,10 @@ bool MainWindow::Register()
   }
 }
 
+/*!
+ * \brief MainWindow::InitializeMaintenance
+ * Initialize the maintenance page.
+ */
 void MainWindow::InitializeMaintenance()
 {
   qDebug() << "initializing maintenance paige\n";
@@ -362,9 +404,14 @@ void MainWindow::InitializeMaintenance()
     qDebug() << "contact button not set\n";
   // ui->contact_button->setEnabled(true);
   ui->contact_button->show();
-
 }
 
+/*!
+ * \brief MainWindow::setBackground
+ * Set the background to a cool movie.
+ * \param movie
+ * \param speed
+ */
 void MainWindow::setBackground(QMovie *movie, int speed)
 {
   // loads the background movie into a label
@@ -400,7 +447,8 @@ void MainWindow::WelcomeAnimation()
 
 /*!
 * \brief MainWindow::on_finished_intro()
-* Once the intro animation is over it brings in the TIGER and enables the welcome button
+* Once the intro animation is over it brings in the TIGER and
+* enables the welcome button
 */
 void MainWindow::on_finished_intro()
 {
@@ -438,6 +486,11 @@ void MainWindow::Register_ClearForms()
   ui->company_line->clear();
 }
 
+/*!
+ * \brief MainWindow::SetTestimonialView
+ * Set the correct testimonial at each index of the testimonial slider.
+ * \param index
+ */
 void MainWindow::SetTestimonialView(int index)
 {
   if(index >= 0 && index < testimonials->size())
@@ -448,8 +501,6 @@ void MainWindow::SetTestimonialView(int index)
     ui->customer_testimonials_name->setText(testimonials->at(index).field("name").value().toString());
     ui->customer_testimonials_text->setText( testimonials->at(index).field("testimonial").value().toString() );
     ui->customer_testimonials_picture->setPixmap(image);
-    //    qDebug() << "TESTIMONIAL TEXT: " << testimonials->at(position).field("testimonial").value().toString();
-    //    qDebug() << "TESTIMONIAL IMAGE PATH: " << testimonials->at(position).field("image").value().toString();
   }
   else
   {
@@ -457,6 +508,10 @@ void MainWindow::SetTestimonialView(int index)
   }
 }
 
+/*!
+ * \brief MainWindow::UpdateTestimonialList
+ * Update the list of accepted testimonials.
+ */
 void MainWindow::UpdateTestimonialList()
 {
   if(testimonials != NULL){
@@ -469,6 +524,10 @@ void MainWindow::UpdateTestimonialList()
   SetTestimonialView(ui->customer_testimonial_slider->value());
 }
 
+/*!
+ * \brief MainWindow::LoadProductList
+ * Load the list of products to the products page.
+ */
 void MainWindow::LoadProductList()
 {
   ProductInfo temp;
@@ -494,11 +553,20 @@ void MainWindow::LoadProductList()
   ui->customer_products_webview->setUrl(ProductInfoList.at(ui->customer_products_slider->value()).html);
 }
 
+/*!
+ * \brief MainWindow::SetActiveUser
+ * Set activeUserId to the current logged in user.
+ * \param id
+ */
 void MainWindow::SetActiveUser(QString id)
 {
   activeUserId = id;
 }
 
+/*!
+ * \brief MainWindow::ClearAllPurchaseCheckboxes
+ * Clear all checkboxes on the customer purchase page.
+ */
 void MainWindow::ClearAllPurchaseCheckboxes()
 {
   ui->customer_purchase_product_checkBox->setChecked(0);
@@ -508,6 +576,10 @@ void MainWindow::ClearAllPurchaseCheckboxes()
   ui->customer_purchase_product_checkBox_5->setChecked(0);
 }
 
+/*!
+ * \brief MainWindow::InitCustomerPurchaseTableView
+ * Initialize the customer purchase Table
+ */
 void MainWindow::InitCustomerPurchaseTableView()
 {
   ui->customer_purchase_tableView->setAlternatingRowColors(true);
@@ -518,6 +590,10 @@ void MainWindow::InitCustomerPurchaseTableView()
   ui->customer_purchase_tableView->horizontalHeader()->setStretchLastSection(true);
 }
 
+/*!
+ * \brief MainWindow::on_customer_remove_button_clicked
+ * Attempt to remove a customer from the table.
+ */
 void MainWindow::on_customer_remove_button_clicked()
 {
   int row =ui->customer_tableView->currentIndex().row();
@@ -651,6 +727,10 @@ void MainWindow::on_customer_submit_changes_button_clicked()
 
 }
 
+/*!
+ * \brief MainWindow::Welcome
+ * The welcome screen!
+ */
 void MainWindow::Welcome()
 {
   ui->stacked_pages->setCurrentIndex(INTRO);
@@ -720,51 +800,89 @@ void MainWindow::on_customer_send_pamphlet_button_clicked()
   }
 }
 
+/*!
+ * \brief MainWindow::on_customer_testimonial_slider_sliderMoved
+ * Change displayed testimonial
+ * \param position
+ */
 void MainWindow::on_customer_testimonial_slider_sliderMoved(int position)
 {
   SetTestimonialView(position);
 }
 
+/*!
+ * \brief MainWindow::on_customer_testimonial_slider_valueChanged
+ * Change displayed testimonial
+ * \param value
+ */
 void MainWindow::on_customer_testimonial_slider_valueChanged(int value)
 {
   SetTestimonialView(value);
 }
 
+/*!
+ * \brief MainWindow::on_toolBox_currentChanged
+ * Initialize contents for customer pamphlet page
+ * \param index
+ */
 void MainWindow::on_toolBox_currentChanged(int index)
 {
   ui->contact_button->hide();
   switch(index){
-  case CUST_PRODUCTS : break;
+  case CUST_PRODUCTS :
+    break;
   case CUST_MAINTENANCE : InitializeMaintenance();
   case CUST_TESTIMONIALS : UpdateTestimonialList();
     break;
-  case CUST_PURCHASE : break;
+  case CUST_PURCHASE :
+    break;
   default : break;
   }
 }
 
+/*!
+ * \brief MainWindow::on_customer_products_slider_valueChanged
+ * Switch the displayed product info
+ * \param value
+ */
 void MainWindow::on_customer_products_slider_valueChanged(int value)
 {
   ui->customer_products_title->setText(ProductInfoList.at(value).productName);
   ui->customer_products_webview->setUrl(ProductInfoList.at(value).html);
 }
 
+/*!
+ * \brief MainWindow::on_GeneralInfoButton_clicked
+ * display general info page
+ */
 void MainWindow::on_GeneralInfoButton_clicked()
 {
   ui->InformationSpace->setSource(QUrl("qrc:/html/INFOGeneral.html"));
 }
 
+/*!
+ * \brief MainWindow::on_ConceptOfOperations_clicked
+ * Display concept of operations
+ */
 void MainWindow::on_ConceptOfOperations_clicked()
 {
   ui->InformationSpace->setSource(QUrl("qrc:/html/INFOCop.html"));
 }
 
+/*!
+ * \brief MainWindow::on_SupportedPlattaforms_clicked
+ * Display supported Plattaforms
+ */
 void MainWindow::on_SupportedPlattaforms_clicked()
 {
   ui->InformationSpace->setSource(QUrl("qrc:/html/INFOPlatforms.html"));
   qDebug() << ui->InformationSpace->source();
 }
 
+/*!
+ * \brief MainWindow::on_RegisterButton_clicked
+ * Display register page, set Regex validators for text fields.
+ */
 void MainWindow::on_RegisterButton_clicked()
 {
   ui->stacked_pages->setCurrentIndex(REGISTER);
@@ -773,36 +891,61 @@ void MainWindow::on_RegisterButton_clicked()
   ui->company_line->setValidator(new QRegExpValidator(QRegExp("[\\w\\s]*")));
 }
 
+/*!
+ * \brief MainWindow::on_username_line_2_editingFinished
+ */
 void MainWindow::on_username_line_2_editingFinished()
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_password_line_2_editingFinished
+ */
 void MainWindow::on_password_line_2_editingFinished()
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_company_line_editingFinished
+ */
 void MainWindow::on_company_line_editingFinished()
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_address_line_editingFinished
+ */
 void MainWindow::on_address_line_editingFinished()
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_interest_box_currentIndexChanged
+ * \param index
+ */
 void MainWindow::on_interest_box_currentIndexChanged(int index)
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_terms_box_toggled
+ * \param checked
+ */
 void MainWindow::on_terms_box_toggled(bool checked)
 {
   RegistrationCompleted();
 }
 
+/*!
+ * \brief MainWindow::on_register_okay_button_clicked
+ * Attempt to register user. If successful, clear forms and set page
+ * index to LOGIN page.
+ */
 void MainWindow::on_register_okay_button_clicked()
 {
   if(Register())
@@ -818,23 +961,39 @@ void MainWindow::on_register_okay_button_clicked()
   }
 }
 
+/*!
+ * \brief MainWindow::on_register_cancel_button_clicked
+ * Clear forms and set current page to LOGIN page.
+ */
 void MainWindow::on_register_cancel_button_clicked()
 {
   Register_ClearForms();
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
+/*!
+ * \brief MainWindow::on_OKgoBackLogIn_clicked
+ * Set page to LOGIN page
+ */
 void MainWindow::on_OKgoBackLogIn_clicked()
 {
   ui->stacked_pages->setCurrentIndex(LOGIN);
 }
 
+/*!
+ * \brief MainWindow::on_InformationButton_clicked
+ * Set current page to INFORMATION page
+ */
 void MainWindow::on_InformationButton_clicked()
 {
   ui->stacked_pages->setCurrentIndex(INFORMATION);
   ui->GeneralInfoButton->click();
 }
 
+/*!
+ * \brief MainWindow::on_admin_logout_button_clicked
+ * Deallocate memory for table models and set current page to LOGIN page
+ */
 void MainWindow::on_admin_logout_button_clicked()
 {
   ui->stacked_pages->setCurrentIndex(LOGIN);
@@ -843,6 +1002,13 @@ void MainWindow::on_admin_logout_button_clicked()
   delete tTableModel;
 }
 
+/*!
+ * \brief MainWindow::on_customer_purchase_purchaseButton_clicked
+ * For every box that is clicked, make a purchase. If a customer has
+ * made a purchase, thank them with a friendly popUp.
+ * Add their purchases to the purchase table and refresh the purchases
+ * view.
+ */
 void MainWindow::on_customer_purchase_purchaseButton_clicked()
 {
   bool madePurchase = false;
@@ -885,12 +1051,20 @@ void MainWindow::on_customer_purchase_purchaseButton_clicked()
   }
 }
 
+/*!
+ * \brief MainWindow::on_pushButton_2_clicked
+ * Clear all checkboxes and set toolbox page to initial page.
+ */
 void MainWindow::on_pushButton_2_clicked()
 {
   ClearAllPurchaseCheckboxes();
   ui->toolBox->setCurrentIndex(0);
 }
 
+/*!
+ * \brief MainWindow::on_customer_logout_button_clicked
+ * Reset all sliders and checkboxes, log the user out.
+ */
 void MainWindow::on_customer_logout_button_clicked()
 {
   ui->contact_button->hide();
@@ -901,6 +1075,10 @@ void MainWindow::on_customer_logout_button_clicked()
   delete pTableModel;
 }
 
+/*!
+ * \brief MainWindow::on_add_testimonial_buttonBox_accepted
+ * Attempt to add a customer's testimonial to the Testimonial table.
+ */
 void MainWindow::on_add_testimonial_buttonBox_accepted()
 {
   QString name = db->GetCustomerNameById(activeUserId);
@@ -931,6 +1109,10 @@ void MainWindow::on_add_testimonial_buttonBox_accepted()
   ui->add_testimonial_text->clear();
 }
 
+/*!
+ * \brief MainWindow::on_add_testimonial_text_textChanged
+ * Ensure that the testimonial has no more than 500 characters.
+ */
 void MainWindow::on_add_testimonial_text_textChanged()
 {
   if(ui->add_testimonial_text->toPlainText().length() >= 500)
@@ -939,12 +1121,20 @@ void MainWindow::on_add_testimonial_text_textChanged()
   }
 }
 
+/*!
+ * \brief MainWindow::on_add_testimonial_buttonBox_rejected
+ * Clear testimonial box and set current index to initial page.
+ */
 void MainWindow::on_add_testimonial_buttonBox_rejected()
 {
   ui->toolBox->setCurrentIndex(0);
   ui->add_testimonial_text->clear();
 }
 
+/*!
+ * \brief MainWindow::on_contact_button_clicked
+ * Make a cool popup with contact info.
+ */
 void MainWindow::on_contact_button_clicked()
 {
   ContactUs *contact = new ContactUs();
@@ -955,6 +1145,10 @@ void MainWindow::on_contact_button_clicked()
 
 }
 
+/*!
+ * \brief MainWindow::on_customer_submit_changes_help_button_clicked
+ * Display a brief "HOW TO" for using admin page 1.
+ */
 void MainWindow::on_customer_submit_changes_help_button_clicked()
 {
   ErrorPopup *p = new ErrorPopup("All fields are editable. "
@@ -964,6 +1158,10 @@ void MainWindow::on_customer_submit_changes_help_button_clicked()
   p->show();
 }
 
+/*!
+ * \brief MainWindow::on_testimonial_add_help_button_clicked
+ * Display a brief "HOW TO" for using admin page 2.
+ */
 void MainWindow::on_testimonial_add_help_button_clicked()
 {
   ErrorPopup *p = new ErrorPopup("Click on a testimonial and then use the "
@@ -973,6 +1171,10 @@ void MainWindow::on_testimonial_add_help_button_clicked()
   p->show();
 }
 
+/*!
+ * \brief MainWindow::on_help_button_clicked
+ * Display a help menu for the entire program.
+ */
 void MainWindow::on_help_button_clicked()
 {
   HelpOption *help = new HelpOption();
